@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { ContractmidlevelComponent } from './contractmidlevel/contractmidlevel.c
 import { ContractnonphysicianComponent } from './contractnonphysician/contractnonphysician.component';
 import { NoncontractmidlevelComponent } from './noncontractmidlevel/noncontractmidlevel.component';
 import { NoncontractnonphysicianComponent } from './noncontractnonphysician/noncontractnonphysician.component';
+import { SetActiveClassDirective } from './shared/set-active-class.directive';
 
 
 
@@ -25,12 +27,15 @@ import { NoncontractnonphysicianComponent } from './noncontractnonphysician/nonc
     ContractmidlevelComponent,
     ContractnonphysicianComponent,
     NoncontractmidlevelComponent,
-    NoncontractnonphysicianComponent
+    NoncontractnonphysicianComponent,
+    SetActiveClassDirective
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
-     {path:'',component:LndpageComponent},
+     {path:'',component:ContractphysicianComponent},
      {path:'practitioner/:ptype',component:PractitionerComponent},
      {path:'contractphysician', component:ContractphysicianComponent},
      {path:'noncontractphysician', component:NoncontractphysicianComponent},

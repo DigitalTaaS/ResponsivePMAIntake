@@ -1,4 +1,7 @@
  
+    .bg-color{
+        background-color: #3B95D8;
+    }
     .panel-title a:after {
         font-family:Fontawesome;
         content:'\f139';
@@ -18,8 +21,6 @@
 
     .vertical{
         border-left:3px solid black;
-        height:300px;
-
     }
 
     .sidenav {
@@ -36,9 +37,7 @@
     }
     
     .main {
-        margin-left: 160px; /* Same as the width of the sidenav */
-        font-size: 28px; /* Increased text to enable scrolling */
-        padding: 0px 50px;
+        margin-left: 250px; /* Same as the width of the sidenav */
     }
 
     hr {
@@ -67,8 +66,16 @@
         background-color:gainsboro;
       }
 
-      h6.text{
+    h6.text{
         font: ArialMT, Regular; opacity:50%;font-size: 14px;color: #444444;
       }
+
+    input.ng-invalid{
+        border-left: 5px solid red;
+    }
+
+    input.ng-valid{
+        border-left: 5px solid green;
+    }
     
    
