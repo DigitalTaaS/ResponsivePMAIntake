@@ -47,8 +47,8 @@
                 </h6>
             </a>
             <a (click)="scrollTo('commentsPanel')" style="cursor: pointer">
-                    <h6 class="text">COMMENTS</h6>
-                </a>
+                <h6 class="text">COMMENTS</h6>
+            </a>
             <hr/>
             <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
                 <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
@@ -60,21 +60,21 @@
                 <form [formGroup]="contractPhysicianForm">
                     <div class="" style="background-color:#BEDCF2">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div formGroupName="demographics" class="panel panel-info" id="demographicsPanel">
+                            <div formGroupName="demographics" class="panel" id="demographicsPanel">
                                 <div class="panel-heading" role="tab" id="headingOne">
                                     <h4>
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                                            (click)="'demoPanelClicked != demoPanelClicked'">
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            (click)="togglePanel('demo')">
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !demoPanelClicked, 'glyphicon-chevron-up' : demoPanelClicked}"></i>
                                         </a>DEMOGRAPHICS
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne" class="panel-collapse collapse show"  role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
                                                 <label for="inputFname">
-                                                    <h5 style="font: 15px;font: ArialMT, Regular;">FIRST NAME**</h5>
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">FIRST NAME*</h5>
                                                 </label>
                                                 <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName">
                                             </div>
@@ -86,7 +86,7 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputLName">
-                                                    <h5 style="font: 15px;font: ArialMT, Regular;">LAST NAME**</h5>
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">LAST NAME*</h5>
                                                 </label>
                                                 <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName">
                                             </div>
@@ -108,20 +108,21 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="inputdob">
-                                                    <h5 style="font: 15px;font: ArialMT, Regular;">DATE OF BIRTH**</h5>
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">DATE OF BIRTH*</h5>
                                                 </label>
                                                 <input type="date" class="form-control" id="inputdob" formControlName="dateOfBirth">
                                             </div>
 
                                             <div class="form-group col-md-4">
                                                 <label for="inputgndr">
-                                                    <h5 style="font: 15px;font: ArialMT, Regular;">GENDER**</h5>
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">GENDER*</h5>
                                                 </label>
+                                                <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent" >
+                                                        <button type="button" class="btn" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px" [ngClass]="{'btn-success': male}" (click)="toggleGender()">MALE</button>
+                                                        <button type="button" class="btn" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px" [ngClass]="{'btn-success': !male}" (click)="toggleGender()">FEMALE</button>
+                                                </div>
                                                 <div>
-                                                    <span class="label label-info">Male</span>
-                                                    <input type="radio" height="12px" width="12px" value="Male" formControlName="genderType">
-                                                    <span class="label label-info">Female</span>
-                                                    <input type="radio" value="Female" formControlName="genderType">
+                                                        <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType">
                                                 </div>
                                             </div>
                                         </div>
@@ -129,20 +130,21 @@
                                 </div>
                             </div>
 
-                            <div formArrayName="contractedPartners" class="panel panel-info" id="cpPanel">
+                            <div formArrayName="contractedPartners" class="panel" id="cpPanel">
                                 <div class="panel-heading" role="tab" id="headingFour">
                                     <h4>
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"
+                                            (click)="togglePanel('cp')">
+                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
                                         </a>CONTRACTED PARTNER
                                     </h4>
                                 </div>
-                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div id="collapseFour" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingFour">
                                     <div class="panel-body">
                                         <div class="form-row">
                                             <div class="form-group col-8">
                                                 <label for="inputPpg">
-                                                    <h4 style="font-size: 15px">CONTRACTED PARTNER</h4>
+                                                    <h4 style="font-size: 15px">CONTRACTED PARTNER*</h4>
                                                 </label>
 
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners.controls; let i=index">
@@ -174,15 +176,16 @@
                                 </div>
                             </div>
 
-                            <div formGroupName="licensing" class="panel panel-info" id="licencePanel">
+                            <div formGroupName="licensing" class="panel" id="licencePanel">
                                 <div class="panel-heading" role="tab" id="headingTwo">
                                     <h4>
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                                            (click)="togglePanel('licence')">
+                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
                                         </a>LICENSING
                                     </h4>
                                 </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div id="collapseTwo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo">
                                     <div class="panel-body">
                                         <div class="form-row">
                                             <div class="form-group col-4">
@@ -221,7 +224,7 @@
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">TAXANOMY CODE*</h5>
                                                 </label>
                                                 <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode">
-                                                    <option *ngFor="let txcode of txcodes" value="txcode.value">{{txcode.text}}</option>
+                                                    <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.text}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -238,192 +241,244 @@
                                 </div>
                             </div>
 
-                            <div formGroupName="locations" class="panel panel-info" id="locationPanel">
+                            <div class="panel" id="locationPanel">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4>
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
-                                            style="font: 15px;font: Lantinghei TC, Extralight;">
-                                            <i class="glyphicon glyphicon-chevron-down"></i>
+                                            (click)="togglePanel('location')">
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
                                         </a>LOCATION(S)
                                     </h4>
                                 </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div class="panel-body">
-
-                                        <!-- SPLIT TWO LOCATION RENDERING  -->
-
+                                <div id="collapseThree" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body" style="padding: 0px 0px 0px 15px">
                                         <div>
-                                            <div class="row">
-                                                <div class="col-2" style="background-color:rgb(217, 232, 241)">
-                                                    <h4 style="font: 15px;font: ArialMT, Regular;">LOCATION TYPE</h4>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-4">
-                                                            <button type="button" class="btn btn-default" style="font-family: Arial, Helvetica, sans-serif;font-size: 20px;">Practice</button>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="col-10 vertical" style="background-color: white">
-                                                    <div class="form-row">
-                                                        <div class="form-group col-6">
-                                                            <label for="inputAddress">
-                                                                <h4 style="font-size: 15px">ADDRESS*</h4>
-                                                            </label>
-                                                            <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address">
-                                                        </div>
+                                            <div formArrayName="locations">
+                                                <div class="" *ngFor="let location of contractPhysicianForm.controls.locations.controls; let i=index">
+                                                    <div class="row" [formGroupName]="i">
+                                                        <div class="row col-12">
+                                                            <div *ngIf="i == 0" class="col-2">
+                                                                <h6 style="font: 15px;font: ArialMT, Regular;">LOCATION TYPE</h6>
+                                                                <div class="form-row">
+                                                                    <div class="form-group">
+                                                                        <button type="button" class="btn btn-default" style="font-family: Arial, Helvetica, sans-serif;font-size: 15px;">Practice</button>
+                                                                    </div>
+                                                                </div>
 
-                                                        <div class="form-group col-3">
-                                                            <label for="inputSuite">
-                                                                <h4 style="font-size: 15px">SUITE</h4>
-                                                            </label>
-                                                            <input type="text" maxlength="3" class="form-control" id="inputSuite" placeholder="" formControlName="suite">
-                                                        </div>
-                                                    </div>
+                                                            </div>
+                                                            <div *ngIf="i > 0" class="col-2">
+                                                                <h6 style="font: 15px;font: ArialMT, Regular;">LOCATION TYPE</h6>
+                                                                <div class="form-row">
+                                                                    <div class="form-group">
+                                                                        <select size="1" class="form-control" formControlName="locationType">
+                                                                            <option *ngFor="let locationType of locationTypes" [value]="locationType.value">{{locationType.text}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
 
-                                                    <div class="form-row">
-                                                        <div class="form-group col-6">
-                                                            <label for="inputCity">
-                                                                <h4 style="font-size: 15px">CITY*</h4>
-                                                            </label>
-                                                            <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city">
-                                                        </div>
+                                                            </div>
+                                                            <div class="col-10 vertical">
+                                                                <div *ngIf="i > 0"><hr/></div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputAddress">
+                                                                            <h4 style="font-size: 15px">ADDRESS*</h4>
+                                                                        </label>
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address">
+                                                                    </div>
 
-                                                        <div class="form-group col-3">
-                                                            <label for="inputSTate">
-                                                                <h4 style="font-size: 15px">STATE*</h4>
-                                                            </label>
-                                                            <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state">
-                                                                <option *ngFor="let state of states" value="state.value">{{state.text}}</option>
-                                                            </select>
+                                                                    <div class="form-group col-3">
+                                                                        <label for="inputSuite">
+                                                                            <h4 style="font-size: 15px">SUITE</h4>
+                                                                        </label>
+                                                                        <input type="text" maxlength="3" class="form-control" id="inputSuite" placeholder="" formControlName="suite">
+                                                                    </div>
+                                                                </div>
 
-                                                        </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputCity">
+                                                                            <h4 style="font-size: 15px">CITY*</h4>
+                                                                        </label>
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city">
+                                                                    </div>
+
+                                                                    <div class="form-group col-3">
+                                                                        <label for="inputSTate">
+                                                                            <h4 style="font-size: 15px">STATE*</h4>
+                                                                        </label>
+                                                                        <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state">
+                                                                            <option *ngFor="let state of states" [value]="state.value">{{state.text}}</option>
+                                                                        </select>
+
+                                                                    </div>
 
 
-                                                        <div class="form-group col-3">
-                                                            <label for="inputZip">
-                                                                <h4 style="font-size: 15px">ZIP*</h4>
-                                                            </label>
-                                                            <input type="number" maxlength="5" class="form-control" id="inputZip" placeholder="" formControlName="zipcode">
-                                                        </div>
-                                                    </div>
+                                                                    <div class="form-group col-3">
+                                                                        <label for="inputZip">
+                                                                            <h4 style="font-size: 15px">ZIP*</h4>
+                                                                        </label>
+                                                                        <input type="number" maxlength="5" class="form-control" id="inputZip" placeholder="" formControlName="zipcode">
+                                                                    </div>
+                                                                </div>
 
-                                                    <div class="form-row">
-                                                        <div class="form-group col-6">
-                                                            <label for="inputPhon">
-                                                                <h4 style="font-size: 15px">PHONE*</h4>
-                                                            </label>
-                                                            <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone">
-                                                        </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputPhon">
+                                                                            <h4 style="font-size: 15px">PHONE*</h4>
+                                                                        </label>
+                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone">
+                                                                    </div>
 
-                                                        <div class="form-group col-6">
-                                                            <label for="inputFax">
-                                                                <h4 style="font-size: 15px">FAX</h4>
-                                                            </label>
-                                                            <input type="tel" class="form-control" id="inputFax" placeholder="" formControlName="fax">
-                                                        </div>
-                                                    </div>
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputFax">
+                                                                            <h4 style="font-size: 15px">FAX</h4>
+                                                                        </label>
+                                                                        <input type="tel" class="form-control" id="inputFax" placeholder="" formControlName="fax">
+                                                                    </div>
+                                                                </div>
 
-                                                    <div class="form-row">
-                                                        <div class="form-group col-6">
-                                                            <label for="inputMail">
-                                                                <h4 style="font-size: 15px">EMAIL</h4>
-                                                            </label>
-                                                            <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email">
-                                                        </div>
-                                                    </div>
-
-                                                   <!--  <div formArrayName="officeHours">
-                                                        <div class="form-row">
-                                                                    <div *ngFor="let officeHour of contractPhysicianForm.controls.locations.controls.officeHours; let i=index">
-                                                                        <div class="row" [formGroupName]="i" style="padding-top: 5px;">
-                                                                            <div class="col-6">
-                                                                                <select size="1" class="form-control" id="inputphysDegree" formControlName="day">
-                                                                                    <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
-                                                                                </select>
-                                                                                <select size="1" class="form-control" id="inputphysDegree" formControlName="open">
-                                                                                        <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
-                                                                                </select>
-                                                                                <select size="1" class="form-control" id="inputphysDegree" formControlName="close">
-                                                                                        <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
-                                                                                </select>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-6">
+                                                                        <label for="inputMail">
+                                                                            <h4 style="font-size: 15px">EMAIL</h4>
+                                                                        </label>
+                                                                        <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email">
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="i == 0">
+                                                                    <br/>
+                                                                    <br/>
+                                                                    <div formArrayName="officeHours">
+                                                                        <div class="form-row">
+                                                                            <div class="col-2">
+                                                                                <label>
+                                                                                    <h4 style="font-size: 15px">OFFICE HOURS*</h4>
+                                                                                </label>
                                                                             </div>
-                                                                            <div class="col-2" style="padding-left: 0px;">
-                                                                                <span *ngIf="i > 0">
-                                                                                    <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeOfficeHour(i)">
-                                                                                        <span class="glyphicon glyphicon-remove-circle"></span>
-                                                                                    </button>
-                                                                                </span>
+                                                                            <div class="col-2">
+                                                                                <label>
+                                                                                    <h4 style="font-size: 15px">OPEN*</h4>
+                                                                                </label>
+                                                                            </div>
+
+                                                                            <div class="col-2">
+                                                                                <label>
+                                                                                    <h4 style="font-size: 15px">CLOSE*</h4>
+                                                                                </label>
                                                                             </div>
                                                                         </div>
+
+
+                                                                        <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
+                                                                            <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
+                                                                                <div class="col-2">
+                                                                                    <select size="1" class="form-control" formControlName="day">
+                                                                                        <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div class="col-2">
+                                                                                    <select size="1" class="form-control" formControlName="open">
+                                                                                        <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <strong> - </strong>
+                                                                                </div>
+                                                                                <div class="col-2">
+                                                                                    <select size="1" class="form-control" formControlName="close">
+                                                                                        <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div *ngIf="j > 0" class="col-1" style="padding-left: 0px;">
+                                                                                    <span>
+                                                                                        <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeOfficeHour(i)">
+                                                                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                                        </button>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
                                                                     </div>
-                    
-                    
+                                                                    <div class="form-row" style="padding-top: 10px">
+                                                                        <button type="button" class="btn btn-default" style="border-radius:100%" (click)="addOfficeHour(i)">
+                                                                            <span class="glyphicon glyphicon-plus-sign"></span>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <br/>
+                                                                    <br/>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="inputPanstat">
+                                                                                <h4 style="font-size: 15px">AGE RESTRICTION*</h4>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-2">
+                                                                            <input type="number" class="form-control" placeholder="MIN" formControlName="minAge">
+                                                                        </div>
+                                                                        <div class="form-group col-md-2">
+                                                                            <input type="number" class="form-control" placeholder="MAX" formControlName="maxAge">
+                                                                        </div>
+                                                                    </div>
+                                                                    <br/>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-4">
+                                                                            <label for="inputMail">
+                                                                                <h4 style="font-size: 15px">Provider Type*</h4>
+                                                                            </label>
+                                                                            <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType">
+                                                                                <option *ngFor="let pt of providerTypes" [value]="pt.value">{{pt.text}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                        </div> -->
-                                                    
-
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputPanstat">
-                                                                <h4 style="font-size: 15px">AGE RESTRICTION*</h4>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-2">
-                                                            <input type="number" class="form-control" placeholder="MIN" formControlName="minAge">
-                                                        </div>
-                                                        <div class="form-group col-md-2">
-                                                            <input type="number" class="form-control" placeholder="MAX" formControlName="maxAge">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-row">
-                                                            <div class="form-group col-4">
-                                                                <label for="inputMail">
-                                                                    <h4 style="font-size: 15px">Provider Type*</h4>
-                                                                </label>
-                                                                <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType">
-                                                                        <option *ngFor="let pt of providerTypes" value="pt.value">{{pt.text}}</option>
-                                                                </select>
                                                             </div>
                                                         </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-2" style="background-color:rgb(217, 232, 241);">
-                                                        <button type="button" class="btn btn-default btn-sm" style="border-radius: 25px">
-                                                            <span class="glyphicon glyphicon-plus-sign"></span> <span style="font-size: 15px">New Location</span> 
-                                                        </button>
+                                                <div class="col-2">
+                                                    <button type="button" class="btn btn-default btn-sm" style="border-radius: 25px" (click)="addLocation()">
+                                                        <span class="glyphicon glyphicon-plus-sign"></span>
+                                                        <span style="font-size: 15px">New Location</span>
+                                                    </button>
                                                 </div>
-                                        </div>
-
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="panel panel-info" id="commentsPanel">
-                                    <div class="panel-heading" role="tab" id="headingFive">
-                                        <h4>
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                <i class="glyphicon glyphicon-chevron-down"></i>
-                                            </a>COMMENTS
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                                        <div class="panel-body">
-                                                <div class="form-row">
-                                                        <div class="form-group col-12">
-                                                            <label for="inputBtAffhos">
-                                                                <h4 style="font-size: 15px">COMMENTS</h4>
-                                                            </label>
-                                                            <textarea rows="4" class="form-control" id="inputBtAffhos" placeholder="" formControlName="comments"></textarea>
-                                                        </div>
-                                                    </div>
+                            <div class="panel" id="commentsPanel">
+                                <div class="panel-heading" role="tab" id="headingFive">
+                                    <h4>
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"
+                                            (click)="togglePanel('comments')">
+                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !commentsPanelClicked, 'glyphicon-chevron-up' : commentsPanelClicked}"></i>
+                                        </a>COMMENTS
+                                    </h4>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingFive">
+                                    <div class="panel-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-12">
+                                                <label for="inputBtAffhos">
+                                                    <h4 style="font-size: 15px">COMMENTS</h4>
+                                                </label>
+                                                <textarea rows="4" class="form-control" id="inputBtAffhos" placeholder="" formControlName="comments"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </form>
