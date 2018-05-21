@@ -197,7 +197,7 @@
 
                                             <div class="form-group col-4" item-width="180px">
                                                 <label for="inputLnum">
-                                                    <h5 style="font: 15px;font: ArialMT, Regular;">LICENsE NUMBER*</h5>
+                                                    <h5 style="font: 15px;font: ArialMT, Regular;">LICENSE NUMBER*</h5>
                                                 </label>
                                                 <input type="text" maxlength="10" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber">
                                             </div>
@@ -430,10 +430,10 @@
                                                                     <div class="form-row">
                                                                         <div class="form-group col-4">
                                                                             <label for="inputMail">
-                                                                                <h4 style="font-size: 15px">Provider Type*</h4>
+                                                                                <h4 style="font-size: 15px">PRACTICE TYPE*</h4>
                                                                             </label>
                                                                             <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType">
-                                                                                <option *ngFor="let pt of providerTypes" [value]="pt.value">{{pt.text}}</option>
+                                                                                <option *ngFor="let pt of practiceTypes" [value]="pt.value">{{pt.text}}</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>

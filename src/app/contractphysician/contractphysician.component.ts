@@ -22,7 +22,7 @@ export class ContractphysicianComponent implements OnInit {
   txcodes: Dropdown[] = [];
   days: Dropdown[] = [];
   hours: Dropdown[] = [];
-  providerTypes: Dropdown[] = [];
+  practiceTypes: Dropdown[] = [];
   locationTypes: Dropdown[] = [];
   male = true;
   gender = "male";
@@ -246,9 +246,9 @@ export class ContractphysicianComponent implements OnInit {
     this.hours.push(new Dropdown("5:00pm", "5:00pm"));
     this.hours.push(new Dropdown("6:00pm", "6:00pm"));
 
-    this.providerTypes.push(new Dropdown("Provider Type1", "Provider Type1"));
-    this.providerTypes.push(new Dropdown("Provider Type2", "Provider Type2"));
-    this.providerTypes.push(new Dropdown("Provider Type3", "Provider Type3"));
+    this.practiceTypes.push(new Dropdown("Provider Type1", "Provider Type1"));
+    this.practiceTypes.push(new Dropdown("Provider Type2", "Provider Type2"));
+    this.practiceTypes.push(new Dropdown("Provider Type3", "Provider Type3"));
 
     this.locationTypes.push(new Dropdown("Practice", "Practise"));
     this.locationTypes.push(new Dropdown("Office", "Office"));
