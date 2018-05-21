@@ -9,46 +9,82 @@
             <h5>CONTRACT
                 <br> PROVIDER</h5>
             <hr/>
-            <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
-                <h6 class="text"> DEMOGRAPHICS
-                    <span class="align-right" [class.badge]="contractPhysicianForm.controls.demographics.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
-                                    'badge invalid' : contractPhysicianForm.controls.demographics.touched && contractPhysicianForm.controls.demographics.invalid}">
-                    </span>
+            <table class="table-borderless">
+                <tr>
+                    <td>
+                        <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
+                            <h6 class="text"> DEMOGRAPHICS
+                            </h6>
+                        </a>
+                    </td>
 
-                </h6>
-            </a>
-            <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
-                <h6 class="text"> CONT. PARTNER
+                    <td>
+                        <span class="align-right" [class.badge]="contractPhysicianForm.controls.demographics.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
+                            'badge invalid' : contractPhysicianForm.controls.demographics.touched && contractPhysicianForm.controls.demographics.invalid}">
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
+                            <h6 class="text"> CONT. PARTNER
+                            </h6>
+                        </a>
+                    </td>
+                    <td>
+                        <span class="align-right" [class.badge]="contractPhysicianForm.controls.contractedPartners.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
+                            'badge  invalid' : contractPhysicianForm.controls.contractedPartners.touched && contractPhysicianForm.controls.contractedPartners.invalid}">
+                        </span>
 
-                    <span class="align-right" [class.badge]="contractPhysicianForm.controls.contractedPartners.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
-                              'badge  invalid' : contractPhysicianForm.controls.contractedPartners.touched && contractPhysicianForm.controls.contractedPartners.invalid}">
-                    </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
+                            <h6 class="text">LICENSING
+                            </h6>
+                        </a>
+                    </td>
+                    <td>
+                        <span [class.badge]="contractPhysicianForm.controls.licensing.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
+                            'badge  invalid' : contractPhysicianForm.controls.licensing.touched && contractPhysicianForm.controls.licensing.invalid}">
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
+                            <h6 class="text">LOCATIONS
+                            </h6>
+                        </a>
+                    </td>
+                    <td>
+                        <span [class.badge]="contractPhysicianForm.controls.locations.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
+                            'badge  invalid' : contractPhysicianForm.controls.locations.touched && contractPhysicianForm.controls.locations.invalid}">
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a (click)="scrollTo('commentsPanel')" style="cursor: pointer">
+                            <h6 class="text">COMMENTS</h6>
+                        </a>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
 
-                </h6>
-            </a>
+
             <!-- <a (click)="scrollTo('licencePanel')" class="badge badge-custom" style = "cursor: pointer">
                 <h6 class="text">LICENSING
                     <span class="badge active">
                     </span>
                 </h6>
             </a> -->
-            <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
-                <h6 class="text">LICENSING
-                    <span [class.badge]="contractPhysicianForm.controls.licensing.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
-                              'badge  invalid' : contractPhysicianForm.controls.licensing.touched && contractPhysicianForm.controls.licensing.invalid}">
-                    </span>
-                </h6>
-            </a>
-            <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
-                <h6 class="text">LOCATIONS
-                    <span [class.badge]="contractPhysicianForm.controls.locations.valid" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
-                              'badge  invalid' : contractPhysicianForm.controls.locations.touched && contractPhysicianForm.controls.locations.invalid}">
-                    </span>
-                </h6>
-            </a>
-            <a (click)="scrollTo('commentsPanel')" style="cursor: pointer">
-                <h6 class="text">COMMENTS</h6>
-            </a>
+
+
+
             <hr/>
             <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
                 <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
@@ -69,7 +105,7 @@
                                         </a>DEMOGRAPHICS
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse show"  role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
@@ -117,12 +153,14 @@
                                                 <label for="inputgndr">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">GENDER*</h5>
                                                 </label>
-                                                <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent" >
-                                                        <button type="button" class="btn" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px" [ngClass]="{'btn-success': male}" (click)="toggleGender()">MALE</button>
-                                                        <button type="button" class="btn" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px" [ngClass]="{'btn-success': !male}" (click)="toggleGender()">FEMALE</button>
+                                                <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent">
+                                                    <button type="button" class="btn" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px" [ngClass]="{'btn-success': male}"
+                                                        (click)="toggleGender()">MALE</button>
+                                                    <button type="button" class="btn" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px" [ngClass]="{'btn-success': !male}"
+                                                        (click)="toggleGender()">FEMALE</button>
                                                 </div>
                                                 <div>
-                                                        <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType">
+                                                    <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType">
                                                 </div>
                                             </div>
                                         </div>
@@ -135,7 +173,7 @@
                                     <h4>
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"
                                             (click)="togglePanel('cp')">
-                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
                                         </a>CONTRACTED PARTNER
                                     </h4>
                                 </div>
@@ -157,7 +195,7 @@
                                                         <div class="col-2" style="padding-left: 0px;">
                                                             <span *ngIf="i > 0">
                                                                 <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeContractedPartner(i)">
-                                                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                    <span class="glyphicon glyphicon-remove-circle" ></span>
                                                                 </button>
                                                             </span>
                                                         </div>
@@ -181,7 +219,7 @@
                                     <h4>
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
                                             (click)="togglePanel('licence')">
-                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
                                         </a>LICENSING
                                     </h4>
                                 </div>
@@ -278,7 +316,9 @@
 
                                                             </div>
                                                             <div class="col-10 vertical">
-                                                                <div *ngIf="i > 0"><hr/></div>
+                                                                <div *ngIf="i > 0">
+                                                                    <hr/>
+                                                                </div>
                                                                 <div class="form-row">
                                                                     <div class="form-group col-6">
                                                                         <label for="inputAddress">
@@ -462,7 +502,7 @@
                                     <h4>
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"
                                             (click)="togglePanel('comments')">
-                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !commentsPanelClicked, 'glyphicon-chevron-up' : commentsPanelClicked}"></i>
+                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !commentsPanelClicked, 'glyphicon-chevron-up' : commentsPanelClicked}"></i>
                                         </a>COMMENTS
                                     </h4>
                                 </div>

@@ -235,16 +235,28 @@ export class ContractphysicianComponent implements OnInit {
     this.days.push(new Dropdown("Sunday", "sunday"));
 
     this.hours.push(new Dropdown("8:00am", "8:00am"));
+    this.hours.push(new Dropdown("8:30am", "8:30am"));
     this.hours.push(new Dropdown("9:00am", "9:00am"));
+    this.hours.push(new Dropdown("9:30am", "9:30am"));
     this.hours.push(new Dropdown("10:00am", "10:00am"));
+    this.hours.push(new Dropdown("10:30am", "10:30am"));
     this.hours.push(new Dropdown("11:00am", "11:00am"));
+    this.hours.push(new Dropdown("11:30am", "11:30am"));
     this.hours.push(new Dropdown("12:00pm", "12:00pm"));
+    this.hours.push(new Dropdown("12:30pm", "12:30pm"));
     this.hours.push(new Dropdown("1:00pm", "1:00pm"));
+    this.hours.push(new Dropdown("1:30pm", "1:30pm"));
     this.hours.push(new Dropdown("2:00pm", "2:00pm"));
+    this.hours.push(new Dropdown("2:30pm", "2:30pm"));
     this.hours.push(new Dropdown("3:00pm", "3:00pm"));
+    this.hours.push(new Dropdown("3:30pm", "3:30pm"));
     this.hours.push(new Dropdown("4:00pm", "4:00pm"));
+    this.hours.push(new Dropdown("4:30pm", "4:30pm"));
     this.hours.push(new Dropdown("5:00pm", "5:00pm"));
+    this.hours.push(new Dropdown("5:30pm", "5:30pm"));
     this.hours.push(new Dropdown("6:00pm", "6:00pm"));
+    this.hours.push(new Dropdown("6:30pm", "6:30pm"));
+    this.hours.push(new Dropdown("7:00pm", "7:00pm"));
 
     this.practiceTypes.push(new Dropdown("Provider Type1", "Provider Type1"));
     this.practiceTypes.push(new Dropdown("Provider Type2", "Provider Type2"));
