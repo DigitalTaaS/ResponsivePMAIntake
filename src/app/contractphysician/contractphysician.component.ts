@@ -69,12 +69,12 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   addContractedPartner() {
-    const control = <FormArray>this.contractPhysicianForm.controls['contractedPartners'];
+    const control = <FormArray>this.contractPhysicianForm.get('contractedPartners');
     control.push(this.initContractedPartner());
   }
 
   removeContractedPartner(i: number) {
-    const control = <FormArray>this.contractPhysicianForm.controls['contractedPartners'];
+    const control = <FormArray>this.contractPhysicianForm.get('contractedPartners');
     control.removeAt(i);
   }
 
@@ -98,7 +98,7 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   addLocation() {
-    const control = <FormArray>this.contractPhysicianForm.controls['locations'];
+    const control = <FormArray>this.contractPhysicianForm.get('locations');
     control.push(this.fb.group({
       locationType: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
@@ -126,12 +126,14 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   addOfficeHour(i: number) {
-    const control = <FormArray>this.contractPhysicianForm.get('locations').controls[i].get('officeHours');
+    //const control = <FormArray>this.contractPhysicianForm.get('locations.${i}.officeHours');
+    const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     control.push(this.initOfficeHour());
   }
 
   removeOfficeHour(i: number) {
-    const control = <FormArray>this.contractPhysicianForm.get('locations').controls[i].get('officeHours');
+    //const control = <FormArray>this.contractPhysicianForm.get('locations.${i}.officeHours');
+    const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     control.removeAt(i);
   }
 
