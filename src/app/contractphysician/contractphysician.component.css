@@ -44,7 +44,7 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         border: 0;
-        border-top: 5px solid rgba(0, 0, 0, 0.1);
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
       }
 
     .badge{
@@ -57,10 +57,12 @@
     }
 
     .valid{
-        background-color: #00B0B9;
+        background-color: #60C6D5;
+        opacity: 100%;
       }
     .invalid{
-        background-color: #644084;
+        background-color: #B09EC1;
+        opacity: 100%;
       }
     .active{
         background-color:gainsboro;
@@ -71,11 +73,11 @@
       }
 
     input.ng-invalid{
-        border-left: 5px solid red;
+        border-left: 5px solid #B09EC1;
     }
 
     input.ng-valid{
-        border-left: 5px solid green;
+        border-left: 5px solid #60C6D5;
     }
 
     .panel-body{
