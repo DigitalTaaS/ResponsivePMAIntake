@@ -98,7 +98,7 @@
                                                 <label for="inputFname">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">FIRST NAME*</h5>
                                                 </label>
-                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName">
+                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required>
                                                 <em *ngIf="firstnameCtrl.invalid && firstnameCtrl.touched">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-3" >
@@ -111,7 +111,7 @@
                                                 <label for="inputLName">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">LAST NAME*</h5>
                                                 </label>
-                                                <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName">
+                                                <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName" required>
                                                 <em *ngIf="lastnameCtrl.invalid && lastnameCtrl.touched">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-1">
@@ -134,18 +134,18 @@
                                                 <label for="inputdob">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DATE OF BIRTH*</h5>
                                                 </label>
-                                                <input type="date" class="form-control" id="inputdob" formControlName="dateOfBirth">
+                                                <input type="date" class="form-control" id="inputdob" formControlName="dateOfBirth" required>
                                             </div>
 
                                             <div class="form-group col-md-3">
                                                 <label for="inputgndr">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">GENDER*</h5>
                                                 </label>
-                                                <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent;">
+                                                <div class="form-control btn-group" role="group" style="padding: 0px;background-color: transparent;">
                                                     <button type="button" class="btn" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; width:50%" [ngClass]="{'btn-success': male}"
-                                                        (click)="toggleGender()">MALE</button>
+                                                        (click)="toggleGender()" required>MALE</button>
                                                     <button type="button" class="btn" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; width:50%" [ngClass]="{'btn-success': !male}"
-                                                        (click)="toggleGender()">FEMALE</button>
+                                                        (click)="toggleGender()" required>FEMALE</button>
                                                 </div>
                                                 <div>
                                                     <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType">
@@ -179,7 +179,7 @@
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners.controls; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
                                                         <div class="col-6">
-                                                            <select size="1" class="form-control" id="inputphysDegree" formControlName="contractedPartner">
+                                                            <select size="1" class="form-control" id="inputphysDegree" formControlName="contractedPartner" required>
                                                                 <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
                                                             </select>
                                                         </div>
@@ -224,7 +224,7 @@
                                                 <label for="inputNpinum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">NPI NUMBER*</h5>
                                                 </label>
-                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber">
+                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber" required>
                                                 <em *ngIf="npiCtrl.invalid && npiCtrl.touched">10 digit number only</em>
                                             </div>
 
@@ -232,14 +232,14 @@
                                                 <label for="inputLnum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">LICENSE NUMBER*</h5>
                                                 </label>
-                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber">
+                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required>
                                                 <em *ngIf="licenceCtrl.invalid && licenceCtrl.touched">Numbers only</em>
                                             </div>
                                             <div class="form-group col-4" item-width="180px" [ngClass]="{'has-error': deaCtrl.invalid && deaCtrl.touched}">
                                                 <label for="inputLnum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DEA NUMBER*</h5>
                                                 </label>
-                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber">
+                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber" required>
                                                 <em *ngIf="deaCtrl.invalid && deaCtrl.touched">Start with 2 letter and followed by 7 digit number only</em>
                                             </div>
                                         </div>
@@ -250,7 +250,7 @@
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DEGREE*</h5>
                                                 </label>
                                                 <select size="1" class="form-control" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
-                                                    formControlName="degreeName">
+                                                    formControlName="degreeName" required>
                                                     <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option>
                                                 </select>
                                             </div>
@@ -258,7 +258,7 @@
                                                 <label for="inputTxc">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">TAXANOMY CODE*</h5>
                                                 </label>
-                                                <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode">
+                                                <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
                                                     <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.text}}</option>
                                                 </select>
                                             </div>
@@ -331,7 +331,7 @@
                                                                         <label for="inputAddress">
                                                                             <h4 style="font-size: 15px">ADDRESS*</h4>
                                                                         </label>
-                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address">
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address" required>
                                                                         <em *ngIf="addressCtrl.invalid && addressCtrl.touched">Required - No Special Characters</em>
                                                                     </div>
 
@@ -348,14 +348,14 @@
                                                                         <label for="inputCity">
                                                                             <h4 style="font-size: 15px">CITY*</h4>
                                                                         </label>
-                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city">
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city" required>
                                                                     </div>
 
                                                                     <div class="form-group col-3">
                                                                         <label for="inputSTate">
                                                                             <h4 style="font-size: 15px">STATE*</h4>
                                                                         </label>
-                                                                        <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state">
+                                                                        <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state" required>
                                                                             <option *ngFor="let state of states" [value]="state.value">{{state.text}}</option>
                                                                         </select>
 
@@ -366,7 +366,7 @@
                                                                         <label for="inputZip">
                                                                             <h4 style="font-size: 15px">ZIP*</h4>
                                                                         </label>
-                                                                        <input type="number" maxlength="5" class="form-control" id="inputZip" placeholder="" formControlName="zipcode">
+                                                                        <input type="number" maxlength="5" class="form-control" id="inputZip" placeholder="" formControlName="zipcode" required>
                                                                     </div>
                                                                 </div>
 
@@ -375,7 +375,7 @@
                                                                         <label for="inputPhon">
                                                                             <h4 style="font-size: 15px">PHONE*</h4>
                                                                         </label>
-                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone">
+                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone" required>
                                                                     </div>
 
                                                                     <div class="form-group col-3">
@@ -391,7 +391,7 @@
                                                                         <label for="inputMail">
                                                                             <h4 style="font-size: 15px">EMAIL*</h4>
                                                                         </label>
-                                                                        <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email">
+                                                                        <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email" required>
                                                                         <em *ngIf="emailCtrl.invalid && emailCtrl.touched">Required - valid email</em>
                                                                     </div>
                                                                 </div>
@@ -422,12 +422,12 @@
                                                                         <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
                                                                             <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="day">
+                                                                                    <select size="1" class="form-control" formControlName="day" required>
                                                                                         <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="open">
+                                                                                    <select size="1" class="form-control" formControlName="open" required>
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -435,7 +435,7 @@
                                                                                     <strong> - </strong>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="close">
+                                                                                    <select size="1" class="form-control" formControlName="close" required>
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -481,7 +481,7 @@
                                                                             <label for="inputMail">
                                                                                 <h4 style="font-size: 15px">PRACTICE TYPE*</h4>
                                                                             </label>
-                                                                            <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType">
+                                                                            <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType" required>
                                                                                 <option *ngFor="let pt of practiceTypes" [value]="pt.value">{{pt.text}}</option>
                                                                             </select>
                                                                         </div>
