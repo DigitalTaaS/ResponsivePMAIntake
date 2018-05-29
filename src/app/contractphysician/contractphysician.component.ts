@@ -11,11 +11,25 @@ import { Dropdown } from '../shared/dropdown';
 export class ContractphysicianComponent implements OnInit {
 
   contractPhysicianForm: FormGroup;
+  firstnameCtrl: FormControl;
+  lastnameCtrl: FormControl;
+  npiCtrl: FormControl;
+  licenceCtrl: FormControl;
+  deaCtrl: FormControl;
+  addressCtrl: FormControl;
+  emailCtrl: FormControl;
+
+
   demoPanelClicked = true;
   cpPanelClicked = true;
   licencePanelClicked = true;
   locationPanelClicked = true;
-  commentsPanelClicked = true;
+
+  demoPanelValueChange = false;
+  cpPanelValueChange = false;
+  licencePanelValueChange = false;
+  locationPanelValueChange = false;
+
   states: Dropdown[] = [];
   contractedPartners: Dropdown[] = [];
   degrees: Dropdown[] = [];
@@ -32,10 +46,18 @@ export class ContractphysicianComponent implements OnInit {
 
   ngOnInit() {
 
+    this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
+    this.lastnameCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
+    this.npiCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
+    this.licenceCtrl = new FormControl(null, [Validators.required]);
+    this.deaCtrl = new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern("[a-zA-Z]{2}[0-9]{7}")]);
+    this.addressCtrl = new FormControl(null, Validators.required);
+    this.emailCtrl = new FormControl(null, [Validators.required,Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
+
     this.contractPhysicianForm = this.fb.group({
       demographics: this.fb.group({
-        firstName: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
-        lastName: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
+        firstName: this.firstnameCtrl,
+        lastName: this.lastnameCtrl,
         middleName: new FormControl(),
         aliasName: new FormControl(),
         suffixName: new FormControl(),
@@ -46,20 +68,48 @@ export class ContractphysicianComponent implements OnInit {
         this.initContractedPartner()
       ]),
       licensing: this.fb.group({
-        npiNumber: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-        licNumber: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-        deaNumber: new FormControl(null, Validators.required),
+        npiNumber: this.npiCtrl,
+        licNumber: this.licenceCtrl,
+        deaNumber: this.deaCtrl,
         degreeName: new FormControl(null, Validators.required),
         taxanomyCode: new FormControl(null, Validators.required),
         description: new FormControl()
       }),
       locations: this.fb.array([
-        this.initLocation()
-      ]),
-      comments: new FormControl()
+        this.initLocation(false)
+      ])
     });
 
     this.populateDropDowns();
+
+    (<FormGroup>this.contractPhysicianForm.get('demographics')).valueChanges.subscribe(val => {
+      this.demoPanelValueChange = true;
+      this.cpPanelValueChange = false;
+      this.licencePanelValueChange = false;
+      this.locationPanelValueChange = false;
+    });
+
+    (<FormArray>this.contractPhysicianForm.get('contractedPartners')).valueChanges.subscribe(val => {
+      this.demoPanelValueChange = false;
+      this.cpPanelValueChange = true;
+      this.licencePanelValueChange = false;
+      this.locationPanelValueChange = false;
+    });
+
+    (<FormGroup>this.contractPhysicianForm.get('licensing')).valueChanges.subscribe(val => {
+      this.demoPanelValueChange = false;
+      this.cpPanelValueChange = false;
+      this.licencePanelValueChange = true;
+      this.locationPanelValueChange = false;
+    });
+
+    (<FormArray>this.contractPhysicianForm.get('locations')).valueChanges.subscribe(val => {
+      this.demoPanelValueChange = false;
+      this.cpPanelValueChange = false;
+      this.licencePanelValueChange = false;
+      this.locationPanelValueChange = true;
+    });
+
   }
 
   initContractedPartner() {
@@ -78,18 +128,19 @@ export class ContractphysicianComponent implements OnInit {
     control.removeAt(i);
   }
 
-  initLocation() {
+  initLocation(clicked: boolean) {
     return this.fb.group({
-      address: new FormControl(null, Validators.required),
+      locationType: new FormControl(clicked ? "" : "Practice", Validators.required),
+      address: this.addressCtrl,
       suite: new FormControl(),
       state: new FormControl(null, Validators.required),
       city: new FormControl(null, Validators.required),
       zipcode: new FormControl(null, Validators.required),
       phone: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      fax: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      email: new FormControl(),
-      minAge: new FormControl(null, [Validators.required, Validators.min(18)]),
-      maxAge: new FormControl(null, [Validators.required, Validators.max(70)]),
+      fax: new FormControl(),
+      email: this.emailCtrl,
+      minAge: new FormControl(null, [Validators.max(150)]),
+      maxAge: new FormControl(null, [Validators.max(150)]),
       providerType: new FormControl(null, Validators.required),
       officeHours: this.fb.array([
         this.initOfficeHour()
@@ -100,7 +151,7 @@ export class ContractphysicianComponent implements OnInit {
   addLocation() {
     const control = <FormArray>this.contractPhysicianForm.get('locations');
     control.push(this.fb.group({
-      locationType: new FormControl(null, Validators.required),
+      locationType: new FormControl("", Validators.required),
       address: new FormControl(null, Validators.required),
       suite: new FormControl(),
       state: new FormControl(null, Validators.required),
@@ -108,9 +159,15 @@ export class ContractphysicianComponent implements OnInit {
       zipcode: new FormControl(null, Validators.required),
       phone: new FormControl(null, [Validators.required, Validators.minLength(10)]),
       fax: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      email: new FormControl()
+      email: new FormControl(null, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"))
     })
     );
+    //control.push(this.initLocation(true));
+  }
+
+  removeLocation(i: number) {
+    const control = <FormArray>this.contractPhysicianForm.get('locations');
+    control.removeAt(i);
   }
 
   initOfficeHour() {
@@ -127,39 +184,70 @@ export class ContractphysicianComponent implements OnInit {
 
   addOfficeHour(i: number) {
     //const control = <FormArray>this.contractPhysicianForm.get('locations.${i}.officeHours');
-    const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
+    //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
+    const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     control.push(this.initOfficeHour());
   }
 
-  removeOfficeHour(i: number) {
+  removeOfficeHour(i: number, j: number) {
     //const control = <FormArray>this.contractPhysicianForm.get('locations.${i}.officeHours');
-    const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
-    control.removeAt(i);
+    //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
+    const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
+    control.removeAt(j);
   }
 
-  toggleGender(){
-    this.male =! this.male;
+  toggleGender() {
+    this.male = !this.male;
     this.gender = this.male ? "male" : "female";
   }
 
-  togglePanel(id:string){
-    if(id == "demo"){
-      this.demoPanelClicked =! this.demoPanelClicked;
-    }else if(id == "cp"){
-      this.cpPanelClicked =! this.cpPanelClicked;
-    }else if(id == "licence"){
-      this.licencePanelClicked =! this.licencePanelClicked;
-    }else if(id == "location"){
-      this.locationPanelClicked =! this.locationPanelClicked;
-    }else if(id == "comments"){
-      this.commentsPanelClicked =! this.commentsPanelClicked;
+  togglePanel(id: string) {
+    switch (id) {
+      case "demo":
+        this.demoPanelClicked = !this.demoPanelClicked;
+        break;
+      case "cp":
+        this.cpPanelClicked = !this.cpPanelClicked;
+        break;
+      case "licence":
+        this.licencePanelClicked = !this.licencePanelClicked;
+        break;
+      case "location":
+        this.locationPanelClicked = !this.locationPanelClicked;
+        break;
     }
-    
   }
 
   scrollTo(elementid) {
     let element = document.getElementById(elementid);
     element.scrollIntoView();
+
+    switch (elementid) {
+      case "demographicsPanel":
+        if (!this.demoPanelClicked) {
+          this.demoPanelClicked = true;
+          document.getElementById("demoPanelinfo").setAttribute('class', 'show');
+        }
+        break;
+      case "cpPanel":
+        if (!this.cpPanelClicked) {
+          this.cpPanelClicked = true;
+          document.getElementById("cpPanelinfo").setAttribute('class', 'show');
+        }
+        break;
+      case "licencePanel":
+        if (!this.licencePanelClicked) {
+          this.licencePanelClicked = true;
+          document.getElementById("licensePanelinfo").setAttribute('class', 'show');
+        }
+        break;
+      case "locationPanel":
+        if (!this.locationPanelClicked) {
+          this.locationPanelClicked = true;
+          document.getElementById("locationPanelinfo").setAttribute('class', 'show');
+        }
+        break;
+    }
   }
 
   populateDropDowns() {
@@ -269,8 +357,6 @@ export class ContractphysicianComponent implements OnInit {
     this.locationTypes.push(new Dropdown("Billing", "Billing"));
 
   }
-
-
 
   onSubmit() {
     console.log(this.contractPhysicianForm.value)

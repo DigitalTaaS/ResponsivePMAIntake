@@ -1,4 +1,8 @@
- 
+    img {
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+    }
     .bg-color{
         background-color: #3B95D8;
     }
@@ -20,14 +24,20 @@
     }
 
     .vertical{
-        border-left:3px solid black;
+        border-left:2px solid rgba(0, 0, 0, 0.1);
     }
+    .panel-body{
+        background-color: rgba(59, 149, 216, 0.3);
+        opacity: 30%;
+        }
 
     .sidenav {
         position: fixed;
         z-index: 1;
         left: 0;
-        width:175px;
+        width:185px;
+        /* background-color: #3B95D8; */
+        background-color: rgba(59, 149, 216, 0.3);
     }
     
     .sidenav a {
@@ -38,6 +48,7 @@
     
     .main {
         margin-left: 250px; /* Same as the width of the sidenav */
+        top: 0px;
     }
 
     hr {
@@ -47,13 +58,30 @@
         border-top: 2px solid rgba(0, 0, 0, 0.1);
       }
 
-    .badge{
-          padding: 10px 10px 10px 10px;
+      table td{
+          padding: 5px;
       }
+
+    .badge{
+          padding: 10px;
+      }
+
+     a.badge{
+        padding: 5px;
+        color: #444444;
+        opacity: 100%;
+        border-radius: 35px; 
+    }
+
+    a.badge i{
+        color: #FFFFFF;
+    }
 
     .badge-custom{
         background-color:#FFFFFF;
         color:#444444;
+        border-radius:10px; 
+        
     }
 
     .valid{
@@ -68,9 +96,44 @@
         background-color:gainsboro;
       }
 
+    .valid-text{
+        color: #60C6D5;
+        opacity: 100%;
+      }
+    .invalid-text{
+        color: #B09EC1;
+        opacity: 100%;
+      }
+      a.badge.valid-text{
+        background-color: #60C6D5;
+        opacity: 100%;
+      }
+
+      a.badge.invalid-text{
+        background-color: #B09EC1;
+        opacity: 100%;
+      }
+
+      .form-control[disabled]{
+          background-color: transparent;
+          border: 1px solid  #444444;
+      }
+
+     /*  .form-control[required="required"] input:not(.required) {
+        border: 1px solid black;
+      }
+
+      .form-control[required="required"] input {
+        border: 1px solid red;
+      } */
+
     h6.text{
         font: ArialMT, Regular; opacity:50%;font-size: 14px;color: #444444;
       }
+
+      input.ng-required{
+        border: 1px solid black;
+    }
 
     input.ng-invalid{
         border-left: 5px solid #B09EC1;
@@ -80,9 +143,17 @@
         border-left: 5px solid #60C6D5;
     }
 
-    .panel-body{
-        background-color: #BEDCF2;
-        }
+    select.ng-invalid{
+        border-left: 5px solid #B09EC1;
+    }
+
+    select.ng-valid{
+        border-left: 5px solid #60C6D5;
+    }
+
+    em{
+        color:red;
+    }
 
     .glyphicon.glyphicon-plus-sign {
         font-size: 20px;
