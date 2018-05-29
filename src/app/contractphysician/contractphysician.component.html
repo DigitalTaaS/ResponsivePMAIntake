@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-3 sidenav">
-            <h5 class="text-center">CONTRACT
+            <h5 class="text-center" style="padding: 15px">CONTRACT
                 <br> PROVIDER</h5>
             <hr/>
             <table>
@@ -94,20 +94,20 @@
                                 <div id="demoPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne" style="padding-left:125px;">
                                     <div class="panel-body">
                                         <div class="form-row">
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-3" [ngClass]="{'has-error': firstnameCtrl.invalid && firstnameCtrl.touched}">
                                                 <label for="inputFname">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">FIRST NAME*</h5>
                                                 </label>
                                                 <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName">
                                                 <em *ngIf="firstnameCtrl.invalid && firstnameCtrl.touched">Required - Alpha only</em>
                                             </div>
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-3" >
                                                 <label for="inputMname">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">MIDDLE NAME</h5>
                                                 </label>
                                                 <input type="text" class="form-control" id="inputMname" placeholder="" formControlName="middleName">
                                             </div>
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-3" [ngClass]="{'has-error': lastnameCtrl.invalid && lastnameCtrl.touched}">
                                                 <label for="inputLName">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">LAST NAME*</h5>
                                                 </label>
@@ -220,7 +220,7 @@
                                 <div id="licensePanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo" style="padding-left: 125px">
                                     <div class="panel-body">
                                         <div class="form-row">
-                                            <div class="form-group col-4">
+                                            <div class="form-group col-4" [ngClass]="{'has-error': npiCtrl.invalid && npiCtrl.touched}">
                                                 <label for="inputNpinum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">NPI NUMBER*</h5>
                                                 </label>
@@ -228,14 +228,14 @@
                                                 <em *ngIf="npiCtrl.invalid && npiCtrl.touched">10 digit number only</em>
                                             </div>
 
-                                            <div class="form-group col-4" item-width="180px">
+                                            <div class="form-group col-4" item-width="180px" [ngClass]="{'has-error': licenceCtrl.invalid && licenceCtrl.touched}">
                                                 <label for="inputLnum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">LICENSE NUMBER*</h5>
                                                 </label>
                                                 <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber">
                                                 <em *ngIf="licenceCtrl.invalid && licenceCtrl.touched">Numbers only</em>
                                             </div>
-                                            <div class="form-group col-4" item-width="180px">
+                                            <div class="form-group col-4" item-width="180px" [ngClass]="{'has-error': deaCtrl.invalid && deaCtrl.touched}">
                                                 <label for="inputLnum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DEA NUMBER*</h5>
                                                 </label>
@@ -344,7 +344,7 @@
                                                                 </div>
 
                                                                 <div class="form-row">
-                                                                    <div class="form-group col-6">
+                                                                    <div class="form-group col-3">
                                                                         <label for="inputCity">
                                                                             <h4 style="font-size: 15px">CITY*</h4>
                                                                         </label>
@@ -371,14 +371,14 @@
                                                                 </div>
 
                                                                 <div class="form-row">
-                                                                    <div class="form-group col-6">
+                                                                    <div class="form-group col-3">
                                                                         <label for="inputPhon">
                                                                             <h4 style="font-size: 15px">PHONE*</h4>
                                                                         </label>
                                                                         <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone">
                                                                     </div>
 
-                                                                    <div class="form-group col-6">
+                                                                    <div class="form-group col-3">
                                                                         <label for="inputFax">
                                                                             <h4 style="font-size: 15px">FAX</h4>
                                                                         </label>
@@ -389,7 +389,7 @@
                                                                 <div class="form-row">
                                                                     <div class="form-group col-6">
                                                                         <label for="inputMail">
-                                                                            <h4 style="font-size: 15px">EMAIL</h4>
+                                                                            <h4 style="font-size: 15px">EMAIL*</h4>
                                                                         </label>
                                                                         <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email">
                                                                         <em *ngIf="emailCtrl.invalid && emailCtrl.touched">Required - valid email</em>
@@ -431,7 +431,7 @@
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
-                                                                                <div>
+                                                                                <div style="padding-top: 5px">
                                                                                     <strong> - </strong>
                                                                                 </div>
                                                                                 <div class="col-2">

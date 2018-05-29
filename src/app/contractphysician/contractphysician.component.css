@@ -1,8 +1,8 @@
-    img {
+   /*  img {
         image-rendering: auto;
         image-rendering: crisp-edges;
         image-rendering: pixelated;
-    }
+    } */
     .bg-color{
         background-color: #3B95D8;
     }
@@ -130,7 +130,7 @@
     h6.text{
         font: ArialMT, Regular; opacity:50%;font-size: 14px;color: #444444;
       }
-
+/* 
       input.ng-required{
         border: 1px solid black;
     }
@@ -149,7 +149,7 @@
 
     select.ng-valid{
         border-left: 5px solid #60C6D5;
-    }
+    } */
 
     em{
         color:red;
