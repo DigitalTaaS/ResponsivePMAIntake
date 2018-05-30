@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
+//import { HttpClient } from '@angular/common/http';
 import { Dropdown } from '../shared/dropdown';
 import * as moment from 'moment';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -28,7 +29,12 @@ export class ContractphysicianComponent implements OnInit {
   licenceCtrl: FormControl;
   deaCtrl: FormControl;
   addressCtrl: FormControl;
+  cityCtrl: FormControl;
+  zipCtrl: FormControl;
+  phoneCtrl: FormControl;
   emailCtrl: FormControl;
+  minAgeCtrl: FormControl;
+  maxAgeCtrl: FormControl;
 
 
   demoPanelClicked = true;
@@ -73,7 +79,12 @@ export class ContractphysicianComponent implements OnInit {
     this.licenceCtrl = new FormControl(null, [Validators.required]);
     this.deaCtrl = new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern("[a-zA-Z]{2}[0-9]{7}")]);
     this.addressCtrl = new FormControl(null, Validators.required);
+    this.cityCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
+    this.zipCtrl = new FormControl(null, [Validators.required, , Validators.minLength(5)]);
+    this.phoneCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
     this.emailCtrl = new FormControl(null, [Validators.required,Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
+    this.minAgeCtrl = new FormControl(null, [Validators.max(150)]);
+    this.maxAgeCtrl = new FormControl(null, [Validators.max(150)]);
 
     this.contractPhysicianForm = this.fb.group({
       demographics: this.fb.group({
@@ -83,7 +94,7 @@ export class ContractphysicianComponent implements OnInit {
         aliasName: new FormControl(),
         suffixName: new FormControl(),
         dateOfBirth: new FormControl(null, Validators.required),
-        genderType: new FormControl("male", Validators.required)
+        genderType: new FormControl("M", Validators.required)
       }),
       contractedPartners: this.fb.array([
         this.initContractedPartner()
@@ -192,13 +203,13 @@ export class ContractphysicianComponent implements OnInit {
       address: this.addressCtrl,
       suite: new FormControl(),
       state: new FormControl(null, Validators.required),
-      city: new FormControl(null, Validators.required),
-      zipcode: new FormControl(null, Validators.required),
-      phone: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      city: this.cityCtrl,
+      zipcode: this.zipCtrl,
+      phone: this.phoneCtrl,
       fax: new FormControl(),
       email: this.emailCtrl,
-      minAge: new FormControl(null, [Validators.max(150)]),
-      maxAge: new FormControl(null, [Validators.max(150)]),
+      minAge: this.minAgeCtrl,
+      maxAge: this.maxAgeCtrl,
       providerType: new FormControl(null, Validators.required),
       officeHours: this.fb.array([
         this.initOfficeHour()
@@ -335,7 +346,7 @@ export class ContractphysicianComponent implements OnInit {
 
   toggleGender() {
     this.male = !this.male;
-    this.gender = this.male ? "male" : "female";
+    this.gender = this.male ? "M" : "F";
   }
 
   togglePanel(id: string) {
@@ -500,10 +511,6 @@ export class ContractphysicianComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    console.log(this.contractPhysicianForm.value)
-    let contrphysiciandata = JSON.stringify(this.contractPhysicianForm.value);
-    console.log(contrphysiciandata);
-  }
+  
 
 }

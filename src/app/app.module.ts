@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -14,10 +15,11 @@ import { ContractnonphysicianComponent } from './contractnonphysician/contractno
 import { NoncontractmidlevelComponent } from './noncontractmidlevel/noncontractmidlevel.component';
 import { NoncontractnonphysicianComponent } from './noncontractnonphysician/noncontractnonphysician.component';
 import { SetActiveClassDirective } from './shared/set-active-class.directive';
-import { HttpClientModule  } from '@angular/common/http';
+//import { HttpClientModule  } from '@angular/common/http';
 import { DegreeautosearchService } from './degreeautosearch.service';
 import { PmahighlighttextPipe } from './pmahighlighttext.pipe';
 import { PmataxoncodePipe } from './pmataxoncode.pipe';
+import { IntakeInterceptor } from './shared/intake-interceptor';
 
 
 
@@ -41,6 +43,7 @@ import { PmataxoncodePipe } from './pmataxoncode.pipe';
     FormsModule,
     HttpClientModule ,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
      {path:'',component:ContractphysicianComponent},
      {path:'practitioner/:ptype',component:PractitionerComponent},
@@ -52,7 +55,12 @@ import { PmataxoncodePipe } from './pmataxoncode.pipe';
      {path:'noncontractnonphysician', component:NoncontractnonphysicianComponent}
     ])
   ],
-  providers: [DegreeautosearchService],
+ 
+  providers: [DegreeautosearchService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: IntakeInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
