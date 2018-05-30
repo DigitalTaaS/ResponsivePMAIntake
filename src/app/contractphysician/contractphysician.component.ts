@@ -10,9 +10,10 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
-import {  DegreeautosearchService } from '../degreeautosearch.service';
+import { DegreeautosearchService } from '../degreeautosearch.service';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
+import { ContractphysicianModel } from './contractphysician.model';
 
 @Component({
   selector: 'app-contractphysician',
@@ -57,18 +58,21 @@ export class ContractphysicianComponent implements OnInit {
   locationTypes: Dropdown[] = [];
   male = true;
   gender = "male";
+  model: ContractphysicianModel;
   //story-955
-  officeIndex:number=1;
-  officeHourOne:string="";
-  officeHourTwo:string="";
-  isOfficeHoursValid:boolean=true;
-  
+  officeIndex: number = 1;
+  officeHourOne: string = "";
+  officeHourTwo: string = "";
+  isOfficeHoursValid: boolean = true;
+
   // autocomplete 
-  public degreesdata: Observable<any[]>;  
-  private searchTerms = new Subject<string>();  
-  public name = '';  
-  public flag: boolean = true;  
-  constructor(private fb: FormBuilder,private degreeService:DegreeautosearchService) {
+  public degreesdata: Observable<any[]>;
+  private searchTerms = new Subject<string>();
+  public name = '';
+  public flag: boolean = true;
+
+
+  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -82,7 +86,7 @@ export class ContractphysicianComponent implements OnInit {
     this.cityCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
     this.zipCtrl = new FormControl(null, [Validators.required, , Validators.minLength(5)]);
     this.phoneCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
-    this.emailCtrl = new FormControl(null, [Validators.required,Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
+    this.emailCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
     this.minAgeCtrl = new FormControl(null, [Validators.max(150)]);
     this.maxAgeCtrl = new FormControl(null, [Validators.max(150)]);
 
@@ -114,28 +118,28 @@ export class ContractphysicianComponent implements OnInit {
 
     this.populateDropDowns();
     //taxon search-highlight
-    
+
     // stroy 955
     this.degreeService.search("all")
     //  // auto complete
-     this.degreesdata = this.searchTerms  
-     .debounceTime(300)        // wait for 300ms pause in events  
-     .distinctUntilChanged()   // ignore if next search term is same as previous  
-     .switchMap(term => term ? this.degreeService.search(term) :  Observable.of<any[]>([]))
-     .catch(error => {  
-      // TODO: real error handling  
-      console.log(error);  
-      return Observable.of<any[]>([]);  
-    });  
-      
-    this.txcodes ;
-    this.degreeService.search("All")
-    .subscribe(data => {
-      this.txcodes = data;
-       console.log(data);
-    });
+    this.degreesdata = this.searchTerms
+      .debounceTime(300)        // wait for 300ms pause in events  
+      .distinctUntilChanged()   // ignore if next search term is same as previous  
+      .switchMap(term => term ? this.degreeService.search(term) : Observable.of<any[]>([]))
+      .catch(error => {
+        // TODO: real error handling  
+        console.log(error);
+        return Observable.of<any[]>([]);
+      });
 
-   
+    this.txcodes;
+    this.degreeService.search("All")
+      .subscribe(data => {
+        this.txcodes = data;
+        console.log(data);
+      });
+
+
 
   }
 
@@ -170,21 +174,21 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   // Fast Search taxcode autocomplete
-  searchClient(term: string): void {  
-    this.flag = true;  
+  searchClient(term: string): void {
+    this.flag = true;
     console.log(term);
-    this.searchTerms.next(term);  
-  }  
+    this.searchTerms.next(term);
+  }
 
-  onselectClient(ClientObj) {     
-    if (ClientObj.id != "0") {  
-      this.name = ClientObj.name;       
-      this.flag = false;  
-    }  
-    else {  
-      return false;  
-    }  
-  }  
+  onselectClient(ClientObj) {
+    if (ClientObj.id != "0") {
+      this.name = ClientObj.name;
+      this.flag = false;
+    }
+    else {
+      return false;
+    }
+  }
 
   initContractedPartner() {
     return this.fb.group({
@@ -261,7 +265,7 @@ export class ContractphysicianComponent implements OnInit {
     //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     control.push(this.initOfficeHour());
-    this.officeIndex+=1;
+    this.officeIndex += 1;
   }
 
   removeOfficeHour(i: number, j: number) {
@@ -269,84 +273,76 @@ export class ContractphysicianComponent implements OnInit {
     //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     //control.removeAt(j);
-    control.removeAt(this.officeIndex= this.officeIndex-1);
+    control.removeAt(this.officeIndex = this.officeIndex - 1);
   }
 
   // stroy 955
-  onItemChangeOne(selectedValue:string){
-    this.officeHourOne=selectedValue;
-    if ( this.officeHourOne !="" && this.officeHourTwo!="")
-    {
-    this.isOfficeHoursValid=this.isValidHours( this.officeHourOne,this.officeHourTwo)
+  onItemChangeOne(selectedValue: string) {
+    this.officeHourOne = selectedValue;
+    if (this.officeHourOne != "" && this.officeHourTwo != "") {
+      this.isOfficeHoursValid = this.isValidHours(this.officeHourOne, this.officeHourTwo)
     }
-    console.log( this.isOfficeHoursValid)
+    console.log(this.isOfficeHoursValid)
   }
 
-  onItemChangeTwo(selectedValue:string){
-    this.officeHourTwo=selectedValue;
-    if ( this.officeHourOne !="" && this.officeHourTwo!="")
-    {
-    this.isOfficeHoursValid=this.isValidHours( this.officeHourOne,this.officeHourTwo)
+  onItemChangeTwo(selectedValue: string) {
+    this.officeHourTwo = selectedValue;
+    if (this.officeHourOne != "" && this.officeHourTwo != "") {
+      this.isOfficeHoursValid = this.isValidHours(this.officeHourOne, this.officeHourTwo)
     }
-    console.log( this.isOfficeHoursValid)
+    console.log(this.isOfficeHoursValid)
   }
 
-  isValidHours(open:string,close:string)
-  {
+  isValidHours(open: string, close: string) {
     var format = 'hh:mm A'
-    let myopen: moment.Moment = moment(open,format);
-    let myclose: moment.Moment = moment(close,format);
-    
-    console.log(myopen);
-    if (myopen.isBefore(myclose))
-      {
-        return true;
-      }
+    let myopen: moment.Moment = moment(open, format);
+    let myclose: moment.Moment = moment(close, format);
 
-      return false;
-    
+    console.log(myopen);
+    if (myopen.isBefore(myclose)) {
+      return true;
+    }
+
+    return false;
+
   }
 
   // story -955 
 
-  onSelectContractedPartner(selectedValue:string)
-  {
+  onSelectContractedPartner(selectedValue: string) {
     console.log(selectedValue);
-    this.degrees=[];
-    if (selectedValue=="CNTRPhysician")
-    {
-    this.degrees.push(new Dropdown("DO-Doctor of Osteopathic Medicine", "DO-Doctor of Osteopathic Medicine"));
-    this.degrees.push(new Dropdown("MD-Doctor of Medicine", "MD-Doctor of Medicine"));
-    this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
+    this.degrees = [];
+    if (selectedValue == "CNTRPhysician") {
+      this.degrees.push(new Dropdown("DO-Doctor of Osteopathic Medicine", "DO-Doctor of Osteopathic Medicine"));
+      this.degrees.push(new Dropdown("MD-Doctor of Medicine", "MD-Doctor of Medicine"));
+      this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
     }
-    if (selectedValue=="CNTRExtendedPCP")
-    {
-    this.degrees.push(new Dropdown("DNAP-Doctor of Nurse Anaesthesia Practice", "DNAP-Doctor of Nurse Anaesthesia Practice"));
-    this.degrees.push(new Dropdown("DNP-Doctor of NUrsing Practice", "DNP-Doctor of NUrsing Practice"));
-    this.degrees.push(new Dropdown("DNS-Doctor of Nursing Science", "DNS-Doctor of Nursing Science"));
-    this.degrees.push(new Dropdown("AuD-Doctoral Degree in Audiology", "AuD-Doctoral Degree in Audiology"));
-    this.degrees.push(new Dropdown("DC-Doctor of Chiropractic", "DC-Doctor of Chiropractic"));
-    this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
-    this.degrees.push(new Dropdown("OTD-Doctorate in Occupational Therapy", "OTD-Doctorate in Occupational Therapy"));
-    this.degrees.push(new Dropdown("OD-Doctor of Optometry", "OD-Doctor of Optometry"));
-    this.degrees.push(new Dropdown("DPT-Doctor of Physical Therapy", "DPT-Doctor of Physical Therapy"));
-    this.degrees.push(new Dropdown("SLPD-Doctor of Speech-Language Pathology", "SLPD-Doctor of Speech-Language Pathology"));
+    if (selectedValue == "CNTRExtendedPCP") {
+      this.degrees.push(new Dropdown("DNAP-Doctor of Nurse Anaesthesia Practice", "DNAP-Doctor of Nurse Anaesthesia Practice"));
+      this.degrees.push(new Dropdown("DNP-Doctor of NUrsing Practice", "DNP-Doctor of NUrsing Practice"));
+      this.degrees.push(new Dropdown("DNS-Doctor of Nursing Science", "DNS-Doctor of Nursing Science"));
+      this.degrees.push(new Dropdown("AuD-Doctoral Degree in Audiology", "AuD-Doctoral Degree in Audiology"));
+      this.degrees.push(new Dropdown("DC-Doctor of Chiropractic", "DC-Doctor of Chiropractic"));
+      this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
+      this.degrees.push(new Dropdown("OTD-Doctorate in Occupational Therapy", "OTD-Doctorate in Occupational Therapy"));
+      this.degrees.push(new Dropdown("OD-Doctor of Optometry", "OD-Doctor of Optometry"));
+      this.degrees.push(new Dropdown("DPT-Doctor of Physical Therapy", "DPT-Doctor of Physical Therapy"));
+      this.degrees.push(new Dropdown("SLPD-Doctor of Speech-Language Pathology", "SLPD-Doctor of Speech-Language Pathology"));
     }
-    if (selectedValue=="CNTROther")
-    {
-    this.degrees.push(new Dropdown("MSN-Master of Science in Nursing", "MSN-Master of Science in Nursing"));
-    this.degrees.push(new Dropdown("MCHS-Master of Clinical Health Services", "MCHS-Master of Clinical Health Services"));
-    this.degrees.push(new Dropdown("MCMSc-Master of Clinical Medical Science", "MCMSc-Master of Clinical Medical Science"));
-    this.degrees.push(new Dropdown("MHS-Master of Health Science", "MHS-Master of Health Science"));
-    this.degrees.push(new Dropdown("MMS-Master of Science in Medicine", "MMS-Master of Science in Medicine"));
-    this.degrees.push(new Dropdown("MMSc-Master of Medical Science", "MMSc-Master of Medical Science"));
-    this.degrees.push(new Dropdown("MPAS-Master of Physician Assistant Studies", "MPAS-Master of Physician Assistant Studies"));
-    this.degrees.push(new Dropdown("MSPA-Master of Science in Physician Associate studies", "MSPA-Master of Science in Physician Associate studies"));
-    this.degrees.push(new Dropdown("PgDip-Postgraduate Diploma in Physician Associate studies", "PgDip-Postgraduate Diploma in Physician Associate studies"));
+    if (selectedValue == "CNTROther") {
+      this.degrees.push(new Dropdown("MSN-Master of Science in Nursing", "MSN-Master of Science in Nursing"));
+      this.degrees.push(new Dropdown("MCHS-Master of Clinical Health Services", "MCHS-Master of Clinical Health Services"));
+      this.degrees.push(new Dropdown("MCMSc-Master of Clinical Medical Science", "MCMSc-Master of Clinical Medical Science"));
+      this.degrees.push(new Dropdown("MHS-Master of Health Science", "MHS-Master of Health Science"));
+      this.degrees.push(new Dropdown("MMS-Master of Science in Medicine", "MMS-Master of Science in Medicine"));
+      this.degrees.push(new Dropdown("MMSc-Master of Medical Science", "MMSc-Master of Medical Science"));
+      this.degrees.push(new Dropdown("MPAS-Master of Physician Assistant Studies", "MPAS-Master of Physician Assistant Studies"));
+      this.degrees.push(new Dropdown("MSPA-Master of Science in Physician Associate studies", "MSPA-Master of Science in Physician Associate studies"));
+      this.degrees.push(new Dropdown("PgDip-Postgraduate Diploma in Physician Associate studies", "PgDip-Postgraduate Diploma in Physician Associate studies"));
     }
 
-    
-    selectedValue="";
+
+    selectedValue = "";
   }
 
   toggleGender() {
@@ -456,12 +452,12 @@ export class ContractphysicianComponent implements OnInit {
     this.states.push(new Dropdown("Wisconsin", "WI"));
     this.states.push(new Dropdown("Wyoming", "WY"));
 
- //USER STORY-973-Contracted Partner Panel
- this.contractedPartners.push(new Dropdown("Physician", "CNTRPhysician"));
- this.contractedPartners.push(new Dropdown("Extended PCP", "CNTRExtendedPCP"));
- this.contractedPartners.push(new Dropdown("Other", "CNTROther"));
- //this.contractedPartners.push(new Dropdown("CNTR. PARTNER4", "CNTRPARTNER4"));
- 
+    //USER STORY-973-Contracted Partner Panel
+    this.contractedPartners.push(new Dropdown("Physician", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Extended PCP", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Other", "CNTROther"));
+    //this.contractedPartners.push(new Dropdown("CNTR. PARTNER4", "CNTRPARTNER4"));
+
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER1", "CNTRPARTNER1"));
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER2", "CNTRPARTNER2"));
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER3", "CNTRPARTNER3"));
@@ -516,6 +512,137 @@ export class ContractphysicianComponent implements OnInit {
 
   }
 
-  
+  onSubmit() {
+    console.log(this.contractPhysicianForm.value)
+    let formData = this.contractPhysicianForm.value;
+
+    this.model = new ContractphysicianModel();
+    /* this.model = {
+      firstName: formData.demographics.firstName,
+      middleName: formData.demographics.middleName,
+      lastName: formData.demographics.lastName,
+      alias: formData.demographics.aliasName,
+      suffix: formData.demographics.suffixName,
+      dateOfBirth: formData.demographics.dateOfBirth,
+      gender: formData.demographics.genderType,
+      contractedPartners: [{partnerName:formData.contractedPartners.contractedPartner}] ,
+      npi: formData.licensing.npiNumber,
+      licenseNumber: formData.licensing.licNumber,
+      dea: formData.licensing.deaNumber,
+      qualification: [{professionalDegreeCode: formData.licensing.degreeName} ],
+      taxonomies: [{taxonomyCode: formData.licensing.taxanomyCode}],
+      facilities: [{facilityType: formData.locations.locationType,  
+          address: {addressLine1: formData.locations.address, city: formData.locations.city}, }]
+    } */
+    
+    this.model = 
+    {
+      "npi": "546789483",
+      "firstName": "John",
+      "middleName": "J",
+      "lastName": "Smith",
+      "suffix": "Mr.",
+      "alias": "J.J.S.",
+      "dea": "437878232",
+      "licenseNumber": "8983232",
+      "gender": "M",
+      "dateOfBirth": "2005-05-23",
+      "taxonomies": [
+        {
+          "taxonomyType": "board",
+          "taxonomyCode": "111",
+          "status": "string"
+        }
+      ],
+      "qualification": {
+        "professionalDegreeCode": "string",
+        "professionalDegreeSchool": "string",
+        "certificateNumber": "string",
+        "graduationYear": 2000
+      },
+      "contractedPartners": [
+        {
+          "partnerName": "PARTNER1"
+        },
+        {
+          "partnerName": "PARTNER2"
+        }
+      ],
+      "facilities": [
+        {
+          "facilityId": "21232323",
+          "facilityName": "Main Office on Broad Street",
+          "facilityType": "Pratice",
+          "practiceType": "PRactice",
+          "dhcsSiteId": "434343",
+         
+          "email": "test@lacare.org",
+          "phones": [
+            {
+              "type": "work",
+              "number": "9807546574"
+            },
+            {
+              "type": "fax",
+              "number": "8754545454"
+            }
+          ],
+          "hoursOfOperation": [
+            {
+              "day": "monday",
+              "open": "9:00am",
+              "close": "5:00pm"
+            },
+            {
+              "day": "tuesday",
+              "open": "9:00am",
+              "close": "3:00pm"
+            },
+            {
+              "day": "wednesday",
+              "open": "9:00am",
+              "close": "3:30pm"
+            },
+            {
+              "day": "thursday",
+              "open": "9:30am",
+              "close": "3:00pm"
+            },
+            {
+              "day": "friday",
+              "open": "10:00am",
+              "close": "3:30pm"
+            }
+          ],
+          "age": {
+            "min": 20,
+            "max": 65
+          },
+          "address": {
+            "name": "Optional Name",
+            "addressLine1": "100 Broad Street",
+            "city": "Austin",
+            "country": "USA",
+            "state": "TX",
+            "zipCode": "56743"
+          }
+        }
+      ]
+    }
+
+    this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
+      .subscribe(
+        res => {
+          console.log(res)
+        }, 
+        err => {
+          console.log(err)
+        }
+      );
+
+
+  }
+
+
 
 }

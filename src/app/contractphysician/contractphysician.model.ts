@@ -1,25 +1,25 @@
 export class ContractphysicianModel {
     //Demographics Panel    
-    firstName: string;
-    middleName: string;
-    lastName: string;
-    suffix: string;
-    alias: string;
-    gender: string;
-    dateOfBirth: string;
+    firstName?: string;
+    middleName?: string;
+    lastName?: string;
+    suffix?: string;
+    alias?: string;
+    gender?: string;
+    dateOfBirth?: string;
 
     //Licensing Panel
-    contractedPartners: ContractedPartner[];
+    contractedPartners?: ContractedPartner[];
 
     //Licensing Panel
     npi: string;
-    dea: string;
-    licenseNumber: string;
-    qualification: Qualification;
-    taxonomies: Taxonomy[];
+    dea?: string;
+    licenseNumber?: string;
+    qualification?: Qualification;
+    taxonomies?: Taxonomy[];
 
     //Location Panel
-    facilities: Facility[];
+    facilities?: Facility[];
 }
 
 class Taxonomy {
