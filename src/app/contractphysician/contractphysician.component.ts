@@ -135,6 +135,11 @@ export class ContractphysicianComponent implements OnInit {
        console.log(data);
     });
 
+   
+
+  }
+
+  ngAfterViewInit() {
     (<FormGroup>this.contractPhysicianForm.get('demographics')).valueChanges.subscribe(val => {
       this.demoPanelValueChange = true;
       this.cpPanelValueChange = false;
@@ -162,7 +167,6 @@ export class ContractphysicianComponent implements OnInit {
       this.licencePanelValueChange = false;
       this.locationPanelValueChange = true;
     });
-
   }
 
   // Fast Search taxcode autocomplete
@@ -171,6 +175,7 @@ export class ContractphysicianComponent implements OnInit {
     console.log(term);
     this.searchTerms.next(term);  
   }  
+
   onselectClient(ClientObj) {     
     if (ClientObj.id != "0") {  
       this.name = ClientObj.name;       

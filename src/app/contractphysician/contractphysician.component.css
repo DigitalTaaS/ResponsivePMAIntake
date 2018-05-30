@@ -40,10 +40,20 @@
         background-color: rgba(59, 149, 216, 0.3);
     }
     
+    .sidenav h5 {
+        font-size: 20px;
+        font: Lantinghei SC, Extralight;
+        color: rgba(68, 68, 68, 1);
+        padding: 5px;
+        font-weight: normal;        
+    }
+
     .sidenav a {
-        padding: 0px 2px 0px 0px;
-        font-size: 25px;
-        display: block;
+        
+        font-size: 15px;
+        font: Lantinghei SC, Extralight;
+        color: rgba(68, 68, 68, 0.7);
+        
     }
     
     .main {
@@ -131,7 +141,7 @@
         font: ArialMT, Regular; opacity:50%;font-size: 14px;color: #444444;
       }
 
-      input.ng-required{
+     /*  input.ng-required{
         border: 1px solid black;
     }
 
@@ -166,8 +176,24 @@
     .glyphicon.glyphicon-plus-sign {
         font-size: 20px;
     }
+
     .glyphicon.glyphicon-remove-circle{
         font-size: 18px;
+    }
+
+    label{
+        color: rgba(68, 68, 68, 0.7);
+        font-size: 12px;
+        font: ArialMT, Regular;
+        font-weight: normal;
+    }
+
+    .panel-heading-text{
+        padding-left: 25px;
+        font: Lantinghei TC, Extralight;
+        font-size: 25px;
+        /* color: rgba(68, 68, 68, 1); */
+        vertical-align: middle;
     }
 
 
