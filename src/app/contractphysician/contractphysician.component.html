@@ -254,7 +254,7 @@
                                                     TAXANOMY CODE*
                                                 </label>
                                                 <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
-                                                    <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.text}}</option>
+                                                    <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -270,14 +270,23 @@
 
                                             </div>
                                         </div>
-                                        <div class="search-result" *ngIf="flag">  
+                                        <!-- <div class="search-result" *ngIf="flag">  
                                             <ul>  
                                                 <li *ngFor="let degree of degreesdata | async | pmataxoncode:name " >  
                                                    <h3> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
                                                 </li>             
                                             </ul>  
-                                        </div>  
-
+                                        </div>   -->
+                                        <div class="search-result; form-group col-6;" *ngIf="flag">  
+                                            <!-- <div class="search-result form-row form-group col-8" *ngIf="flag">   -->
+                                          
+                                            <ul>  
+                                                <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | pmataxoncode:name;let i=index; " >  
+                                                   <h3 style="color:#081C30"> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
+                                                </li>             
+                                            </ul>  
+                                         
+                                        </div>
                                     </div>
                                 </div>
                             </div>
