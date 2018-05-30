@@ -14,6 +14,10 @@ import { ContractnonphysicianComponent } from './contractnonphysician/contractno
 import { NoncontractmidlevelComponent } from './noncontractmidlevel/noncontractmidlevel.component';
 import { NoncontractnonphysicianComponent } from './noncontractnonphysician/noncontractnonphysician.component';
 import { SetActiveClassDirective } from './shared/set-active-class.directive';
+import { HttpClientModule  } from '@angular/common/http';
+import { DegreeautosearchService } from './degreeautosearch.service';
+import { PmahighlighttextPipe } from './pmahighlighttext.pipe';
+import { PmataxoncodePipe } from './pmataxoncode.pipe';
 
 
 
@@ -28,11 +32,14 @@ import { SetActiveClassDirective } from './shared/set-active-class.directive';
     ContractnonphysicianComponent,
     NoncontractmidlevelComponent,
     NoncontractnonphysicianComponent,
-    SetActiveClassDirective
+    SetActiveClassDirective,
+    PmahighlighttextPipe,
+    PmataxoncodePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule ,
     ReactiveFormsModule,
     RouterModule.forRoot([
      {path:'',component:ContractphysicianComponent},
@@ -45,7 +52,7 @@ import { SetActiveClassDirective } from './shared/set-active-class.directive';
      {path:'noncontractnonphysician', component:NoncontractnonphysicianComponent}
     ])
   ],
-  providers: [],
+  providers: [DegreeautosearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

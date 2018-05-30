@@ -179,7 +179,7 @@
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners.controls; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
                                                         <div class="col-6">
-                                                            <select size="1" class="form-control" id="inputphysDegree" formControlName="contractedPartner">
+                                                            <select size="1" class="form-control" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree" (change)="onSelectContractedPartner($event.target.value)">
                                                                 <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
                                                             </select>
                                                         </div>
@@ -251,7 +251,8 @@
                                                 </label>
                                                 <select size="1" class="form-control" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
                                                     formControlName="degreeName">
-                                                    <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option>
+                                                    <!-- <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option> -->
+                                                    <option *ngFor="let degree of degrees">{{degree.text}}</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-4">
@@ -259,7 +260,7 @@
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">TAXANOMY CODE*</h5>
                                                 </label>
                                                 <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode">
-                                                    <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.text}}</option>
+                                                    <option *ngFor="let txcode of txcodes" [value]="txcode.id">{{txcode.id}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -268,10 +269,24 @@
                                                 <label for="inputBtAffhos">
                                                     <h4 style="font-size: 15px">DESCRIPTION</h4>
                                                 </label>
-                                                <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description"></textarea>
+                                                <!-- <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
+                                                <textarea style="font-size: 25px" rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea>
+
+                                                <!-- <input class="form-control" [(ngModel)]="name" disabled  *ngIf="flag" type="text" [ngModelOptions]="{standalone: true}" />   -->
+
                                             </div>
                                         </div>
-
+                                        <div class="search-result; form-group col-6;" *ngIf="flag">  
+                                            <!-- <div class="search-result form-row form-group col-8" *ngIf="flag">   -->
+                                          
+                                            <ul>  
+                                                <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | pmataxoncode:name;let i=index; " >  
+                                                   <h3 style="color:#081C30"> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
+                                                </li>             
+                                            </ul>  
+                                         
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +442,7 @@
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="open">
+                                                                                    <select (change)="onItemChangeOne($event.target.value)"   size="1" class="form-control" formControlName="open">
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -435,7 +450,7 @@
                                                                                     <strong> - </strong>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="close">
+                                                                                    <select (change)="onItemChangeTwo($event.target.value)" size="1" class="form-control" formControlName="close">
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -453,10 +468,14 @@
 
                                                                     </div>
                                                                     <div class="form-row" style="padding-top: 10px">
-                                                                        <button type="button" class="btn btn-default btn-sm" style="border-radius:100%" (click)="addOfficeHour(i)">
+                                                                        <button [disabled]="!isOfficeHoursValid" type="button" class="btn btn-default btn-sm" style="border-radius:100%" (click)="addOfficeHour(i)">
                                                                             <span class="glyphicon glyphicon-plus-sign" style="padding-top: 5px"></span>
                                                                         </button>
                                                                     </div>
+                                                                    <div *ngIf="!isOfficeHoursValid">
+                                                                        <!-- <b>officeHours Timings are not valid.</b> -->
+                                                                        <em *ngIf="!isOfficeHoursValid">Required-Valid Office hours </em>
+                                                               </div> 
 
                                                                     <br/>
                                                                     <br/>
