@@ -54,7 +54,7 @@
                 <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
                     <td class="text-center">
                         <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
-                            <h6 class="text">LOCATIONS
+                            <h6 class="text">LOCATION
                             </h6>
                         </a>
                     </td>
@@ -94,12 +94,12 @@
                                 <div id="demoPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne" style="padding-left:125px;">
                                     <div class="panel-body">
                                         <div class="form-row">
-                                            <div class="form-group col-md-3" [ngClass]="{'has-error': firstnameCtrl.invalid && firstnameCtrl.touched}">
+                                            <div class="form-group col-md-3">
                                                 <label for="inputFname">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">FIRST NAME*</h5>
                                                 </label>
-                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required>
-                                                <em *ngIf="firstnameCtrl.invalid && firstnameCtrl.touched">Required - Alpha only</em>
+                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required  [ngClass]="{'red-border': firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty), 'black-border': firstnameCtrl.valid || firstnameCtrl.pristine}">
+                                                <em *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty)">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-3" >
                                                 <label for="inputMname">
@@ -107,12 +107,12 @@
                                                 </label>
                                                 <input type="text" class="form-control" id="inputMname" placeholder="" formControlName="middleName">
                                             </div>
-                                            <div class="form-group col-md-3" [ngClass]="{'has-error': lastnameCtrl.invalid && lastnameCtrl.touched}">
+                                            <div class="form-group col-md-3">
                                                 <label for="inputLName">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">LAST NAME*</h5>
                                                 </label>
-                                                <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName" required>
-                                                <em *ngIf="lastnameCtrl.invalid && lastnameCtrl.touched">Required - Alpha only</em>
+                                                <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName" required [ngClass]="{'red-border': lastnameCtrl.invalid && (lastnameCtrl.touched || lastnameCtrl.dirty), 'black-border': lastnameCtrl.valid || lastnameCtrl.pristine}">
+                                                <em *ngIf="lastnameCtrl.invalid && (lastnameCtrl.touched || lastnameCtrl.dirty)">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-1">
                                                 <label for="inputSuffix">
@@ -134,7 +134,7 @@
                                                 <label for="inputdob">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DATE OF BIRTH*</h5>
                                                 </label>
-                                                <input type="date" class="form-control" id="inputdob" formControlName="dateOfBirth" required>
+                                                <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required >
                                             </div>
 
                                             <div class="form-group col-md-3">
@@ -179,7 +179,7 @@
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners.controls; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
                                                         <div class="col-6">
-                                                            <select size="1" class="form-control" id="inputphysDegree" formControlName="contractedPartner" required>
+                                                            <select size="1" class="form-control black-border" id="inputphysDegree" formControlName="contractedPartner" required>
                                                                 <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
                                                             </select>
                                                         </div>
@@ -220,27 +220,27 @@
                                 <div id="licensePanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo" style="padding-left: 125px">
                                     <div class="panel-body">
                                         <div class="form-row">
-                                            <div class="form-group col-4" [ngClass]="{'has-error': npiCtrl.invalid && npiCtrl.touched}">
+                                            <div class="form-group col-4">
                                                 <label for="inputNpinum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">NPI NUMBER*</h5>
                                                 </label>
-                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber" required>
-                                                <em *ngIf="npiCtrl.invalid && npiCtrl.touched">10 digit number only</em>
+                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber" required [ngClass]="{'red-border': npiCtrl.invalid && (npiCtrl.touched || npiCtrl.dirty), 'black-border': npiCtrl.valid || npiCtrl.pristine}">
+                                                <em *ngIf="npiCtrl.invalid && (npiCtrl.touched || npiCtrl.dirty) ">10 digit number only</em>
                                             </div>
 
-                                            <div class="form-group col-4" item-width="180px" [ngClass]="{'has-error': licenceCtrl.invalid && licenceCtrl.touched}">
+                                            <div class="form-group col-4" item-width="180px">
                                                 <label for="inputLnum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">LICENSE NUMBER*</h5>
                                                 </label>
-                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required>
-                                                <em *ngIf="licenceCtrl.invalid && licenceCtrl.touched">Numbers only</em>
+                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required [ngClass]="{'red-border': licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty), 'black-border': licenceCtrl.valid || licenceCtrl.pristine}">
+                                                <em *ngIf="licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty)">Numbers only</em>
                                             </div>
-                                            <div class="form-group col-4" item-width="180px" [ngClass]="{'has-error': deaCtrl.invalid && deaCtrl.touched}">
+                                            <div class="form-group col-4" item-width="180px">
                                                 <label for="inputLnum">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DEA NUMBER*</h5>
                                                 </label>
-                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber" required>
-                                                <em *ngIf="deaCtrl.invalid && deaCtrl.touched">Start with 2 letter and followed by 7 digit number only</em>
+                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber" required [ngClass]="{'red-border': deaCtrl.invalid && (deaCtrl.touched || deaCtrl.dirty), 'black-border': deaCtrl.valid || deaCtrl.pristine}">
+                                                <em *ngIf="deaCtrl.invalid && (deaCtrl.touched || deaCtrl.dirty)">Start with 2 letter and followed by 7 digit number only</em>
                                             </div>
                                         </div>
                                         <!-- LIC NUMBER-->
@@ -249,7 +249,7 @@
                                                 <label for="inputDegr">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">DEGREE*</h5>
                                                 </label>
-                                                <select size="1" class="form-control" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
+                                                <select size="1" class="form-control black-border" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
                                                     formControlName="degreeName" required>
                                                     <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option>
                                                 </select>
@@ -258,7 +258,7 @@
                                                 <label for="inputTxc">
                                                     <h5 style="font: 15px;font: ArialMT, Regular;">TAXANOMY CODE*</h5>
                                                 </label>
-                                                <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
+                                                <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
                                                     <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.text}}</option>
                                                 </select>
                                             </div>
@@ -285,7 +285,7 @@
                                             (click)="togglePanel('location')" style="text-decoration: none">
                                             <i class="fa fa-2x glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
                                         </a>
-                                        <span style="padding-left: 25px">LOCATION(S)</span>
+                                        <span style="padding-left: 25px">LOCATION</span>
                                     </h3>
                                 </div>
                                 <div id="locationPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree" style="padding-left: 125px">
@@ -331,8 +331,8 @@
                                                                         <label for="inputAddress">
                                                                             <h4 style="font-size: 15px">ADDRESS*</h4>
                                                                         </label>
-                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address" required>
-                                                                        <em *ngIf="addressCtrl.invalid && addressCtrl.touched">Required - No Special Characters</em>
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address" required [ngClass]="{'red-border': addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty), 'black-border': addressCtrl.valid || addressCtrl.pristine}">
+                                                                        <em *ngIf="addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty)">Required - No Special Characters</em>
                                                                     </div>
 
                                                                     <div class="form-group col-3">
@@ -340,6 +340,7 @@
                                                                             <h4 style="font-size: 15px">SUITE</h4>
                                                                         </label>
                                                                         <input type="text" maxlength="3" class="form-control" id="inputSuite" placeholder="" formControlName="suite">
+                                                                        
                                                                     </div>
                                                                 </div>
 
@@ -348,14 +349,15 @@
                                                                         <label for="inputCity">
                                                                             <h4 style="font-size: 15px">CITY*</h4>
                                                                         </label>
-                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city" required>
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city" required  [ngClass]="{'red-border': cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty), 'black-border': cityCtrl.valid || cityCtrl.pristine}">
+                                                                        <em *ngIf="cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty)">Required - Alpha only</em>
                                                                     </div>
 
                                                                     <div class="form-group col-3">
                                                                         <label for="inputSTate">
                                                                             <h4 style="font-size: 15px">STATE*</h4>
                                                                         </label>
-                                                                        <select size="1" class="form-control" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state" required>
+                                                                        <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state" required>
                                                                             <option *ngFor="let state of states" [value]="state.value">{{state.text}}</option>
                                                                         </select>
 
@@ -366,7 +368,8 @@
                                                                         <label for="inputZip">
                                                                             <h4 style="font-size: 15px">ZIP*</h4>
                                                                         </label>
-                                                                        <input type="number" maxlength="5" class="form-control" id="inputZip" placeholder="" formControlName="zipcode" required>
+                                                                        <input type="text" maxlength="5" pattern="\d*" class="form-control" id="inputZip" placeholder="" formControlName="zipcode" required [ngClass]="{'red-border': zipCtrl.invalid && (zipCtrl.touched || zipCtrl.dirty), 'black-border': zipCtrl.valid || zipCtrl.pristine}">
+                                                                        <em *ngIf="zipCtrl.invalid && (zipCtrl.touched || zipCtrl.dirty)">Required - 5 digit numbers only</em>
                                                                     </div>
                                                                 </div>
 
@@ -375,7 +378,8 @@
                                                                         <label for="inputPhon">
                                                                             <h4 style="font-size: 15px">PHONE*</h4>
                                                                         </label>
-                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone" required>
+                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone" required [ngClass]="{'red-border': phoneCtrl.invalid && (phoneCtrl.touched || phoneCtrl.dirty), 'black-border': phoneCtrl.valid || phoneCtrl.pristine}">
+                                                                        <em *ngIf="phoneCtrl.invalid && (phoneCtrl.touched || phoneCtrl.dirty)">Required - 10 digit numbers only</em>
                                                                     </div>
 
                                                                     <div class="form-group col-3">
@@ -391,8 +395,8 @@
                                                                         <label for="inputMail">
                                                                             <h4 style="font-size: 15px">EMAIL*</h4>
                                                                         </label>
-                                                                        <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email" required>
-                                                                        <em *ngIf="emailCtrl.invalid && emailCtrl.touched">Required - valid email</em>
+                                                                        <input type="email" class="form-control" id="inputMail" placeholder="" formControlName="email" required [ngClass]="{'red-border': emailCtrl.invalid && (emailCtrl.touched || emailCtrl.dirty), 'black-border': emailCtrl.valid || emailCtrl.pristine}">
+                                                                        <em *ngIf="emailCtrl.invalid && (emailCtrl.touched || emailCtrl.dirty)">Required - valid email</em>
                                                                     </div>
                                                                 </div>
                                                                 <div *ngIf="i == 0">
@@ -422,12 +426,12 @@
                                                                         <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
                                                                             <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="day" required>
+                                                                                    <select size="1" class="form-control black-border" formControlName="day" required>
                                                                                         <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="open" required>
+                                                                                    <select size="1" class="form-control black-border" formControlName="open" required>
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -435,7 +439,7 @@
                                                                                     <strong> - </strong>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="close" required>
+                                                                                    <select size="1" class="form-control black-border" formControlName="close" required>
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -481,7 +485,7 @@
                                                                             <label for="inputMail">
                                                                                 <h4 style="font-size: 15px">PRACTICE TYPE*</h4>
                                                                             </label>
-                                                                            <select size="1" class="form-control" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType" required>
+                                                                            <select size="1" class="form-control black-border" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType" required>
                                                                                 <option *ngFor="let pt of practiceTypes" [value]="pt.value">{{pt.text}}</option>
                                                                             </select>
                                                                         </div>
