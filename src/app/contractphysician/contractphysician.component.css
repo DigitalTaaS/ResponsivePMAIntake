@@ -169,7 +169,37 @@
     .glyphicon.glyphicon-remove-circle{
         font-size: 18px;
     }
-
+    .search-result {
+        border: 1px solid #ccc;
+        width: 94.2%;
+        background-color: #BEDCF2;
+        cursor: pointer;
+        text-align: left;
+        max-height: 350px;
+        overflow: auto;
+        position: absolute;
+        z-index: 7;
+    }
+    
+    .search-result ul {
+        margin: 0px;
+        padding: 0px;
+       
+    }
+    
+    .search-result ul li {
+        border-bottom: 1px solid blue;
+        padding: 5px 0px 5px 10px;
+    }
+    
+    .search-result ul li:hover {
+        background: #f2f2f2;
+    }
+    
+    textarea{
+        background-color:#F0DEFF;
+    }
+    
 
     
    
