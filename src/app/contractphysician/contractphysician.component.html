@@ -270,23 +270,20 @@
                                                     <h4 style="font-size: 15px">DESCRIPTION</h4>
                                                 </label>
                                                 <!-- <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
-                                                <textarea style="font-size: 25px" rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea>
+                                                <textarea rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea>
 
                                                 <!-- <input class="form-control" [(ngModel)]="name" disabled  *ngIf="flag" type="text" [ngModelOptions]="{standalone: true}" />   -->
 
                                             </div>
                                         </div>
-                                        <div class="search-result; form-group col-6;" *ngIf="flag">  
-                                            <!-- <div class="search-result form-row form-group col-8" *ngIf="flag">   -->
-                                          
+                                        <div class="search-result" *ngIf="flag">  
                                             <ul>  
-                                                <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | pmataxoncode:name;let i=index; " >  
-                                                   <h3 style="color:#081C30"> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
+                                                <li *ngFor="let degree of degreesdata | async | pmataxoncode:name " >  
+                                                   <h3> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
                                                 </li>             
                                             </ul>  
-                                         
-                                        </div>
-                                        
+                                        </div>  
+
                                     </div>
                                 </div>
                             </div>
