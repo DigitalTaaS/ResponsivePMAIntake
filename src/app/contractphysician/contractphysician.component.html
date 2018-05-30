@@ -77,7 +77,7 @@
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div formGroupName="demographics" class="panel" style="padding-top: 0px" id="demographicsPanel">
                                 <div class="panel-heading" role="tab" id="headingOne">
-                                    <h3 [ngClass]="{'valid-text' : contractPhysicianForm.controls.demographics.valid,
+                                    <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.demographics.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.demographics.valid,
                                         'invalid-text' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}" data-toggle="collapse" data-parent="#accordion" href="#demoPanelinfo" aria-expanded="true" aria-controls="demoPanelinfo"
@@ -85,7 +85,7 @@
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !demoPanelClicked, 'glyphicon-chevron-up' : demoPanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">DEMOGRAPHICS</span>
-                                    </h3>
+                                    </h6>
                                 </div>
                                 <div id="demoPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne" style="padding-left:125px;">
                                     <div class="panel-body">
@@ -152,7 +152,7 @@
 
                             <div formArrayName="contractedPartners" class="panel" id="cpPanel">
                                 <div class="panel-heading" role="tab" id="headingFour">
-                                    <h3 [ngClass]="{'valid-text' : contractPhysicianForm.controls.contractedPartners.valid,
+                                    <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.contractedPartners.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.contractedPartners.valid,
                                         'invalid-text' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}" data-toggle="collapse" data-parent="#accordion" href="#cpPanelinfo" aria-expanded="false" aria-controls="cpPanelinfo"
@@ -160,7 +160,7 @@
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">CONTRACTED PARTNER</span>
-                                    </h3>
+                                    </h6>
                                 </div>
                                 <div id="cpPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingFour" style="padding-left: 125px">
                                     <div class="panel-body">
@@ -201,7 +201,7 @@
 
                             <div formGroupName="licensing" class="panel" id="licencePanel">
                                 <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h3 [ngClass]="{'valid-text' : contractPhysicianForm.controls.licensing.valid,
+                                    <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.licensing.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.touched) && contractPhysicianForm.controls.licensing.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.licensing.valid,
                                         'invalid-text' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.touched) && contractPhysicianForm.controls.licensing.invalid}" data-toggle="collapse" data-parent="#accordion" href="#licensePanelinfo" aria-expanded="false" aria-controls="licensePanelinfo"
@@ -209,7 +209,7 @@
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">LICENSING</span>
-                                    </h3>
+                                    </h6>
                                 </div>
                                 <div id="licensePanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo" style="padding-left: 125px">
                                     <div class="panel-body">
@@ -293,7 +293,7 @@
 
                             <div class="panel" id="locationPanel">
                                 <div class="panel-heading" role="tab" id="headingThree">
-                                    <h3 [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
+                                    <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
                                         'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}" data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo" aria-expanded="false" aria-controls="locationPanelinfo"
@@ -301,7 +301,7 @@
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">LOCATION</span>
-                                    </h3>
+                                    </h6>
                                 </div>
                                 <div id="locationPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree" style="padding-left: 125px">
                                     <div class="panel-body" style="padding: 0px 0px 0px 15px">

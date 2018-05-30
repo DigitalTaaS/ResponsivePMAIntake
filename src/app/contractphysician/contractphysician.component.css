@@ -42,18 +42,16 @@
     
     .sidenav h5 {
         font-size: 20px;
-        font: Lantinghei SC, Extralight;
+        /* font-family: Lantinghei SC, Extralight; */
         color: rgba(68, 68, 68, 1);
         padding: 5px;
         font-weight: normal;        
     }
 
     .sidenav a {
-        
         font-size: 15px;
-        font: Lantinghei SC, Extralight;
+        /* font-family: Lantinghei SC, Extralight; */
         color: rgba(68, 68, 68, 0.7);
-        
     }
     
     .main {
@@ -137,10 +135,6 @@
         border: 1px solid red;
       } */
 
-    h6.text{
-        font: ArialMT, Regular; opacity:50%;font-size: 14px;color: #444444;
-      }
-
      /*  input.ng-required{
         border: 1px solid black;
     }
@@ -184,14 +178,14 @@
     label{
         color: rgba(68, 68, 68, 0.7);
         font-size: 12px;
-        font: ArialMT, Regular;
+        /* font-family: ArialMT, Regular; */
         font-weight: normal;
     }
 
     .panel-heading-text{
         padding-left: 25px;
-        font: Lantinghei TC, Extralight;
-        font-size: 25px;
+        /* font-family: Lantinghei TC, Extralight; */
+        font-size: 22px;
         /* color: rgba(68, 68, 68, 1); */
         vertical-align: middle;
     }
