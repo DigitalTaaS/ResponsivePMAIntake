@@ -170,7 +170,7 @@
                                                     CONTRACTED PARTNER*
                                                 </label>
 
-                                                <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners.controls; let i=index">
+                                                <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
                                                         <div class="col-6">
                                                             <select size="1" class="form-control black-border" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree" (change)="onSelectContractedPartner($event.target.value)">
@@ -307,7 +307,7 @@
                                     <div class="panel-body" style="padding: 0px 0px 0px 15px">
                                         <div>
                                             <div formArrayName="locations">
-                                                <div class="" *ngFor="let location of contractPhysicianForm.controls.locations.controls; let i=index">
+                                                <div class="" *ngFor="let location of contractPhysicianForm.controls.locations['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i">
                                                         <div class="row col-12">
                                                             <div *ngIf="i == 0" class="col-2">
