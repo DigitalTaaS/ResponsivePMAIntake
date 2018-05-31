@@ -10,9 +10,10 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
-import {  DegreeautosearchService } from '../degreeautosearch.service';
+import { DegreeautosearchService } from '../degreeautosearch.service';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
+import { ContractphysicianModel, Address, Age, ContractedPartner, Facility, HoursOfOperation, Phone, Qualification, Taxonomy } from './contractphysician.model';
 
 @Component({
   selector: 'app-contractphysician',
@@ -22,6 +23,7 @@ import 'rxjs/add/observable/of';
 
 export class ContractphysicianComponent implements OnInit {
 
+  model: ContractphysicianModel;
   contractPhysicianForm: FormGroup;
   firstnameCtrl: FormControl;
   lastnameCtrl: FormControl;
@@ -60,17 +62,19 @@ export class ContractphysicianComponent implements OnInit {
   selectedTaxcode:string="";
   descriptionText:string="";
   //story-955
-  officeIndex:number=1;
-  officeHourOne:string="";
-  officeHourTwo:string="";
-  isOfficeHoursValid:boolean=true;
-  
+  officeIndex: number = 1;
+  officeHourOne: string = "";
+  officeHourTwo: string = "";
+  isOfficeHoursValid: boolean = true;
+
   // autocomplete 
-  public degreesdata: Observable<any[]>;  
-  private searchTerms = new Subject<string>();  
-  public name = '';  
-  public flag: boolean = false;  
-  constructor(private fb: FormBuilder,private degreeService:DegreeautosearchService) {
+  public degreesdata: Observable<any[]>;
+  private searchTerms = new Subject<string>();
+  public name = '';
+  public flag: boolean = false;
+
+
+  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient) {
   }
 
   ngOnInit() {
@@ -84,7 +88,7 @@ export class ContractphysicianComponent implements OnInit {
     this.cityCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
     this.zipCtrl = new FormControl(null, [Validators.required, , Validators.minLength(5)]);
     this.phoneCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
-    this.emailCtrl = new FormControl(null, [Validators.required,Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
+    this.emailCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
     this.minAgeCtrl = new FormControl(null, [Validators.max(150)]);
     this.maxAgeCtrl = new FormControl(null, [Validators.max(150)]);
 
@@ -117,27 +121,32 @@ export class ContractphysicianComponent implements OnInit {
 
     this.populateDropDowns();
     //taxon search-highlight
-    
+
     // stroy 955
     this.degreeService.search("all")
     //  // auto complete
-     this.degreesdata = this.searchTerms  
-     .debounceTime(300)        // wait for 300ms pause in events  
-     .distinctUntilChanged()   // ignore if next search term is same as previous  
-     .switchMap(term => term ? this.degreeService.search(term) :  Observable.of<any[]>([]))
-     .catch(error => {  
-      // TODO: real error handling  
-      console.log(error);  
-      return Observable.of<any[]>([]);  
-    });  
-      
-    this.txcodes ;
-    this.degreeService.search("All")
-    .subscribe(data => {
-      this.txcodes = data;
-       console.log(data);
-    });
+    this.degreesdata = this.searchTerms
+      .debounceTime(300)        // wait for 300ms pause in events  
+      .distinctUntilChanged()   // ignore if next search term is same as previous  
+      .switchMap(term => term ? this.degreeService.search(term) : Observable.of<any[]>([]))
+      .catch(error => {
+        // TODO: real error handling  
+        console.log(error);
+        return Observable.of<any[]>([]);
+      });
 
+    this.txcodes;
+    this.degreeService.search("All")
+      .subscribe(data => {
+        this.txcodes = data;
+        console.log(data);
+      });
+
+
+
+  }
+
+  ngAfterViewInit() {
     (<FormGroup>this.contractPhysicianForm.get('demographics')).valueChanges.subscribe(val => {
       this.demoPanelValueChange = true;
       this.cpPanelValueChange = false;
@@ -165,12 +174,11 @@ export class ContractphysicianComponent implements OnInit {
       this.licencePanelValueChange = false;
       this.locationPanelValueChange = true;
     });
-
   }
 
   // Fast Search taxcode autocomplete
-  searchClient(term: string): void {  
-    this.flag = true;  
+  searchClient(term: string): void {
+    this.flag = true;
     console.log(term);
     this.searchTerms.next(term);  
   }  
@@ -266,7 +274,7 @@ export class ContractphysicianComponent implements OnInit {
     //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     control.push(this.initOfficeHour());
-    this.officeIndex+=1;
+    this.officeIndex += 1;
   }
 
   removeOfficeHour(i: number, j: number) {
@@ -274,42 +282,38 @@ export class ContractphysicianComponent implements OnInit {
     //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     //control.removeAt(j);
-    control.removeAt(this.officeIndex= this.officeIndex-1);
+    control.removeAt(this.officeIndex = this.officeIndex - 1);
   }
 
   // stroy 955
-  onItemChangeOne(selectedValue:string){
-    this.officeHourOne=selectedValue;
-    if ( this.officeHourOne !="" && this.officeHourTwo!="")
-    {
-    this.isOfficeHoursValid=this.isValidHours( this.officeHourOne,this.officeHourTwo)
+  onItemChangeOne(selectedValue: string) {
+    this.officeHourOne = selectedValue;
+    if (this.officeHourOne != "" && this.officeHourTwo != "") {
+      this.isOfficeHoursValid = this.isValidHours(this.officeHourOne, this.officeHourTwo)
     }
-    console.log( this.isOfficeHoursValid)
+    console.log(this.isOfficeHoursValid)
   }
 
-  onItemChangeTwo(selectedValue:string){
-    this.officeHourTwo=selectedValue;
-    if ( this.officeHourOne !="" && this.officeHourTwo!="")
-    {
-    this.isOfficeHoursValid=this.isValidHours( this.officeHourOne,this.officeHourTwo)
+  onItemChangeTwo(selectedValue: string) {
+    this.officeHourTwo = selectedValue;
+    if (this.officeHourOne != "" && this.officeHourTwo != "") {
+      this.isOfficeHoursValid = this.isValidHours(this.officeHourOne, this.officeHourTwo)
     }
-    console.log( this.isOfficeHoursValid)
+    console.log(this.isOfficeHoursValid)
   }
 
-  isValidHours(open:string,close:string)
-  {
+  isValidHours(open: string, close: string) {
     var format = 'hh:mm A'
-    let myopen: moment.Moment = moment(open,format);
-    let myclose: moment.Moment = moment(close,format);
-    
-    console.log(myopen);
-    if (myopen.isBefore(myclose))
-      {
-        return true;
-      }
+    let myopen: moment.Moment = moment(open, format);
+    let myclose: moment.Moment = moment(close, format);
 
-      return false;
-    
+    console.log(myopen);
+    if (myopen.isBefore(myclose)) {
+      return true;
+    }
+
+    return false;
+
   }
 
   // story -955 
@@ -464,12 +468,12 @@ export class ContractphysicianComponent implements OnInit {
     this.states.push(new Dropdown("Wisconsin", "WI"));
     this.states.push(new Dropdown("Wyoming", "WY"));
 
- //USER STORY-973-Contracted Partner Panel
- this.contractedPartners.push(new Dropdown("Physician", "CNTRPhysician"));
- this.contractedPartners.push(new Dropdown("Extended PCP", "CNTRExtendedPCP"));
- this.contractedPartners.push(new Dropdown("Other", "CNTROther"));
- //this.contractedPartners.push(new Dropdown("CNTR. PARTNER4", "CNTRPARTNER4"));
- 
+    //USER STORY-973-Contracted Partner Panel
+    this.contractedPartners.push(new Dropdown("Physician", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Extended PCP", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Other", "CNTROther"));
+    //this.contractedPartners.push(new Dropdown("CNTR. PARTNER4", "CNTRPARTNER4"));
+
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER1", "CNTRPARTNER1"));
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER2", "CNTRPARTNER2"));
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER3", "CNTRPARTNER3"));
@@ -524,6 +528,96 @@ export class ContractphysicianComponent implements OnInit {
 
   }
 
-  
+  onSubmit() {
 
+    var contractedPartners: ContractedPartner[] = this.TransformContractedPartnersData();
+    var facilities: Facility[] = this.TransformLocationData();
+    /* this.model = 
+    {
+      firstName: this.contractPhysicianForm.get('demographics').get('firstName').value,
+      middleName: this.contractPhysicianForm.get('demographics').get('middleName').value,
+      lastName: this.contractPhysicianForm.get('demographics').get('lastName').value,
+      alias: this.contractPhysicianForm.get('demographics').get('aliasName').value,
+      suffix: this.contractPhysicianForm.get('demographics').get('suffixName').value,
+      dateOfBirth: this.contractPhysicianForm.get('demographics').get('dateOfBirth').value,
+      gender: this.contractPhysicianForm.get('demographics').get('genderType').value,
+      contractedPartners: contractedPartners,
+      npi: this.contractPhysicianForm.get('licensing').get('npiNumber').value,
+      licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
+      dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
+      facilities: facilities
+    } */
+
+    this.model = new ContractphysicianModel();
+
+    if(this.contractPhysicianForm.get('licensing').get('npiNumber').value)
+      this.model.npi = this.contractPhysicianForm.get('licensing').get('npiNumber').value;
+
+    console.log(this.model);
+
+    /* this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
+      .subscribe(
+        res => {
+          console.log(res)
+        }, 
+        err => {
+          console.log(err)
+        }
+      ); */
+
+  }
+
+  private TransformLocationData() {
+
+    var facilities: Facility[] = new Array();
+    var facility: Facility;
+    var fvalues = <FormArray>this.contractPhysicianForm.get('locations');
+    var phones: Phone[] = new Array();
+    var mobile: Phone = { type: 'work', number: fvalues.at(0).get('phone').value };
+    phones.push(mobile);
+    if (fvalues.at(0).get('fax').value) {
+      var fax: Phone = { type: 'fax', number: fvalues.at(0).get('fax').value };
+      phones.push(fax);
+    }
+    var officeHours: HoursOfOperation[] = new Array();
+    var offhrs = <FormArray>fvalues.at(0).get('officeHours');
+    for (let i = 0; i < offhrs.length; i++) {
+      let offhr = new HoursOfOperation;
+      offhr.day = offhrs.at(i).get('day').value;
+      offhr.open = offhrs.at(i).get('open').value;
+      offhr.close = offhrs.at(i).get('close').value;
+      officeHours.push(offhr);
+    }
+    facility = {
+      facilityType: "Practice",
+      email: fvalues.at(0).get('email').value,
+      address: {
+        addressLine1: fvalues.at(0).get('address').value + ' ' + fvalues.at(0).get('suite').value ? fvalues.at(0).get('suite').value : '',
+        city: fvalues.at(0).get('city').value,
+        state: fvalues.at(0).get('state').value,
+        zipCode: fvalues.at(0).get('zipcode').value,
+      },
+      practiceType: fvalues.at(0).get('providerType').value,
+      phones: phones,
+      hoursOfOperation: officeHours,
+      age: {
+        min: fvalues.at(0).get('minAge').value,
+        max: fvalues.at(0).get('maxAge').value,
+      }
+    };
+    facilities.push(facility);
+    return facilities;
+  }
+
+  private TransformContractedPartnersData() {
+
+    var contractedPartners: ContractedPartner[] = new Array();
+    var cpvaules = <FormArray>this.contractPhysicianForm.get('contractedPartners');
+    for (let i = 0; i < cpvaules.length; i++) {
+      let cp = new ContractedPartner;
+      cp.partnerName = cpvaules.at(i).get('contractedPartner').value;
+      contractedPartners.push(cp);
+    }
+    return contractedPartners;
+  }
 }

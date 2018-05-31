@@ -48,13 +48,7 @@ import { Multicolumnfilter } from './multicolumnfilter.pipe';
     HttpClientModule,
     RouterModule.forRoot([
      {path:'',component:ContractphysicianComponent},
-     {path:'practitioner/:ptype',component:PractitionerComponent},
-     {path:'contractphysician', component:ContractphysicianComponent},
-     {path:'noncontractphysician', component:NoncontractphysicianComponent},
-     {path:'contractmidlevel', component:ContractmidlevelComponent},
-     {path:'noncontractmidlevel', component:NoncontractmidlevelComponent},
-     {path:'contractnonphysician', component:ContractnonphysicianComponent},
-     {path:'noncontractnonphysician', component:NoncontractnonphysicianComponent}
+     {path:'contractphysician', component:ContractphysicianComponent}
     ])
   ],
  
