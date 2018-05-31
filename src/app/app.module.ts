@@ -20,6 +20,7 @@ import { DegreeautosearchService } from './degreeautosearch.service';
 import { PmahighlighttextPipe } from './pmahighlighttext.pipe';
 import { PmataxoncodePipe } from './pmataxoncode.pipe';
 import { IntakeInterceptor } from './shared/intake-interceptor';
+import { Multicolumnfilter } from './multicolumnfilter.pipe';
 
 
 
@@ -36,7 +37,8 @@ import { IntakeInterceptor } from './shared/intake-interceptor';
     NoncontractnonphysicianComponent,
     SetActiveClassDirective,
     PmahighlighttextPipe,
-    PmataxoncodePipe
+    PmataxoncodePipe,
+    Multicolumnfilter
   ],
   imports: [
     BrowserModule,

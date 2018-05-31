@@ -200,6 +200,66 @@
         background-color:#F0DEFF;
     }
     
+    
+    /*   <!--CHANGES DROP DOWN TO HAVE TEXT BOX TO SEARCH-->*/
+    /* .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    } */
+    .dropdown-content a {
+        color: black;
+        padding: 250px 160px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display:none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 280px;
+        box-shadow: 0px 28px 36px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        padding-top: 0px 0px;
+        padding-right: 170px 160px;
+    }
+    .dropdown-content a:hover {background-color: #ddd}
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
 
     
-   
+  /*   <!--CHANGES DROP DOWN TO HAVE TEXT BOX TO SEARCH-->*/
+       
+  #admin{
+    overflow:hidden;
+width: 50px;
+height: 50px;
+color: white;
+background-color: #BEDCF2;
+position: absolute;
+bottom: 00px;
+-webkit-transition:width 2s;
+ transition:width 2s;
+  }
+/* #admin {white-space:nowrap;} */
+  #admin:hover{
+width: 270px;
+visibility: visible;
+   }
+  
+  

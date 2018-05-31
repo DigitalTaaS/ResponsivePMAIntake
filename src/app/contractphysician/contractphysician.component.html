@@ -257,12 +257,93 @@
                                             </div>
                                             <div class="form-group col-4">
                                                 <label for="inputTxc">
-                                                    <h5 style="font: 15px;font: ArialMT, Regular;">TAXANOMY CODE*</h5>
+                                                    <h5 style="font: 15px;font: ArialMT, Regular; -webkit-padding-start: 10px;">TAXANOMY CODE*</h5>
                                                 </label>
-                                                <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
+                                                <!-- <select  size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
                                                     <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option>
-                                                </select>
+                                                
+                                                </select> -->
+                                                <div class="form-row form-group col-12 ">
+                                                        <select size="1" disabled class="form-control" formControlName="taxanomyCode" required >Dropdown
+                                                       
+                                                              <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
+                                                              <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode">{{selectedTaxcode}}</option>
+                                                            </select>
+                                                             
+                                                      </div>
+                                                    
                                             </div>
+                                            <div class="form-group col-4">
+                                                    <label for="inputTxc">
+                                                            <h5 style="font: 15px;font: ArialMT, Regular; -webkit-padding-start: 10px;">FAST SEARCH TAXANOMY CODE*</h5>
+                                                        </label>
+                                            <div id="admin">
+                                                    <!-- <p>Select Code -->
+                                                     <input  type="text"  class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description1" [(ngModel)]="name" (keyup)="searchClient(name)"/>
+                                               <!-- </p> -->
+                                               </div>
+                                               </div>
+
+                                             <!-- Testing area -->
+                                            
+                                             <!--ends -->
+
+
+                                            <!-- <div class="form-row col-12"  *ngIf="flag">
+                                            <div class="search-result col-12">   -->
+                                                <!-- <div class="search-result form-row form-group col-8" *ngIf="flag">   -->
+                                                    <div class="form-group" *ngIf="flag" >
+                                                        <!-- <h2>Please Select TAXANOMY</h2> -->
+                                                         <table    class="table table-bordered" style="width:800px;">
+                                                          <thead>
+                                                            <tr>
+                                                              <th>Id</th>
+                                                              <th>Code</th>
+                                                              <th>Grouping</th>
+                                                              <th>Classification</th>
+                                                              <th>Specialization</th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr  (click)="onselectClient(degree)" style="background-color: #ffffff"  *ngFor="let degree of degreesdata | async | multicolumnfilter:{ name: name, Desc1: name,Desc2:name } : false;let i=index;">
+                                                             
+                                                             <!-- <td colspan="5">  <h4> <a  (click)="onselectClient(degree)" #selectV [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h4> </td> -->
+                                                              <td>{{i+1}}</td>
+                                                              <td>{{degree.id}}</td>
+                                                              <td [innerHTML]="degree.name | pmahighlighttext : name"></td>
+                                                              <td [innerHTML]="degree.Desc1 | pmahighlighttext : name"></td>
+                                                              <td [innerHTML]="degree.Desc2 | pmahighlighttext : name"></td> 
+                                                            </tr>
+                                                             
+                                                             
+                                                          </tbody>
+                                                        </table>
+                                                      </div>
+                                                      
+                                                <!-- <ul>  
+                                                    <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ name: name, Desc1: name,Desc2:name } : false;let i=index;" >  
+                                                       <h3 style="color:#081C30"> <a  (click)="onselectClient(degree)" [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h3>  
+                                                    </li>             
+                                                </ul>   -->
+                                             
+                                            <!-- </div>
+                                            </div> -->
+<!--CHANGES DROP DOWN TO HAVE TEXT BOX TO SEARCH-->
+                                    <!-- <div>
+                                    <h2>Mouse Hovered Dropdown</h2>
+                                    </div> -->
+                                    <!-- <div class="dropdown">
+                                      <select class="form-control dropdown">Dropdown</select>
+                                     
+                                      <div class="dropdown-content">
+                                            <input type="textarea"/>
+                                            <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option>
+                                                
+                                      </div>
+                                    </div> -->
+                                    
+<!--CHANGES DROP DOWN TO HAVE TEXT BOX TO SEARCH-->
+
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-12">
@@ -270,8 +351,9 @@
                                                     <h4 style="font-size: 15px">DESCRIPTION</h4>
                                                 </label>
                                                 <!-- <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
-                                                <textarea rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea>
-
+                                                <!-- <textarea rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
+                                                <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [value]="descriptionText" ></textarea>
+   
                                                 <!-- <input class="form-control" [(ngModel)]="name" disabled  *ngIf="flag" type="text" [ngModelOptions]="{standalone: true}" />   -->
 
                                             </div>
@@ -283,16 +365,16 @@
                                                 </li>             
                                             </ul>  
                                         </div>   -->
-                                        <div class="search-result; form-group col-6;" *ngIf="flag">  
+                                        <!-- <div class="search-result; form-group col-6;" *ngIf="flag">   -->
                                             <!-- <div class="search-result form-row form-group col-8" *ngIf="flag">   -->
-                                          
+<!--                                           
                                             <ul>  
                                                 <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | pmataxoncode:name;let i=index; " >  
                                                    <h3 style="color:#081C30"> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
                                                 </li>             
                                             </ul>  
                                          
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
