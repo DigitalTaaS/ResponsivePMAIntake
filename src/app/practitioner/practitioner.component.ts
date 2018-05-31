@@ -10,7 +10,7 @@ export class PractitionerComponent implements OnInit {
 
   private ptype: string;
   private sub: any;
-  private link:boolean;
+  link:boolean;
   constructor(private route: ActivatedRoute)
    { 
 
