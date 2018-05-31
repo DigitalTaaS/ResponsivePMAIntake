@@ -1,0 +1,10 @@
+version: "2"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/config:/etc/nginx/conf.d
+      - ./dist:/dist
+
