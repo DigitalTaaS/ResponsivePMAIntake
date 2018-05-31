@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 import { DegreeautosearchService } from '../degreeautosearch.service';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
-import { ContractphysicianModel } from './contractphysician.model';
+import { ContractphysicianModel, Address, Age, ContractedPartner, Facility, HoursOfOperation, Phone, Qualification, Taxonomy } from './contractphysician.model';
 
 @Component({
   selector: 'app-contractphysician',
@@ -513,124 +513,33 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.contractPhysicianForm.value)
-    let formData = this.contractPhysicianForm.value;
+
+    var contractedPartners: ContractedPartner[] = this.TransformContractedPartnersData();
+    var facilities: Facility[] = this.TransformLocationData();
+    /* this.model = 
+    {
+      firstName: this.contractPhysicianForm.get('demographics').get('firstName').value,
+      middleName: this.contractPhysicianForm.get('demographics').get('middleName').value,
+      lastName: this.contractPhysicianForm.get('demographics').get('lastName').value,
+      alias: this.contractPhysicianForm.get('demographics').get('aliasName').value,
+      suffix: this.contractPhysicianForm.get('demographics').get('suffixName').value,
+      dateOfBirth: this.contractPhysicianForm.get('demographics').get('dateOfBirth').value,
+      gender: this.contractPhysicianForm.get('demographics').get('genderType').value,
+      contractedPartners: contractedPartners,
+      npi: this.contractPhysicianForm.get('licensing').get('npiNumber').value,
+      licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
+      dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
+      facilities: facilities
+    } */
 
     this.model = new ContractphysicianModel();
-    /* this.model = {
-      firstName: formData.demographics.firstName,
-      middleName: formData.demographics.middleName,
-      lastName: formData.demographics.lastName,
-      alias: formData.demographics.aliasName,
-      suffix: formData.demographics.suffixName,
-      dateOfBirth: formData.demographics.dateOfBirth,
-      gender: formData.demographics.genderType,
-      contractedPartners: [{partnerName:formData.contractedPartners.contractedPartner}] ,
-      npi: formData.licensing.npiNumber,
-      licenseNumber: formData.licensing.licNumber,
-      dea: formData.licensing.deaNumber,
-      qualification: [{professionalDegreeCode: formData.licensing.degreeName} ],
-      taxonomies: [{taxonomyCode: formData.licensing.taxanomyCode}],
-      facilities: [{facilityType: formData.locations.locationType,  
-          address: {addressLine1: formData.locations.address, city: formData.locations.city}, }]
-    } */
-    
-    this.model = 
-    {
-      "npi": "546789483",
-      "firstName": "John",
-      "middleName": "J",
-      "lastName": "Smith",
-      "suffix": "Mr.",
-      "alias": "J.J.S.",
-      "dea": "437878232",
-      "licenseNumber": "8983232",
-      "gender": "M",
-      "dateOfBirth": "2005-05-23",
-      "taxonomies": [
-        {
-          "taxonomyType": "board",
-          "taxonomyCode": "111",
-          "status": "string"
-        }
-      ],
-      "qualification": {
-        "professionalDegreeCode": "string",
-        "professionalDegreeSchool": "string",
-        "certificateNumber": "string",
-        "graduationYear": 2000
-      },
-      "contractedPartners": [
-        {
-          "partnerName": "PARTNER1"
-        },
-        {
-          "partnerName": "PARTNER2"
-        }
-      ],
-      "facilities": [
-        {
-          "facilityId": "21232323",
-          "facilityName": "Main Office on Broad Street",
-          "facilityType": "Pratice",
-          "practiceType": "PRactice",
-          "dhcsSiteId": "434343",
-         
-          "email": "test@lacare.org",
-          "phones": [
-            {
-              "type": "work",
-              "number": "9807546574"
-            },
-            {
-              "type": "fax",
-              "number": "8754545454"
-            }
-          ],
-          "hoursOfOperation": [
-            {
-              "day": "monday",
-              "open": "9:00am",
-              "close": "5:00pm"
-            },
-            {
-              "day": "tuesday",
-              "open": "9:00am",
-              "close": "3:00pm"
-            },
-            {
-              "day": "wednesday",
-              "open": "9:00am",
-              "close": "3:30pm"
-            },
-            {
-              "day": "thursday",
-              "open": "9:30am",
-              "close": "3:00pm"
-            },
-            {
-              "day": "friday",
-              "open": "10:00am",
-              "close": "3:30pm"
-            }
-          ],
-          "age": {
-            "min": 20,
-            "max": 65
-          },
-          "address": {
-            "name": "Optional Name",
-            "addressLine1": "100 Broad Street",
-            "city": "Austin",
-            "country": "USA",
-            "state": "TX",
-            "zipCode": "56743"
-          }
-        }
-      ]
-    }
 
-    this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
+    if(this.contractPhysicianForm.get('licensing').get('npiNumber').value)
+      this.model.npi = this.contractPhysicianForm.get('licensing').get('npiNumber').value;
+
+    console.log(this.model);
+
+    /* this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
       .subscribe(
         res => {
           console.log(res)
@@ -638,11 +547,61 @@ export class ContractphysicianComponent implements OnInit {
         err => {
           console.log(err)
         }
-      );
-
+      ); */
 
   }
 
+  private TransformLocationData() {
 
+    var facilities: Facility[] = new Array();
+    var facility: Facility;
+    var fvalues = <FormArray>this.contractPhysicianForm.get('locations');
+    var phones: Phone[] = new Array();
+    var mobile: Phone = { type: 'work', number: fvalues.at(0).get('phone').value };
+    phones.push(mobile);
+    if (fvalues.at(0).get('fax').value) {
+      var fax: Phone = { type: 'fax', number: fvalues.at(0).get('fax').value };
+      phones.push(fax);
+    }
+    var officeHours: HoursOfOperation[] = new Array();
+    var offhrs = <FormArray>fvalues.at(0).get('officeHours');
+    for (let i = 0; i < offhrs.length; i++) {
+      let offhr = new HoursOfOperation;
+      offhr.day = offhrs.at(i).get('day').value;
+      offhr.open = offhrs.at(i).get('open').value;
+      offhr.close = offhrs.at(i).get('close').value;
+      officeHours.push(offhr);
+    }
+    facility = {
+      facilityType: "Practice",
+      email: fvalues.at(0).get('email').value,
+      address: {
+        addressLine1: fvalues.at(0).get('address').value + ' ' + fvalues.at(0).get('suite').value ? fvalues.at(0).get('suite').value : '',
+        city: fvalues.at(0).get('city').value,
+        state: fvalues.at(0).get('state').value,
+        zipCode: fvalues.at(0).get('zipcode').value,
+      },
+      practiceType: fvalues.at(0).get('providerType').value,
+      phones: phones,
+      hoursOfOperation: officeHours,
+      age: {
+        min: fvalues.at(0).get('minAge').value,
+        max: fvalues.at(0).get('maxAge').value,
+      }
+    };
+    facilities.push(facility);
+    return facilities;
+  }
 
+  private TransformContractedPartnersData() {
+
+    var contractedPartners: ContractedPartner[] = new Array();
+    var cpvaules = <FormArray>this.contractPhysicianForm.get('contractedPartners');
+    for (let i = 0; i < cpvaules.length; i++) {
+      let cp = new ContractedPartner;
+      cp.partnerName = cpvaules.at(i).get('contractedPartner').value;
+      contractedPartners.push(cp);
+    }
+    return contractedPartners;
+  }
 }

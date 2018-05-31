@@ -22,24 +22,24 @@ export class ContractphysicianModel {
     facilities?: Facility[];
 }
 
-class Taxonomy {
+export class Taxonomy {
     taxonomyType: string;
     taxonomyCode: string;
     status: string;
 }
 
-class Qualification {
+export class Qualification {
     professionalDegreeCode: string;
     professionalDegreeSchool?: string;
     certificateNumber?: string;
     graduationYear?: number;
 }
 
-class ContractedPartner {
+export class ContractedPartner {
     partnerName: string;
 }
 
-class Facility {
+export class Facility {
     facilityId?: string;
     facilityName?: string;
     facilityType: string;
@@ -53,27 +53,27 @@ class Facility {
     address: Address;
 }
 
-class Phone {
+export class Phone {
     type: string;
     number: string;
 }
 
-class HoursOfOperation {
+export class HoursOfOperation {
     day: string;
     open: string;
     close: string;
 }
 
-class Age {
+export class Age {
     min: number;
     max: number;
 }
 
-class Address {
-    name: string;
+export class Address {
+    name?: string;
     addressLine1: string;
     city: string;
-    country: string;
+    country?: string;
     state: string;
     zipCode: string;
 }
