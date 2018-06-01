@@ -1,7 +1,7 @@
 <div class="">
-    <div class="row">
-        <div class="card" style="width: 20rem;  margin-bottom: 50px">
-            <img class="card-img-top" src="/assets/images/LACare-Logo.png" height="100" alt="Card image cap">
+    <div class="row" style="padding-bottom: 100px;">
+        <div class="card" style="width: 20rem;  margin-bottom: 50px; border:0px;border-radius: 0%;margin-left: 2px">
+            <img class="card-img-top" src="/assets/images/LACare-Logo.png" height="50" alt="Card image cap">
         </div>
     </div>
     <div class="row">
@@ -13,7 +13,7 @@
                 <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
                     <td class="">
                         <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
-                             DEMOGRAPHICS
+                            DEMOGRAPHICS
                         </a>
                     </td>
 
@@ -26,7 +26,7 @@
                 <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
                     <td class="">
                         <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
-                             CONT. PARTNER
+                            CONT. PARTNER
                         </a>
                     </td>
                     <td>
@@ -66,6 +66,8 @@
             <br>
             <br>
             <br>
+            <br>
+
             <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
                 <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
         </div>
@@ -80,8 +82,9 @@
                                     <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.demographics.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.demographics.valid,
-                                        'invalid-text' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}" data-toggle="collapse" data-parent="#accordion" href="#demoPanelinfo" aria-expanded="true" aria-controls="demoPanelinfo"
-                                            (click)="togglePanel('demo')" style="text-decoration: none">
+                                        'invalid-text' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}"
+                                            data-toggle="collapse" data-parent="#accordion" href="#demoPanelinfo" aria-expanded="true"
+                                            aria-controls="demoPanelinfo" (click)="togglePanel('demo')" style="text-decoration: none">
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !demoPanelClicked, 'glyphicon-chevron-up' : demoPanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">DEMOGRAPHICS</span>
@@ -92,7 +95,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
                                                 <label for="inputFname">FIRST NAME*</label>
-                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required  [ngClass]="{'red-border': firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty), 'black-border': firstnameCtrl.valid || firstnameCtrl.pristine}">
+                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required [ngClass]="{'red-border': firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty), 'black-border': firstnameCtrl.valid || firstnameCtrl.pristine}">
                                                 <em *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty)">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-3">
@@ -123,6 +126,7 @@
                                                 <input type="text" class="form-control" id="inputAlias" placeholder="" formControlName="aliasName">
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
                                                 <label for="inputdob">
@@ -131,14 +135,14 @@
                                                 <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----">
                                             </div>
 
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-3" style="padding-left: 50px">
                                                 <label for="inputgndr">
                                                     GENDER*
                                                 </label>
                                                 <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent;">
-                                                    <button type="button" class="btn" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px; width:50%" [ngClass]="{'btn-success': male}"
-                                                        (click)="toggleGender()">MALE</button>
-                                                    <button type="button" class="btn" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; width:50%" [ngClass]="{'btn-success': !male}"
+                                                    <button type="button" class="btn" style="border: 2px black; border-top-left-radius: 25px; border-bottom-left-radius: 25px; width:50%"
+                                                        [ngClass]="{'btn-success': male}" (click)="toggleGender()">MALE</button>
+                                                    <button type="button" class="btn" style="border-top-right-radius: 25px; border-bottom-right-radius: 25px; width:50%" [ngClass]="{'btn-success': !male}"
                                                         (click)="toggleGender()">FEMALE</button>
                                                 </div>
                                                 <div>
@@ -155,8 +159,9 @@
                                     <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.contractedPartners.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.contractedPartners.valid,
-                                        'invalid-text' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}" data-toggle="collapse" data-parent="#accordion" href="#cpPanelinfo" aria-expanded="false" aria-controls="cpPanelinfo"
-                                            (click)="togglePanel('cp')" style="text-decoration: none">
+                                        'invalid-text' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}"
+                                            data-toggle="collapse" data-parent="#accordion" href="#cpPanelinfo" aria-expanded="false"
+                                            aria-controls="cpPanelinfo" (click)="togglePanel('cp')" style="text-decoration: none">
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">CONTRACTED PARTNER</span>
@@ -173,7 +178,8 @@
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
                                                         <div class="col-6">
-                                                            <select size="1" class="form-control black-border" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree" (change)="onSelectContractedPartner($event.target.value)">
+                                                            <select size="1" class="form-control black-border" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
+                                                                (change)="onSelectContractedPartner($event.target.value)">
                                                                 <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
                                                             </select>
                                                         </div>
@@ -204,8 +210,9 @@
                                     <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.licensing.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.touched) && contractPhysicianForm.controls.licensing.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.licensing.valid,
-                                        'invalid-text' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.touched) && contractPhysicianForm.controls.licensing.invalid}" data-toggle="collapse" data-parent="#accordion" href="#licensePanelinfo" aria-expanded="false" aria-controls="licensePanelinfo"
-                                            (click)="togglePanel('licence')" style="text-decoration: none">
+                                        'invalid-text' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.touched) && contractPhysicianForm.controls.licensing.invalid}"
+                                            data-toggle="collapse" data-parent="#accordion" href="#licensePanelinfo" aria-expanded="false"
+                                            aria-controls="licensePanelinfo" (click)="togglePanel('licence')" style="text-decoration: none">
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">LICENSING</span>
@@ -218,7 +225,8 @@
                                                 <label for="inputNpinum">
                                                     NPI NUMBER*
                                                 </label>
-                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber" required [ngClass]="{'red-border': npiCtrl.invalid && (npiCtrl.touched || npiCtrl.dirty), 'black-border': npiCtrl.valid || npiCtrl.pristine}">
+                                                <input type="text" maxlength="10" pattern="\d*" class="form-control" id="inputNpinum" placeholder="" formControlName="npiNumber"
+                                                    required [ngClass]="{'red-border': npiCtrl.invalid && (npiCtrl.touched || npiCtrl.dirty), 'black-border': npiCtrl.valid || npiCtrl.pristine}">
                                                 <em *ngIf="npiCtrl.invalid && (npiCtrl.touched || npiCtrl.dirty) ">10 digit number only</em>
                                             </div>
 
@@ -226,14 +234,16 @@
                                                 <label for="inputLnum">
                                                     LICENSE NUMBER*
                                                 </label>
-                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required [ngClass]="{'red-border': licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty), 'black-border': licenceCtrl.valid || licenceCtrl.pristine}">
+                                                <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required
+                                                    [ngClass]="{'red-border': licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty), 'black-border': licenceCtrl.valid || licenceCtrl.pristine}">
                                                 <em *ngIf="licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty)">Numbers only</em>
                                             </div>
                                             <div class="form-group col-4" item-width="180px">
                                                 <label for="inputLnum">
                                                     DEA NUMBER*
                                                 </label>
-                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber" required [ngClass]="{'red-border': deaCtrl.invalid && (deaCtrl.touched || deaCtrl.dirty), 'black-border': deaCtrl.valid || deaCtrl.pristine}">
+                                                <input type="text" maxlength="9" class="form-control" id="inputLnum" placeholder="" formControlName="deaNumber" required
+                                                    [ngClass]="{'red-border': deaCtrl.invalid && (deaCtrl.touched || deaCtrl.dirty), 'black-border': deaCtrl.valid || deaCtrl.pristine}">
                                                 <em *ngIf="deaCtrl.invalid && (deaCtrl.touched || deaCtrl.dirty)">Start with 2 letter and followed by 7 digit number only</em>
                                             </div>
                                         </div>
@@ -253,7 +263,8 @@
                                                 <label for="inputTxc">
                                                     TAXANOMY CODE*
                                                 </label>
-                                                <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="taxanomyCode" required>
+                                                <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px"
+                                                    formControlName="taxanomyCode" required>
                                                     <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option>
                                                 </select>
                                             </div>
@@ -264,7 +275,8 @@
                                                     DESCRIPTION
                                                 </label>
                                                 <!-- <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
-                                                <textarea rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea>
+                                                <textarea rows="4" class="form-control" id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name"
+                                                    (keyup)="searchClient(name)"></textarea>
 
                                                 <!-- <input class="form-control" [(ngModel)]="name" disabled  *ngIf="flag" type="text" [ngModelOptions]="{standalone: true}" />   -->
 
@@ -277,15 +289,17 @@
                                                 </li>             
                                             </ul>  
                                         </div>   -->
-                                        <div class="search-result; form-group col-6;" *ngIf="flag">  
+                                        <div class="search-result; form-group col-6;" *ngIf="flag">
                                             <!-- <div class="search-result form-row form-group col-8" *ngIf="flag">   -->
-                                          
-                                            <ul>  
-                                                <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | pmataxoncode:name;let i=index; " >  
-                                                   <h3 style="color:#081C30"> <a  (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a></h3>  
-                                                </li>             
-                                            </ul>  
-                                         
+
+                                            <ul>
+                                                <li style="background-color:#BEDCF2; opacity:100%; font-style: normal; color: #444444;cursor: pointer;" *ngFor="let degree of degreesdata | async | pmataxoncode:name;let i=index; ">
+                                                    <h3 style="color:#081C30">
+                                                        <a (click)="onselectClient(degree)" [innerHTML]="degree.name  | pmahighlighttext : name"></a>
+                                                    </h3>
+                                                </li>
+                                            </ul>
+
                                         </div>
                                     </div>
                                 </div>
@@ -296,8 +310,9 @@
                                     <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
                                     'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
                                         <a class="collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
-                                        'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}" data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo" aria-expanded="false" aria-controls="locationPanelinfo"
-                                            (click)="togglePanel('location')" style="text-decoration: none">
+                                        'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}"
+                                            data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo" aria-expanded="false"
+                                            aria-controls="locationPanelinfo" (click)="togglePanel('location')" style="text-decoration: none">
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
                                         </a>
                                         <span class="panel-heading-text">LOCATION</span>
@@ -346,7 +361,8 @@
                                                                         <label for="inputAddress">
                                                                             ADDRESS*
                                                                         </label>
-                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address" required [ngClass]="{'red-border': addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty), 'black-border': addressCtrl.valid || addressCtrl.pristine}">
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputAddress" placeholder="" formControlName="address" required
+                                                                            [ngClass]="{'red-border': addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty), 'black-border': addressCtrl.valid || addressCtrl.pristine}">
                                                                         <em *ngIf="addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty)">Required - No Special Characters</em>
                                                                     </div>
 
@@ -355,7 +371,7 @@
                                                                             SUITE
                                                                         </label>
                                                                         <input type="text" maxlength="3" class="form-control" id="inputSuite" placeholder="" formControlName="suite">
-                                                                        
+
                                                                     </div>
                                                                 </div>
 
@@ -364,7 +380,7 @@
                                                                         <label for="inputCity">
                                                                             CITY*
                                                                         </label>
-                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city" required  [ngClass]="{'red-border': cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty), 'black-border': cityCtrl.valid || cityCtrl.pristine}">
+                                                                        <input type="text" maxlength="10" class="form-control" id="inputCity" placeholder="" formControlName="city" required [ngClass]="{'red-border': cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty), 'black-border': cityCtrl.valid || cityCtrl.pristine}">
                                                                         <em *ngIf="cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty)">Required - Alpha only</em>
                                                                     </div>
 
@@ -372,7 +388,8 @@
                                                                         <label for="inputSTate">
                                                                             STATE*
                                                                         </label>
-                                                                        <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="state">
+                                                                        <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px"
+                                                                            formControlName="state">
                                                                             <option *ngFor="let state of states" [value]="state.value">{{state.text}}</option>
                                                                         </select>
 
@@ -383,7 +400,8 @@
                                                                         <label for="inputZip">
                                                                             ZIP*
                                                                         </label>
-                                                                        <input type="text" maxlength="5" pattern="\d*" class="form-control" id="inputZip" placeholder="" formControlName="zipcode" required [ngClass]="{'red-border': zipCtrl.invalid && (zipCtrl.touched || zipCtrl.dirty), 'black-border': zipCtrl.valid || zipCtrl.pristine}">
+                                                                        <input type="text" maxlength="5" pattern="\d*" class="form-control" id="inputZip" placeholder="" formControlName="zipcode"
+                                                                            required [ngClass]="{'red-border': zipCtrl.invalid && (zipCtrl.touched || zipCtrl.dirty), 'black-border': zipCtrl.valid || zipCtrl.pristine}">
                                                                         <em *ngIf="zipCtrl.invalid && (zipCtrl.touched || zipCtrl.dirty)">Required - 5 digit numbers only</em>
                                                                     </div>
                                                                 </div>
@@ -446,7 +464,7 @@
                                                                                     </select>
                                                                                 </div>
                                                                                 <div class="col-2">
-                                                                                    <select (change)="onItemChangeOne($event.target.value)"   size="1" class="form-control" formControlName="open">
+                                                                                    <select (change)="onItemChangeOne($event.target.value)" size="1" class="form-control" formControlName="open">
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -479,7 +497,7 @@
                                                                     <div *ngIf="!isOfficeHoursValid">
                                                                         <!-- <b>officeHours Timings are not valid.</b> -->
                                                                         <em *ngIf="!isOfficeHoursValid">Required-Valid Office hours </em>
-                                                               </div> 
+                                                                    </div>
 
                                                                     <br/>
                                                                     <br/>
@@ -504,7 +522,8 @@
                                                                             <label for="inputMail">
                                                                                 PRACTICE TYPE*
                                                                             </label>
-                                                                            <select size="1" class="form-control black-border" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType" required>
+                                                                            <select size="1" class="form-control black-border" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType"
+                                                                                required>
                                                                                 <option *ngFor="let pt of practiceTypes" [value]="pt.value">{{pt.text}}</option>
                                                                             </select>
                                                                         </div>
