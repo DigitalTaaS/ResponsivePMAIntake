@@ -61,12 +61,13 @@ export class ContractphysicianComponent implements OnInit {
   gender = "male";
   selectedTaxcode:string="";
   descriptionText:string="";
+  searchTextbox:string="";
   //story-955
   officeIndex: number = 1;
   officeHourOne: string = "";
   officeHourTwo: string = "";
   isOfficeHoursValid: boolean = true;
-
+  IsHidden= false;
   // autocomplete 
   public degreesdata: Observable<any[]>;
   private searchTerms = new Subject<string>();
@@ -185,10 +186,13 @@ export class ContractphysicianComponent implements OnInit {
   onselectClient(ClientObj) { 
     
     this.selectedTaxcode=ClientObj.id;
-    this.descriptionText=ClientObj.name+"\n\t"+ClientObj.Desc1+ "\n\t\t"+ClientObj.Desc2
+    this.descriptionText=ClientObj.name+"\n\t"+ClientObj.Desc1+ "\n\t\t"+ClientObj.Desc2;
+    
+    
     if (ClientObj.id != "0") {  
-      this.name = ClientObj.name;       
+      this.name ="";       
       this.flag = false;  
+      this.IsHidden= !this.IsHidden;
     }  
     else {  
       return false;  
@@ -314,6 +318,15 @@ export class ContractphysicianComponent implements OnInit {
 
     return false;
 
+  }
+
+
+ 
+
+  onSelect(){
+   this.IsHidden= !this.IsHidden;
+      
+ 
   }
 
   // story -955 

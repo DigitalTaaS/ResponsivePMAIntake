@@ -23,7 +23,6 @@ import { IntakeInterceptor } from './shared/intake-interceptor';
 import { Multicolumnfilter } from './multicolumnfilter.pipe';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +37,9 @@ import { Multicolumnfilter } from './multicolumnfilter.pipe';
     SetActiveClassDirective,
     PmahighlighttextPipe,
     PmataxoncodePipe,
-    Multicolumnfilter
+    Multicolumnfilter,
+   
+    
   ],
   imports: [
     BrowserModule,

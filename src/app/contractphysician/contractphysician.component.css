@@ -283,4 +283,83 @@ width: 270px;
 visibility: visible;
    }
   
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+   .pop {
+    position: relative;
+    width: 900px;
+      background-color: #fff;
+      border-radius: 4px;
+    top: 0px;
+    left: 50px;
+    height: 300px;
+    box-shadow: 1px -1px 4px #ccc;
+    border:1px solid #444444;
+  }
   
+  
+  .pop-arrow {
+      position: absolute;
+      top: 0px;
+      left: 43%;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 20px solid #eee;
+    width: 0;
+    height: 0;
+    -webkit-filter: drop-shadow(0 -2px 2px #AAA);
+  }
+  .pop-title{
+    padding: 7px 10px;
+    /*font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif; 
+    opacity: 70%;
+    font-weight: bold;
+    color: #444444; */
+    color: rgba(68, 68, 68, 0.7);
+        font-size: 15px;
+        /* font-family: ArialMT, Regular; */
+        font-weight: normal;
+  }
+  .pop-container{
+    color: #555;
+    background:#fff;
+  }
+  .pop-container ul{
+    list-style:none;
+    padding: 0px;
+    margin:0px;
+  }
+  .pop-container ul li{
+    padding: 5px 10px;
+    border-top: 1px solid #eee;
+  }
+  .pop-container ul li {
+    text-decoration: none;
+    color: #2D74A2;
+    
+  }
+  .pop-container ul li a:hover{
+    color: #1A4562;
+  }
+
+
+   
+
+
+
+
+
+
+   
