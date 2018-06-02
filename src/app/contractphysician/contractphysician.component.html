@@ -309,24 +309,24 @@
     
                                                       <ul class="pop-container" style="overflow-y: auto; height:230px; margin-left: 30px;" >
                                                         <!-- <ul class="pop-container" style="height:230px; margin-left: 30px;" ></ul> -->
-                                                        <li class="pop-container table table-hover pop-title">
+                                                        <li class="pop-container table pop-title">
                                                             
                                                                 <!-- <h2>Please Select TAXANOMY</h2> -->
                                                                  
                                                                 <div>
                                                                
                                                                 <!-- <table class="table table-bordered pop-title table-striped" style="width:800px;"> -->
-                                                                    <table class="table table-hover pop-title" style="width:800px;">
+                                                                    <table class="table pop-title" style="width:800px;">
                                                                     
-                                                                  <tbody class="table table-hover">
-                                                                        <tr class="table table-light">
+                                                                  <tbody class="table">
+                                                                        <tr class="table table-light noborders">
                                                                                <!-- <td class="pop-container">Id</td> -->
                                                                                 <td class="pop-container">Code</td>
                                                                                 <td class="pop-container">Grouping</td>
                                                                                 <td class="pop-container">Classification</td>
                                                                                 <td class="pop-container">Specialization</td>
                                                                               </tr>
-                                                                    <tr class="table pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
+                                                                    <tr class="table  pop-container noborders" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
                                                                      
                                                                      <!-- <td colspan="5">  <h4> <a  (click)="onselectClient(degree)" #selectV [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h4> </td> -->
                                                                       <!-- <td>{{i+1}}</td>  -->

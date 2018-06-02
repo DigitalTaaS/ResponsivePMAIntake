@@ -416,6 +416,15 @@ visibility: visible;
  opacity: 10%;
  
 }
+/* td{
+    marigin: 0px;
+    padding: 5px;
+    text-align: left;
+    border:1px solid #080808;
+} */
+.noborders td{
+    border:0;
+}
 
    
 
