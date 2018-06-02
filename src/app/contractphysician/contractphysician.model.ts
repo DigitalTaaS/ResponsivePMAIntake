@@ -72,6 +72,7 @@ export class Age {
 export class Address {
     name?: string;
     addressLine1: string;
+    addressLine2?: string;
     city: string;
     country?: string;
     state: string;
