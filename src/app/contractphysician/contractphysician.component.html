@@ -268,7 +268,7 @@
                                                         <!-- <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option> -->
                                                         <select size="1" class="form-control black-border" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
                                                         formControlName="degreeName">
-                                                        <option *ngFor="let degree of degrees">{{degree.text}}</option>
+                                                        <option *ngFor="let degree of degrees" [value]="degree.value">{{degree.text}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-4">
@@ -281,10 +281,10 @@
                                                     
                                                     </select> -->
                                                     <div class="form-row form-group col-12 ">
-                                                            <select size="1" (click)="onSelect()" class="form-control black-border" formControlName="taxanomyCode" required >Dropdown
+                                                            <select size="1" (click)="onSelect($event)" class="form-control black-border" formControlName="taxanomyCode" required >Dropdown
                                                            
                                                                   <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
-                                                                  <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode">{{selectedTaxcode}}</option>
+                                                                  <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.id">{{selectedTaxcode}}</option>
                                                                 </select>
                                                                  
                                                           </div>
@@ -307,7 +307,7 @@
                                                                    
                                                             <input  style="width: 250px;height: 50x;margin-left: 40px; border:1px; color:#444444;" type="text"   class="form-control"  id="inputBtAffhos" placeholder="quick search" formControlName="description1" [(ngModel)]="name" (keyup)="searchClient(name)"/>
     
-                                                      <ul class="pop-container" style="overflow-y: scroll; height:230px; margin-left: 30px;" >
+                                                      <ul class="pop-container" style="overflow-y: auto; height:230px; margin-left: 30px;" >
                                                         <!-- <ul class="pop-container" style="height:230px; margin-left: 30px;" ></ul> -->
                                                         <li class="pop-container table table-hover pop-title table-striped">
                                                             
@@ -317,7 +317,7 @@
                                                                
                                                                 <!-- <table class="table table-bordered pop-title table-striped" style="width:800px;"> -->
                                                                     <table class="table table-hover pop-title table-striped" style="width:800px;">
-                                                    
+                                                                    
                                                                   <tbody class="table table-hover">
                                                                         <tr class="table table-light">
                                                                                <!-- <td class="pop-container">Id</td> -->
@@ -326,14 +326,14 @@
                                                                                 <td class="pop-container">Classification</td>
                                                                                 <td class="pop-container">Specialization</td>
                                                                               </tr>
-                                                                    <tr class="table table-striped pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ name: name, Desc1: name,Desc2:name } : false;let i=index;">
+                                                                    <tr class="table table-striped pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
                                                                      
                                                                      <!-- <td colspan="5">  <h4> <a  (click)="onselectClient(degree)" #selectV [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h4> </td> -->
                                                                       <!-- <td>{{i+1}}</td>  -->
-                                                                      <td>{{degree.id}}</td>
-                                                                      <td [innerHTML]="degree.name | pmahighlighttext : name"></td>
-                                                                      <td [innerHTML]="degree.Desc1 | pmahighlighttext : name"></td>
-                                                                      <td [innerHTML]="degree.Desc2 | pmahighlighttext : name"></td> 
+                                                                      <td colspan="1" class="col-bg-color2">{{degree.id}}</td>
+                                                                      <td colspan="1" class="col-bg-color1" [innerHTML]="degree.name | pmahighlighttext : name"></td>
+                                                                      <td colspan="1" class="col-bg-color2" [innerHTML]="degree.Desc1 | pmahighlighttext : name"></td>
+                                                                      <td colspan="1" class="col-bg-color1"  [innerHTML]="degree.Desc2 | pmahighlighttext : name"></td> 
                                                                     </tr>
                                                                      
                                                                   </tbody>
@@ -424,7 +424,7 @@
                                                     </label>
                                                     <!-- <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
                                                     <!-- <textarea rows="4" class="form-control"  id="inputBtAffhos" placeholder="" formControlName="description" [(ngModel)]="name" (keyup)="searchClient(name)"></textarea> -->
-                                                    <textarea rows="4" class="form-control" disabled id="inputBtAffhos" placeholder="" formControlName="description" [value]="descriptionText" ></textarea>
+                                                    <textarea rows="4" class="form-control" [attr.disabled]="true" id="inputBtAffhos" placeholder="" formControlName="description" [value]="descriptionText" ></textarea>
        
                                                     <!-- <input class="form-control" [(ngModel)]="name" disabled  *ngIf="flag" type="text" [ngModelOptions]="{standalone: true}" />   -->
     
@@ -455,11 +455,12 @@
                             <div class="panel" id="locationPanel">
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h6 [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
-                                        'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
+                                'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
                                         <button class="btn collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.locations.valid,
-                                            'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}"
-                                            data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo" aria-expanded="false"
-                                            aria-controls="locationPanelinfo" (click)="togglePanel('location')" style="text-decoration: none">
+                                    'invalid-text' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}"
+                                            data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo"
+                                            aria-expanded="false" aria-controls="locationPanelinfo" (click)="togglePanel('location')"
+                                            style="text-decoration: none">
                                             <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
                                         </button>
                                         <span class="panel-heading-text">LOCATION</span>
@@ -682,30 +683,31 @@
                                                 </div>
                                             </div>
                                             <!-- <div class="row" style="padding: 15px">
-                                                    <div class="col-2">
-                                                        <button type="button" class="btn btn-default btn-sm" style="border-radius: 25px" (click)="addLocation()">
-                                                            <i class="glyphicon glyphicon-plus-sign" style="top: 5px"></i>
-                                                            <span style="font-size: 15px;">New Location</span>
-                                                        </button>
-                                                    </div>
-                                                </div> -->
+                                            <div class="col-2">
+                                                <button type="button" class="btn btn-default btn-sm" style="border-radius: 25px" (click)="addLocation()">
+                                                    <i class="glyphicon glyphicon-plus-sign" style="top: 5px"></i>
+                                                    <span style="font-size: 15px;">New Location</span>
+                                                </button>
+                                            </div>
+                                        </div> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                    </form>
-                    <div class="text-center" style="padding-bottom: 25px;">
-                            <button type="Submit" (click)="onSubmit()" class="btn btn-lg" 
-                                [ngClass]="{'btn-success' : contractPhysicianForm.valid}" style="border-radius: 50px;">
-                                <span class="badge" style="border-radius: 100%;">
-                                    <span class="fa fa-1x glyphicon glyphicon-ok"></span>
-                                </span> &nbsp;Submit</button>
-                        </div>
+                </form>
+                <div class="text-center" style="padding-bottom: 25px;">
+                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg" [ngClass]="{'btn-success' : contractPhysicianForm.valid}" style="border-radius: 50px;">
+                            <span class="badge" style="border-radius: 100%;">
+                                <span class="fa fa-1x glyphicon glyphicon-ok"></span>
+                            </span> &nbsp;Submit</button>
+                </div>
             </div>
-
+                
+            
         </div>
-        
+
     </div>
 </div>

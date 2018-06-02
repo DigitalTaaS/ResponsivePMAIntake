@@ -37,7 +37,7 @@ export class ContractphysicianComponent implements OnInit {
   emailCtrl: FormControl;
   minAgeCtrl: FormControl;
   maxAgeCtrl: FormControl;
-
+  description1:FormControl;
 
   demoPanelClicked = true;
   cpPanelClicked = true;
@@ -60,6 +60,7 @@ export class ContractphysicianComponent implements OnInit {
   male = true;
   gender = "male";
   selectedTaxcode:string="";
+  selectedTaxType:string = "";
   descriptionText:string="";
   searchTextbox:string="";
   //story-955
@@ -94,7 +95,9 @@ export class ContractphysicianComponent implements OnInit {
     this.emailCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
     this.minAgeCtrl = new FormControl(null, [Validators.max(150)]);
     this.maxAgeCtrl = new FormControl(null, [Validators.max(150)]);
+   
 
+    
     this.contractPhysicianForm = this.fb.group({
       demographics: this.fb.group({
         firstName: this.firstnameCtrl,
@@ -112,9 +115,9 @@ export class ContractphysicianComponent implements OnInit {
         npiNumber: this.npiCtrl,
         licNumber: this.licenceCtrl,
         deaNumber: this.deaCtrl,
-        degreeName: new FormControl(null, Validators.required),
+        degreeName: new FormControl(null),
         // taxanomyCode: new FormControl(null, Validators.required),
-        taxanomyCode: new FormControl(),
+        taxanomyCode: new FormControl(null,Validators.required),
         description: new FormControl(),
         description1: new FormControl(null)
       }),
@@ -186,8 +189,9 @@ export class ContractphysicianComponent implements OnInit {
   onselectClient(ClientObj) { 
     
     this.selectedTaxcode=ClientObj.id;
+    this.selectedTaxType = ClientObj.Desc2;
     this.descriptionText=ClientObj.name+"\n\t"+ClientObj.Desc1+ "\n\t\t"+ClientObj.Desc2;
-    
+    this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
     
     if (ClientObj.id != "0") {  
       this.name ="";       
@@ -320,12 +324,13 @@ export class ContractphysicianComponent implements OnInit {
 
   }
 
-
- 
-
-  onSelect(){
+  onSelect(event:Event){
+    event.preventDefault();
    this.IsHidden= !this.IsHidden;
-   this.cdRef.detectChanges();     
+   this.cdRef.detectChanges(); 
+   //this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
+
+   
   }
 
   // story -955 
@@ -336,40 +341,42 @@ export class ContractphysicianComponent implements OnInit {
     this.degrees=[];
     if (selectedValue=="CNTRPhysician")
     {
-    this.degrees.push(new Dropdown("DO-Doctor of Osteopathic Medicine", "DO-Doctor of Osteopathic Medicine"));
-    this.degrees.push(new Dropdown("MD-Doctor of Medicine", "MD-Doctor of Medicine"));
-    this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
-    this.degrees.push(new Dropdown("DNAP-Doctor of Nurse Anaesthesia Practice", "DNAP-Doctor of Nurse Anaesthesia Practice"));
-    this.degrees.push(new Dropdown("DNP-Doctor of NUrsing Practice", "DNP-Doctor of NUrsing Practice"));
-    this.degrees.push(new Dropdown("DNS-Doctor of Nursing Science", "DNS-Doctor of Nursing Science"));
-    this.degrees.push(new Dropdown("AuD-Doctoral Degree in Audiology", "AuD-Doctoral Degree in Audiology"));
-    this.degrees.push(new Dropdown("DC-Doctor of Chiropractic", "DC-Doctor of Chiropractic"));
-    this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
-    this.degrees.push(new Dropdown("OTD-Doctorate in Occupational Therapy", "OTD-Doctorate in Occupational Therapy"));
-    this.degrees.push(new Dropdown("OD-Doctor of Optometry", "OD-Doctor of Optometry"));
-    this.degrees.push(new Dropdown("DPT-Doctor of Physical Therapy", "DPT-Doctor of Physical Therapy"));
-    this.degrees.push(new Dropdown("SLPD-Doctor of Speech-Language Pathology", "SLPD-Doctor of Speech-Language Pathology"));
+    this.degrees.push(new Dropdown("Doctor of Osteopathic Medicine", "DO"));
+    this.degrees.push(new Dropdown("Doctor of Medicine", "MD"));
+    this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
+    this.degrees.push(new Dropdown("Doctor of Nurse Anaesthesia Practice", "DNAP"));
+    this.degrees.push(new Dropdown("Doctor of NUrsing Practice", "DNP"));
+    this.degrees.push(new Dropdown("Doctor of Nursing Science", "DNS"));
+    this.degrees.push(new Dropdown("Doctoral Degree in Audiology", "AuD"));
+    this.degrees.push(new Dropdown("Doctor of Chiropractic", "DC"));
+    this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
+    this.degrees.push(new Dropdown("Doctorate in Occupational Therapy", "OTD"));
+    this.degrees.push(new Dropdown("Doctor of Optometry", "OD"));
+    this.degrees.push(new Dropdown("Doctor of Physical Therapy", "DPT"));
+    this.degrees.push(new Dropdown("Doctor of Speech-Language Pathology", "SLPD"));
     }
     //Extended PCP
     if (selectedValue=="CNTRExtendedPCP")
     {
-      this.degrees.push(new Dropdown("MSN-Master of Science in Nursing", "MSN-Master of Science in Nursing"));
-    this.degrees.push(new Dropdown("MCHS-Master of Clinical Health Services", "MCHS-Master of Clinical Health Services"));
-    this.degrees.push(new Dropdown("MCMSc-Master of Clinical Medical Science", "MCMSc-Master of Clinical Medical Science"));
-    this.degrees.push(new Dropdown("MHS-Master of Health Science", "MHS-Master of Health Science"));
-    this.degrees.push(new Dropdown("MMS-Master of Science in Medicine", "MMS-Master of Science in Medicine"));
-    this.degrees.push(new Dropdown("MMSc-Master of Medical Science", "MMSc-Master of Medical Science"));
-    this.degrees.push(new Dropdown("MPAS-Master of Physician Assistant Studies", "MPAS-Master of Physician Assistant Studies"));
-    this.degrees.push(new Dropdown("MSPA-Master of Science in Physician Associate studies", "MSPA-Master of Science in Physician Associate studies"));
-    this.degrees.push(new Dropdown("PgDip-Postgraduate Diploma in Physician Associate studies", "PgDip-Postgraduate Diploma in Physician Associate studies"));
-    this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
+      this.degrees.push(new Dropdown("Master of Science in Nursing", "MSN"));
+    this.degrees.push(new Dropdown("Master of Clinical Health Services", "MCHS"));
+    this.degrees.push(new Dropdown("Master of Clinical Medical Science", "MCMSc"));
+    this.degrees.push(new Dropdown("Master of Health Science", "MHS"));
+    this.degrees.push(new Dropdown("Master of Science in Medicine", "MMS"));
+    this.degrees.push(new Dropdown("Master of Medical Science", "MMSc"));
+    this.degrees.push(new Dropdown("Master of Physician Assistant Studies", "MPAS"));
+    this.degrees.push(new Dropdown("Master of Science in Physician Associate studies", "MSPA"));
+    this.degrees.push(new Dropdown("Postgraduate Diploma in Physician Associate studies", "PgDip"));
+    this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
    
      }
      //Extended Other
     if (selectedValue=="CNTROther")
     {
-    this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
+    this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
      } 
+   //  this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
+
     selectedValue="";
   }
 
@@ -625,6 +632,10 @@ export class ContractphysicianComponent implements OnInit {
         npi: this.contractPhysicianForm.get('licensing').get('npiNumber').value,
         licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
         dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
+        /* taxonomies:[{taxonomyCode: this.contractPhysicianForm.get('licensing').get('taxanomyCode').value}], */
+        /* taxonomies:[{taxonomyCode: this.selectedTaxcode, taxonomyType: this.selectedTaxType}], */
+        taxonomies:[{taxonomyCode: this.selectedTaxcode, taxonomyType: 'board'}],
+        qualification:{professionalDegreeCode: this.contractPhysicianForm.get('licensing').get('degreeName').value},
         facilities: facilities
       };
     //Optional values
@@ -661,7 +672,7 @@ export class ContractphysicianComponent implements OnInit {
       facilityType: "Practice",
       email: fvalues.at(0).get('email').value,
       address: {
-        addressLine1: fvalues.at(0).get('address').value + ' ' + fvalues.at(0).get('suite').value ? fvalues.at(0).get('suite').value : '',
+        addressLine1: fvalues.at(0).get('address').value,
         city: fvalues.at(0).get('city').value,
         state: fvalues.at(0).get('state').value,
         zipCode: fvalues.at(0).get('zipcode').value,
@@ -674,6 +685,9 @@ export class ContractphysicianComponent implements OnInit {
         max: fvalues.at(0).get('maxAge').value,
       } */
     };
+
+    if(fvalues.at(0).get('suite').value)
+      facility.address.addressLine1 = facility.address.addressLine1 + ' ' + fvalues.at(0).get('suite').value;
 
     if(fvalues.at(0).get('minAge').value)
      facility.age.min = fvalues.at(0).get('minAge').value;

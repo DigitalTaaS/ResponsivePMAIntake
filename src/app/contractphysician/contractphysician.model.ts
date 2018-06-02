@@ -25,7 +25,7 @@ export class ContractphysicianModel {
 export class Taxonomy {
     taxonomyType: string;
     taxonomyCode: string;
-    status: string;
+    status?: string;
 }
 
 export class Qualification {
