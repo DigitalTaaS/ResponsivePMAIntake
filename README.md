@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Build and Run as docker in nginx container using docker-compose
+
+cd pma-intake
+sudo docker-compose down
+cd ..
+sudo rm -rf pma-intake
+git clone https://github.com/DigitalTaaS/pma-intake.git
+cd pma-intake
+yarn
+ng build --prod
+mkdir -p nginx/config
+cp app.conf  nginx/config/app.conf
+sudo docker-compose up

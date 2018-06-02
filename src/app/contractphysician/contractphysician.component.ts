@@ -23,6 +23,7 @@ import { ContractphysicianModel, Address, Age, ContractedPartner, Facility, Hour
 
 export class ContractphysicianComponent implements OnInit {
 
+  model: ContractphysicianModel;
   contractPhysicianForm: FormGroup;
   firstnameCtrl: FormControl;
   lastnameCtrl: FormControl;
@@ -58,18 +59,20 @@ export class ContractphysicianComponent implements OnInit {
   locationTypes: Dropdown[] = [];
   male = true;
   gender = "male";
-  model: ContractphysicianModel;
+  selectedTaxcode:string="";
+  descriptionText:string="";
+  searchTextbox:string="";
   //story-955
   officeIndex: number = 1;
   officeHourOne: string = "";
   officeHourTwo: string = "";
   isOfficeHoursValid: boolean = true;
-
+  IsHidden= false;
   // autocomplete 
   public degreesdata: Observable<any[]>;
   private searchTerms = new Subject<string>();
   public name = '';
-  public flag: boolean = true;
+  public flag: boolean = false;
 
 
   constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient) {
@@ -109,7 +112,8 @@ export class ContractphysicianComponent implements OnInit {
         deaNumber: this.deaCtrl,
         degreeName: new FormControl(null, Validators.required),
         taxanomyCode: new FormControl(null, Validators.required),
-        description: new FormControl()
+        description: new FormControl(),
+        description1: new FormControl(null)
       }),
       locations: this.fb.array([
         this.initLocation(false)
@@ -177,17 +181,26 @@ export class ContractphysicianComponent implements OnInit {
   searchClient(term: string): void {
     this.flag = true;
     console.log(term);
-    this.searchTerms.next(term);
-  }
+    this.searchTerms.next(term);  
+  }  
+  onselectClient(ClientObj) { 
+    
+    this.selectedTaxcode=ClientObj.id;
+    this.descriptionText=ClientObj.name+"\n\t"+ClientObj.Desc1+ "\n\t\t"+ClientObj.Desc2;
+    
+    
+    if (ClientObj.id != "0") {  
+      this.name ="";       
+      this.flag = false;  
+      this.IsHidden= !this.IsHidden;
+    }  
+    else {  
+      return false;  
+    }  
+  }  
 
-  onselectClient(ClientObj) {
-    if (ClientObj.id != "0") {
-      this.name = ClientObj.name;
-      this.flag = false;
-    }
-    else {
-      return false;
-    }
+  openFastSearch(){
+    alert("ddd");
   }
 
   initContractedPartner() {
@@ -307,42 +320,58 @@ export class ContractphysicianComponent implements OnInit {
 
   }
 
+
+ 
+
+  onSelect(){
+   this.IsHidden= !this.IsHidden;
+      
+ 
+  }
+
   // story -955 
-
-  onSelectContractedPartner(selectedValue: string) {
+  //Physician PCP
+  onSelectContractedPartner(selectedValue:string)
+  {
     console.log(selectedValue);
-    this.degrees = [];
-    if (selectedValue == "CNTRPhysician") {
-      this.degrees.push(new Dropdown("DO-Doctor of Osteopathic Medicine", "DO-Doctor of Osteopathic Medicine"));
-      this.degrees.push(new Dropdown("MD-Doctor of Medicine", "MD-Doctor of Medicine"));
-      this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
+    this.degrees=[];
+    if (selectedValue=="CNTRPhysician")
+    {
+    this.degrees.push(new Dropdown("DO-Doctor of Osteopathic Medicine", "DO-Doctor of Osteopathic Medicine"));
+    this.degrees.push(new Dropdown("MD-Doctor of Medicine", "MD-Doctor of Medicine"));
+    this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
+    this.degrees.push(new Dropdown("DNAP-Doctor of Nurse Anaesthesia Practice", "DNAP-Doctor of Nurse Anaesthesia Practice"));
+    this.degrees.push(new Dropdown("DNP-Doctor of NUrsing Practice", "DNP-Doctor of NUrsing Practice"));
+    this.degrees.push(new Dropdown("DNS-Doctor of Nursing Science", "DNS-Doctor of Nursing Science"));
+    this.degrees.push(new Dropdown("AuD-Doctoral Degree in Audiology", "AuD-Doctoral Degree in Audiology"));
+    this.degrees.push(new Dropdown("DC-Doctor of Chiropractic", "DC-Doctor of Chiropractic"));
+    this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
+    this.degrees.push(new Dropdown("OTD-Doctorate in Occupational Therapy", "OTD-Doctorate in Occupational Therapy"));
+    this.degrees.push(new Dropdown("OD-Doctor of Optometry", "OD-Doctor of Optometry"));
+    this.degrees.push(new Dropdown("DPT-Doctor of Physical Therapy", "DPT-Doctor of Physical Therapy"));
+    this.degrees.push(new Dropdown("SLPD-Doctor of Speech-Language Pathology", "SLPD-Doctor of Speech-Language Pathology"));
     }
-    if (selectedValue == "CNTRExtendedPCP") {
-      this.degrees.push(new Dropdown("DNAP-Doctor of Nurse Anaesthesia Practice", "DNAP-Doctor of Nurse Anaesthesia Practice"));
-      this.degrees.push(new Dropdown("DNP-Doctor of NUrsing Practice", "DNP-Doctor of NUrsing Practice"));
-      this.degrees.push(new Dropdown("DNS-Doctor of Nursing Science", "DNS-Doctor of Nursing Science"));
-      this.degrees.push(new Dropdown("AuD-Doctoral Degree in Audiology", "AuD-Doctoral Degree in Audiology"));
-      this.degrees.push(new Dropdown("DC-Doctor of Chiropractic", "DC-Doctor of Chiropractic"));
-      this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
-      this.degrees.push(new Dropdown("OTD-Doctorate in Occupational Therapy", "OTD-Doctorate in Occupational Therapy"));
-      this.degrees.push(new Dropdown("OD-Doctor of Optometry", "OD-Doctor of Optometry"));
-      this.degrees.push(new Dropdown("DPT-Doctor of Physical Therapy", "DPT-Doctor of Physical Therapy"));
-      this.degrees.push(new Dropdown("SLPD-Doctor of Speech-Language Pathology", "SLPD-Doctor of Speech-Language Pathology"));
-    }
-    if (selectedValue == "CNTROther") {
+    //Extended PCP
+    if (selectedValue=="CNTRExtendedPCP")
+    {
       this.degrees.push(new Dropdown("MSN-Master of Science in Nursing", "MSN-Master of Science in Nursing"));
-      this.degrees.push(new Dropdown("MCHS-Master of Clinical Health Services", "MCHS-Master of Clinical Health Services"));
-      this.degrees.push(new Dropdown("MCMSc-Master of Clinical Medical Science", "MCMSc-Master of Clinical Medical Science"));
-      this.degrees.push(new Dropdown("MHS-Master of Health Science", "MHS-Master of Health Science"));
-      this.degrees.push(new Dropdown("MMS-Master of Science in Medicine", "MMS-Master of Science in Medicine"));
-      this.degrees.push(new Dropdown("MMSc-Master of Medical Science", "MMSc-Master of Medical Science"));
-      this.degrees.push(new Dropdown("MPAS-Master of Physician Assistant Studies", "MPAS-Master of Physician Assistant Studies"));
-      this.degrees.push(new Dropdown("MSPA-Master of Science in Physician Associate studies", "MSPA-Master of Science in Physician Associate studies"));
-      this.degrees.push(new Dropdown("PgDip-Postgraduate Diploma in Physician Associate studies", "PgDip-Postgraduate Diploma in Physician Associate studies"));
-    }
-
-
-    selectedValue = "";
+    this.degrees.push(new Dropdown("MCHS-Master of Clinical Health Services", "MCHS-Master of Clinical Health Services"));
+    this.degrees.push(new Dropdown("MCMSc-Master of Clinical Medical Science", "MCMSc-Master of Clinical Medical Science"));
+    this.degrees.push(new Dropdown("MHS-Master of Health Science", "MHS-Master of Health Science"));
+    this.degrees.push(new Dropdown("MMS-Master of Science in Medicine", "MMS-Master of Science in Medicine"));
+    this.degrees.push(new Dropdown("MMSc-Master of Medical Science", "MMSc-Master of Medical Science"));
+    this.degrees.push(new Dropdown("MPAS-Master of Physician Assistant Studies", "MPAS-Master of Physician Assistant Studies"));
+    this.degrees.push(new Dropdown("MSPA-Master of Science in Physician Associate studies", "MSPA-Master of Science in Physician Associate studies"));
+    this.degrees.push(new Dropdown("PgDip-Postgraduate Diploma in Physician Associate studies", "PgDip-Postgraduate Diploma in Physician Associate studies"));
+    this.degrees.push(new Dropdown("OT-Master Degree in Occupational Therapy", "OT-Master Degree in Occupational Therapy"));
+   
+     }
+     //Extended Other
+    if (selectedValue=="CNTROther")
+    {
+    this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
+     } 
+    selectedValue="";
   }
 
   toggleGender() {
@@ -516,7 +545,7 @@ export class ContractphysicianComponent implements OnInit {
 
     var contractedPartners: ContractedPartner[] = this.TransformContractedPartnersData();
     var facilities: Facility[] = this.TransformLocationData();
-    /* this.model = 
+    this.model = 
     {
       firstName: this.contractPhysicianForm.get('demographics').get('firstName').value,
       middleName: this.contractPhysicianForm.get('demographics').get('middleName').value,
@@ -530,16 +559,16 @@ export class ContractphysicianComponent implements OnInit {
       licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
       dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
       facilities: facilities
-    } */
+    }
 
-    this.model = new ContractphysicianModel();
+    //this.model = new ContractphysicianModel();
 
-    if(this.contractPhysicianForm.get('licensing').get('npiNumber').value)
-      this.model.npi = this.contractPhysicianForm.get('licensing').get('npiNumber').value;
+    /* if(this.contractPhysicianForm.get('licensing').get('npiNumber').value)
+      this.model.npi = this.contractPhysicianForm.get('licensing').get('npiNumber').value; */
 
     console.log(this.model);
 
-    /* this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
+    this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
       .subscribe(
         res => {
           console.log(res)
@@ -547,7 +576,7 @@ export class ContractphysicianComponent implements OnInit {
         err => {
           console.log(err)
         }
-      ); */
+      );
 
   }
 
