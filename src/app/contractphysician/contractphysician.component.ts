@@ -37,7 +37,7 @@ export class ContractphysicianComponent implements OnInit {
   emailCtrl: FormControl;
   minAgeCtrl: FormControl;
   maxAgeCtrl: FormControl;
-
+  description1:FormControl;
 
   demoPanelClicked = true;
   cpPanelClicked = true;
@@ -94,7 +94,9 @@ export class ContractphysicianComponent implements OnInit {
     this.emailCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
     this.minAgeCtrl = new FormControl(null, [Validators.max(150)]);
     this.maxAgeCtrl = new FormControl(null, [Validators.max(150)]);
+   
 
+    
     this.contractPhysicianForm = this.fb.group({
       demographics: this.fb.group({
         firstName: this.firstnameCtrl,
@@ -112,9 +114,9 @@ export class ContractphysicianComponent implements OnInit {
         npiNumber: this.npiCtrl,
         licNumber: this.licenceCtrl,
         deaNumber: this.deaCtrl,
-        degreeName: new FormControl(null, Validators.required),
+        degreeName: new FormControl(null),
         // taxanomyCode: new FormControl(null, Validators.required),
-        taxanomyCode: new FormControl,
+        taxanomyCode: new FormControl(null,Validators.required),
         description: new FormControl(),
         description1: new FormControl(null)
       }),
@@ -187,7 +189,7 @@ export class ContractphysicianComponent implements OnInit {
     
     this.selectedTaxcode=ClientObj.id;
     this.descriptionText=ClientObj.name+"\n\t"+ClientObj.Desc1+ "\n\t\t"+ClientObj.Desc2;
-    
+    this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
     
     if (ClientObj.id != "0") {  
       this.name ="";       
@@ -320,12 +322,13 @@ export class ContractphysicianComponent implements OnInit {
 
   }
 
-
- 
-
-  onSelect(){
+  onSelect(event:Event){
+    
    this.IsHidden= !this.IsHidden;
-   this.cdRef.detectChanges();     
+   this.cdRef.detectChanges(); 
+   //this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
+
+   event.preventDefault();
   }
 
   // story -955 
@@ -370,6 +373,8 @@ export class ContractphysicianComponent implements OnInit {
     {
     this.degrees.push(new Dropdown("DPM-Doctor of Podiatry Medicine", "DPM-Doctor of Podiatry Medicine"));
      } 
+   //  this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
+
     selectedValue="";
   }
 

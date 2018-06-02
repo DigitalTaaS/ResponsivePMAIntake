@@ -282,20 +282,6 @@ bottom: 00px;
 width: 270px;
 visibility: visible;
    }
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
    .pop {
     position: relative;
     width: 900px;
@@ -353,7 +339,18 @@ visibility: visible;
   .pop-container ul li a:hover{
     color: #1A4562;
   }
+  .col-bg-color1{
+    background-color: lightgrey ;
 
+    opacity: 600%;
+    
+}
+.col-bg-color2{
+ background-color: white ;
+
+ opacity: 100%;
+ 
+}
 
    
 
