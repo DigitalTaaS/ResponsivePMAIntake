@@ -281,7 +281,7 @@
                                                     
                                                     </select> -->
                                                     <div class="form-row form-group col-12 ">
-                                                            <select size="1" (click)="onSelect($event)" class="form-control black-border" formControlName="taxanomyCode" required >Dropdown
+                                                            <select size="1" (mouseover)="onSelect($event)" class="form-control black-border" formControlName="taxanomyCode" required >Dropdown
                                                            
                                                                   <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
                                                                   <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.id">{{selectedTaxcode}}</option>
@@ -309,14 +309,14 @@
     
                                                       <ul class="pop-container" style="overflow-y: auto; height:230px; margin-left: 30px;" >
                                                         <!-- <ul class="pop-container" style="height:230px; margin-left: 30px;" ></ul> -->
-                                                        <li class="pop-container table table-hover pop-title table-striped">
+                                                        <li class="pop-container table table-hover pop-title">
                                                             
                                                                 <!-- <h2>Please Select TAXANOMY</h2> -->
                                                                  
                                                                 <div>
                                                                
                                                                 <!-- <table class="table table-bordered pop-title table-striped" style="width:800px;"> -->
-                                                                    <table class="table table-hover pop-title table-striped" style="width:800px;">
+                                                                    <table class="table table-hover pop-title" style="width:800px;">
                                                                     
                                                                   <tbody class="table table-hover">
                                                                         <tr class="table table-light">
@@ -326,7 +326,7 @@
                                                                                 <td class="pop-container">Classification</td>
                                                                                 <td class="pop-container">Specialization</td>
                                                                               </tr>
-                                                                    <tr class="table table-striped pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
+                                                                    <tr class="table pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
                                                                      
                                                                      <!-- <td colspan="5">  <h4> <a  (click)="onselectClient(degree)" #selectV [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h4> </td> -->
                                                                       <!-- <td>{{i+1}}</td>  -->
