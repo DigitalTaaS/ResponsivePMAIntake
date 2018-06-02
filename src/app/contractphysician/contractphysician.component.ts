@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 //import { HttpClient } from '@angular/common/http';
 import { Dropdown } from '../shared/dropdown';
@@ -75,10 +75,12 @@ export class ContractphysicianComponent implements OnInit {
   public flag: boolean = false;
 
 
-  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient) {
+  private readonly newProperty = this.cpPanelValueChange = false;
+
+  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient,private cdRef : ChangeDetectorRef ) {
   }
 
-  ngOnInit() {
+    ngOnInit() {
 
     this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
     this.lastnameCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
@@ -111,7 +113,8 @@ export class ContractphysicianComponent implements OnInit {
         licNumber: this.licenceCtrl,
         deaNumber: this.deaCtrl,
         degreeName: new FormControl(null, Validators.required),
-        taxanomyCode: new FormControl(null, Validators.required),
+        // taxanomyCode: new FormControl(null, Validators.required),
+        taxanomyCode: new FormControl(),
         description: new FormControl(),
         description1: new FormControl(null)
       }),
@@ -142,9 +145,6 @@ export class ContractphysicianComponent implements OnInit {
         this.txcodes = data;
         console.log(data);
       });
-
-
-
   }
 
   ngAfterViewInit() {
@@ -325,8 +325,7 @@ export class ContractphysicianComponent implements OnInit {
 
   onSelect(){
    this.IsHidden= !this.IsHidden;
-      
- 
+   this.cdRef.detectChanges();     
   }
 
   // story -955 
@@ -485,6 +484,57 @@ export class ContractphysicianComponent implements OnInit {
     this.contractedPartners.push(new Dropdown("Physician", "CNTRPhysician"));
     this.contractedPartners.push(new Dropdown("Extended PCP", "CNTRExtendedPCP"));
     this.contractedPartners.push(new Dropdown("Other", "CNTROther"));
+    
+    //New lists for drop down
+    this.contractedPartners.push(new Dropdown("AIDS Healthcare Foundation", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Allied Physicians if California, A Professional Medical Corp", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Altamed Health Services Corp", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Angel Medical Group, Inc.", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Angeles IPA, A Medical Corporation ", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Applecare Medical Group St. Francis, Inc.", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Applecare Medical Group, Inc", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Axminster Medical Group Inc.", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Bella Vista Medical Group IPA", "CNTROther"));
+
+    this.contractedPartners.push(new Dropdown("Cedars-Sinai Medical Care Foundation", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Citrus Valley Physicians Group", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("City of Hope Medical Foundation", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Community Family Care IPA", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Crown City Medical Group, Inc.", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Davita Medical Group Talbert California, P.C.", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("El Proyecto Del Barrio, Inc", "CNTROther"));
+    
+    this.contractedPartners.push(new Dropdown("Employee Health Systems Medical Group", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Exceptional Care Medical Group, Inc", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Family Care Specislist", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Global Care Medical Group IPA", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("HealthCare Partners Associates Medical Group, Inc.", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Heritage Provider Network, Inc.", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Martin Luther King Jr Community Medical Group", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("MedPoint Management, Inc. (NPI belongs to MedPoints)", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Omnicare Medical Group, Inc.", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Pioneer Provider Network", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Pomona Valley Medical Group, Inc. ", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Preferred IPA of California, A Professional Medical Corporation", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Prospect Medical Group, Inc", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Seaside Health Plan", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Seoul Medical Group Inc", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("South Atlantic Medical Group", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("St. Vincent IPA Medical Corporations", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("UC Regents", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("University Childrens Medical Group", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("USC Care Medical Group, Inc", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
+    
+    
+ 
+    // 
+    // 
+    
+
+
+    
     //this.contractedPartners.push(new Dropdown("CNTR. PARTNER4", "CNTRPARTNER4"));
 
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER1", "CNTRPARTNER1"));
@@ -543,28 +593,7 @@ export class ContractphysicianComponent implements OnInit {
 
   onSubmit() {
 
-    var contractedPartners: ContractedPartner[] = this.TransformContractedPartnersData();
-    var facilities: Facility[] = this.TransformLocationData();
-    this.model = 
-    {
-      firstName: this.contractPhysicianForm.get('demographics').get('firstName').value,
-      middleName: this.contractPhysicianForm.get('demographics').get('middleName').value,
-      lastName: this.contractPhysicianForm.get('demographics').get('lastName').value,
-      alias: this.contractPhysicianForm.get('demographics').get('aliasName').value,
-      suffix: this.contractPhysicianForm.get('demographics').get('suffixName').value,
-      dateOfBirth: this.contractPhysicianForm.get('demographics').get('dateOfBirth').value,
-      gender: this.contractPhysicianForm.get('demographics').get('genderType').value,
-      contractedPartners: contractedPartners,
-      npi: this.contractPhysicianForm.get('licensing').get('npiNumber').value,
-      licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
-      dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
-      facilities: facilities
-    }
-
-    //this.model = new ContractphysicianModel();
-
-    /* if(this.contractPhysicianForm.get('licensing').get('npiNumber').value)
-      this.model.npi = this.contractPhysicianForm.get('licensing').get('npiNumber').value; */
+    this.ConstructModel();
 
     console.log(this.model);
 
@@ -578,6 +607,33 @@ export class ContractphysicianComponent implements OnInit {
         }
       );
 
+  }
+
+  private ConstructModel() {
+    var contractedPartners: ContractedPartner[] = this.TransformContractedPartnersData();
+    var facilities: Facility[] = this.TransformLocationData();
+    this.model =
+      {
+        firstName: this.contractPhysicianForm.get('demographics').get('firstName').value,
+        /* middleName: this.contractPhysicianForm.get('demographics').get('middleName').value, */
+        lastName: this.contractPhysicianForm.get('demographics').get('lastName').value,
+        /* alias: this.contractPhysicianForm.get('demographics').get('aliasName').value, */
+        /* suffix: this.contractPhysicianForm.get('demographics').get('suffixName').value, */
+        dateOfBirth: this.contractPhysicianForm.get('demographics').get('dateOfBirth').value,
+        gender: this.contractPhysicianForm.get('demographics').get('genderType').value,
+        contractedPartners: contractedPartners,
+        npi: this.contractPhysicianForm.get('licensing').get('npiNumber').value,
+        licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
+        dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
+        facilities: facilities
+      };
+    //Optional values
+    if (this.contractPhysicianForm.get('demographics').get('middleName').value)
+      this.model.middleName = this.contractPhysicianForm.get('demographics').get('middleName').value;
+    if (this.contractPhysicianForm.get('demographics').get('aliasName').value)
+      this.model.middleName = this.contractPhysicianForm.get('demographics').get('aliasName').value;
+    if (this.contractPhysicianForm.get('demographics').get('suffixName').value)
+      this.model.middleName = this.contractPhysicianForm.get('demographics').get('suffixName').value;
   }
 
   private TransformLocationData() {
@@ -613,11 +669,18 @@ export class ContractphysicianComponent implements OnInit {
       practiceType: fvalues.at(0).get('providerType').value,
       phones: phones,
       hoursOfOperation: officeHours,
-      age: {
+      /* age: {
         min: fvalues.at(0).get('minAge').value,
         max: fvalues.at(0).get('maxAge').value,
-      }
+      } */
     };
+
+    if(fvalues.at(0).get('minAge').value)
+     facility.age.min = fvalues.at(0).get('minAge').value;
+
+    if(fvalues.at(0).get('maxAge').value)
+     facility.age.max = fvalues.at(0).get('maxAge').value;
+
     facilities.push(facility);
     return facilities;
   }

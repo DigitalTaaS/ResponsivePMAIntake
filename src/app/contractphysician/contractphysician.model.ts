@@ -49,7 +49,7 @@ export class Facility {
     email: string;
     phones: Phone[];
     hoursOfOperation: HoursOfOperation[];
-    age: Age;
+    age?: Age;
     address: Address;
 }
 
