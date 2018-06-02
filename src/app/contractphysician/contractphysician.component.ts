@@ -603,6 +603,7 @@ export class ContractphysicianComponent implements OnInit {
     this.ConstructModel();
 
     console.log(this.model);
+    console.log(JSON.stringify(this.model));
 
     this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
       .subscribe(
@@ -687,7 +688,7 @@ export class ContractphysicianComponent implements OnInit {
     };
 
     if(fvalues.at(0).get('suite').value)
-      facility.address.addressLine1 = facility.address.addressLine1 + ' ' + fvalues.at(0).get('suite').value;
+      facility.address.addressLine2 = fvalues.at(0).get('suite').value;
 
     if(fvalues.at(0).get('minAge').value)
      facility.age.min = fvalues.at(0).get('minAge').value;
