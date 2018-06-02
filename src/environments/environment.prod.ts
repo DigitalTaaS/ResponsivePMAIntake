@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiURL: 'https://lacare-tpm-experience-api-dev.cloudhub.io'
 };

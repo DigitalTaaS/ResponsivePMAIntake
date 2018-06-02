@@ -14,6 +14,9 @@ import { DegreeautosearchService } from '../degreeautosearch.service';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 import { ContractphysicianModel, Address, Age, ContractedPartner, Facility, HoursOfOperation, Phone, Qualification, Taxonomy } from './contractphysician.model';
+import { environment } from '../../environments/environment';
+
+const API_URL = environment.apiURL;
 
 @Component({
   selector: 'app-contractphysician',
@@ -605,7 +608,7 @@ export class ContractphysicianComponent implements OnInit {
     console.log(this.model);
     console.log(JSON.stringify(this.model));
 
-    this.httpClient.post('https://lacare-tpm-experience-api-dev.cloudhub.io/api/providers', this.model)
+    this.httpClient.post(API_URL+'/api/providers', this.model)
       .subscribe(
         res => {
           console.log(res)
