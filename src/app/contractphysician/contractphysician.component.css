@@ -328,14 +328,14 @@ visibility: visible;
     font-weight: bold;
     color: #444444; */
     color: rgba(68, 68, 68, 0.7);
-        font-size: 15px;
+        font-size: 12px;
         /* font-family: ArialMT, Regular; */
         font-weight: normal;
   }
-  .pop-container{
+  /* .pop-container{
     color: #555;
     background:#fff;
-  }
+  } */
   .pop-container ul{
     list-style:none;
     padding: 0px;
