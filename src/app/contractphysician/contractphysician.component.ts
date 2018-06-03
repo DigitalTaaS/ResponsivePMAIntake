@@ -342,8 +342,8 @@ export class ContractphysicianComponent implements OnInit {
   {
     console.log(selectedValue);
     this.degrees=[];
-    if (selectedValue=="CNTRPhysician")
-    {
+    // if (selectedValue=="CNTRPhysician")
+    
     this.degrees.push(new Dropdown("Doctor of Osteopathic Medicine", "DO"));
     this.degrees.push(new Dropdown("Doctor of Medicine", "MD"));
     this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
@@ -357,10 +357,10 @@ export class ContractphysicianComponent implements OnInit {
     this.degrees.push(new Dropdown("Doctor of Optometry", "OD"));
     this.degrees.push(new Dropdown("Doctor of Physical Therapy", "DPT"));
     this.degrees.push(new Dropdown("Doctor of Speech-Language Pathology", "SLPD"));
-    }
+    
     //Extended PCP
-    if (selectedValue=="CNTRExtendedPCP")
-    {
+    // if (selectedValue=="CNTRExtendedPCP")
+    // {
       this.degrees.push(new Dropdown("Master of Science in Nursing", "MSN"));
     this.degrees.push(new Dropdown("Master of Clinical Health Services", "MCHS"));
     this.degrees.push(new Dropdown("Master of Clinical Medical Science", "MCMSc"));
@@ -372,12 +372,12 @@ export class ContractphysicianComponent implements OnInit {
     this.degrees.push(new Dropdown("Postgraduate Diploma in Physician Associate studies", "PgDip"));
     this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
    
-     }
+    //  }
      //Extended Other
-    if (selectedValue=="CNTROther")
-    {
+    // if (selectedValue=="CNTROther")
+    // {
     this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
-     } 
+    //  } 
    //  this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
 
     selectedValue="";
@@ -491,51 +491,59 @@ export class ContractphysicianComponent implements OnInit {
     this.states.push(new Dropdown("Wyoming", "WY"));
 
     //USER STORY-973-Contracted Partner Panel
-    this.contractedPartners.push(new Dropdown("Physician", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Extended PCP", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Other", "CNTROther"));
+    this.contractedPartners.push(new Dropdown("Allied Physicians if California, A Professional Medical Corp ", "CNTRPhysician"));
+    this.contractedPartners.push(new Dropdown("Applecare Medical Group, Inc ", "CNTRExtendedPCP"));
+    this.contractedPartners.push(new Dropdown("Community Family Care IPA ", "CNTROther"));
     
-    //New lists for drop down
-    this.contractedPartners.push(new Dropdown("AIDS Healthcare Foundation", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Allied Physicians if California, A Professional Medical Corp", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Altamed Health Services Corp", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Angel Medical Group, Inc.", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Angeles IPA, A Medical Corporation ", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Applecare Medical Group St. Francis, Inc.", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Applecare Medical Group, Inc", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Axminster Medical Group Inc.", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Bella Vista Medical Group IPA", "CNTROther"));
 
-    this.contractedPartners.push(new Dropdown("Cedars-Sinai Medical Care Foundation", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Citrus Valley Physicians Group", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("City of Hope Medical Foundation", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Community Family Care IPA", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Crown City Medical Group, Inc.", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Davita Medical Group Talbert California, P.C.", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("El Proyecto Del Barrio, Inc", "CNTROther"));
     
-    this.contractedPartners.push(new Dropdown("Employee Health Systems Medical Group", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Exceptional Care Medical Group, Inc", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Family Care Specislist", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Global Care Medical Group IPA", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("HealthCare Partners Associates Medical Group, Inc.", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Heritage Provider Network, Inc.", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Martin Luther King Jr Community Medical Group", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("MedPoint Management, Inc. (NPI belongs to MedPoints)", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Omnicare Medical Group, Inc.", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Pioneer Provider Network", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Pomona Valley Medical Group, Inc. ", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Preferred IPA of California, A Professional Medical Corporation", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("Prospect Medical Group, Inc", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("Seaside Health Plan", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Seoul Medical Group Inc", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("South Atlantic Medical Group", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("St. Vincent IPA Medical Corporations", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("UC Regents", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
-    this.contractedPartners.push(new Dropdown("University Childrens Medical Group", "CNTRPhysician"));
-    this.contractedPartners.push(new Dropdown("USC Care Medical Group, Inc", "CNTRExtendedPCP"));
-    this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
+
+
+
+
+
+
+    //New lists for drop down
+    // this.contractedPartners.push(new Dropdown("AIDS Healthcare Foundation", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Allied Physicians if California, A Professional Medical Corp", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Altamed Health Services Corp", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Angel Medical Group, Inc.", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Angeles IPA, A Medical Corporation ", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Applecare Medical Group St. Francis, Inc.", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Applecare Medical Group, Inc", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Axminster Medical Group Inc.", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Bella Vista Medical Group IPA", "CNTROther"));
+
+    // this.contractedPartners.push(new Dropdown("Cedars-Sinai Medical Care Foundation", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Citrus Valley Physicians Group", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("City of Hope Medical Foundation", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Community Family Care IPA", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Crown City Medical Group, Inc.", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Davita Medical Group Talbert California, P.C.", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("El Proyecto Del Barrio, Inc", "CNTROther"));
+    
+    // this.contractedPartners.push(new Dropdown("Employee Health Systems Medical Group", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Exceptional Care Medical Group, Inc", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Family Care Specislist", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Global Care Medical Group IPA", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("HealthCare Partners Associates Medical Group, Inc.", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Heritage Provider Network, Inc.", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Martin Luther King Jr Community Medical Group", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("MedPoint Management, Inc. (NPI belongs to MedPoints)", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Omnicare Medical Group, Inc.", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Pioneer Provider Network", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Pomona Valley Medical Group, Inc. ", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Preferred IPA of California, A Professional Medical Corporation", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("Prospect Medical Group, Inc", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("Seaside Health Plan", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Seoul Medical Group Inc", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("South Atlantic Medical Group", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("St. Vincent IPA Medical Corporations", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("UC Regents", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
+    // this.contractedPartners.push(new Dropdown("University Childrens Medical Group", "CNTRPhysician"));
+    // this.contractedPartners.push(new Dropdown("USC Care Medical Group, Inc", "CNTRExtendedPCP"));
+    // this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
     
     
  
@@ -591,9 +599,10 @@ export class ContractphysicianComponent implements OnInit {
     this.hours.push(new Dropdown("6:30pm", "6:30pm"));
     this.hours.push(new Dropdown("7:00pm", "7:00pm"));
 
-    this.practiceTypes.push(new Dropdown("Provider Type1", "Provider Type1"));
-    this.practiceTypes.push(new Dropdown("Provider Type2", "Provider Type2"));
-    this.practiceTypes.push(new Dropdown("Provider Type3", "Provider Type3"));
+    this.practiceTypes.push(new Dropdown("PCP", "PCP"));
+    this.practiceTypes.push(new Dropdown("PCP/Specialist", "PCP/Specialist"));
+    this.practiceTypes.push(new Dropdown("Specialist", "Specialist"));
+    this.practiceTypes.push(new Dropdown("PCP extender", "PCP extender"));
 
     this.locationTypes.push(new Dropdown("Practice", "Practise"));
     this.locationTypes.push(new Dropdown("Office", "Office"));
