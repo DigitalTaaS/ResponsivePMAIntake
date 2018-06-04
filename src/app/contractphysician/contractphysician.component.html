@@ -191,23 +191,20 @@
                                 <div id="cpPanelinfo" class="panel-collapse collapse show panel-content" role="tabpanel" aria-labelledby="headingFour">
                                     <div class="panel-body">
                                         <div class="form-row">
-                                            <div class="form-group col-8">
+                                            <div class="form-group">
                                                 <label for="inputPpg">
                                                     CONTRACTED PARTNER*
                                                 </label>
 
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
-                                                        <div class="col-4">
-                                                            <div class="contracted-partner">
+                                                        <div class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                                                 <select size="1" class="form-control black-border select-input" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
                                                                     (change)="onSelectContractedPartner($event.target.value)">
                                                                     <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
                                                                 </select>
-                                                            </div>
                                                         </div>
-                                                        <div class="col-7"></div>
-                                                        <div class="col-1">
+                                                        <div class="col-2">
                                                             <span *ngIf="i > 0">
                                                                 <button type="button" class="btn btn-sm invalid thin-minus" style="border-radius:50px" (click)="removeContractedPartner(i)">
                                                                     <span class="fa fa-minus-circle minus-button" style="color: white"></span>

@@ -109,9 +109,6 @@
         }
     }
 
-    .contracted-partner {
-        min-width: 225px;
-    }
 
     .sidenav a {
         font-size: 20px;
@@ -464,13 +461,12 @@ visibility: visible;
    }
    .pop {
     position: relative;
-    width: 900px;
-      background-color: #fff;
-      border-radius: 4px;
+    width: 100%;
+    background-color: #fff;
     top: 0px;
     left: 0px;
     height: 300px;
-    box-shadow: 1px -1px 4px #ccc;
+    
     border:1px solid #444444;
   }
   
@@ -481,14 +477,20 @@ visibility: visible;
   
   .pop-arrow {
       position: absolute;
-      top: 0px;
+      top: -20px;
       left: 43%;
       border-left: 15px solid transparent;
       border-right: 15px solid transparent;
-      border-bottom: 20px solid #eee;
+      border-bottom: 20px solid #fff;
     width: 0;
     height: 0;
-    -webkit-filter: drop-shadow(0 -2px 2px #AAA);
+    -webkit-filter: drop-shadow(1 -2px 2px #AAA);
+  }
+
+  .pop-arrow:before {
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
+      border-bottom: 22px solid #444444;
   }
   .pop-title{
     padding: 7px 10px;
