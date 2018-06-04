@@ -1,81 +1,86 @@
 <div>
     <div class="row">
-        <div class="col-2 sidemenu" style="padding: 0px">
-            <div class="" style="padding-bottom: 100px;padding-left: 10px;padding-top: 10px;">
-                <div class="card" style="width: 20rem;  margin-bottom: 50px; border:0px;border-radius: 0%;margin-left: 2px">
-                    <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" height="50" alt="Card image cap">
-                </div>
-            </div>
-            <div class="sidenav">
-                <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
-                    <br>PROVIDER</h5>
-
-                <table style="margin: 0px auto;">
-                    <hr/>
-                    <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
-                        <td class="">
-                            <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
-                                DEMOGRAPHICS
-                            </a>
-                        </td>
-
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.demographics.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
-                                'invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
-                        <td class="">
-                            <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
-                                CONT. PARTNER
-                            </a>
-                        </td>
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.contractedPartners.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
-                                'invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
-                            </span>
-
-                        </td>
-                    </tr>
-                    <tr [ngClass]="{'badge-custom' : licencePanelValueChange}">
-                        <td class="text-center">
-                            <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
-                                LICENSING
-                            </a>
-                        </td>
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.licensing.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
-                                'invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
-                        <td class="text-center">
-                            <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
-                                LOCATION
-                            </a>
-                        </td>
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
-                                'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
-                            </span>
-                        </td>
-                    </tr>
-                    <hr/>
-                </table>
-
-
-                <br>
-                <br>
-                <br>
-                <br>
-
-                <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
-                    <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
+        <div class="col-12 col-lg-3 col-xl-3">
+            <div class="sidemenu">
+                    <div class="sticky-bar fixed-top">
+                            <div class="logo">
+                                <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
+                            </div>
+                    </div>
+                    <div class="logo">
+                            <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
+                    </div>
+                        <div class="sidenav">
+                            <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
+                                <br>PROVIDER</h5>
+            
+                            <table style="margin: 0px auto;">
+                                <hr/>
+                                <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
+                                    <td class="">
+                                        <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
+                                            DEMOGRAPHICS
+                                        </a>
+                                    </td>
+            
+                                    <td>
+                                        <span [class.badge]="contractPhysicianForm.controls.demographics.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
+                                            'invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
+                                    <td class="">
+                                        <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
+                                            CONT. PARTNER
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span [class.badge]="contractPhysicianForm.controls.contractedPartners.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
+                                            'invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
+                                        </span>
+            
+                                    </td>
+                                </tr>
+                                <tr [ngClass]="{'badge-custom' : licencePanelValueChange}">
+                                    <td class="text-center">
+                                        <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
+                                            LICENSING
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span [class.badge]="contractPhysicianForm.controls.licensing.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
+                                            'invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
+                                    <td class="text-center">
+                                        <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
+                                            LOCATION
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span [class.badge]="contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
+                                            'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
+                                        </span>
+                                    </td>
+                                </tr>
+                                <hr/>
+                            </table>
+            
+            
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+            
+                            <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
+                                <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
+                    </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-12 col-lg-9 col-xl-9">
             <div class="main-top"></div>
             <div class="main">
                 <form [formGroup]="contractPhysicianForm">
@@ -89,12 +94,12 @@
                                             'invalid-text' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}"
                                             data-toggle="collapse" data-parent="#accordion" href="#demoPanelinfo" aria-expanded="true"
                                             aria-controls="demoPanelinfo" (click)="togglePanel('demo')" style="text-decoration: none;border-radius:100%">
-                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !demoPanelClicked, 'glyphicon-chevron-up' : demoPanelClicked}"></i>
+                                            <i class="fa arrow-button" [ngClass]="{'fa-chevron-down' : !demoPanelClicked, 'fa-chevron-up' : demoPanelClicked}"></i>
                                         </button>
                                         <span class="panel-heading-text">DEMOGRAPHICS</span>
                                     </h6>
                                 </div>
-                                <div id="demoPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne" style="padding-left:125px;">
+                                <div id="demoPanelinfo" class="panel-collapse collapse show panel-content" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
@@ -133,21 +138,23 @@
                                         <br>
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
-                                                <label for="inputdob">
-                                                    DATE OF BIRTH*
-                                                </label>
-                                                <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----">
+                                                <div class="date-input">
+                                                    <label for="inputdob">
+                                                            DATE OF BIRTH*
+                                                    </label>
+                                                    <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----">
+                                                </div>
                                             </div>
 
-                                            <div class="form-group col-md-5" style="padding-left: 50px">
+                                            <div class="form-group col-md-6" style="padding-left: 50px">
                                                 <label for="inputgndr">
                                                     GENDER*
                                                 </label>
                                                 <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent;box-shadow: none;">
-                                                    <button type="button" class="btn gender-button" style="border: 2px black; border-top-left-radius: 25px; border-bottom-left-radius: 25px; width:50%"
-                                                        [ngClass]="{'gender-selected': male}" (click)="toggleGender()">MALE</button>
-                                                    <button type="button" class="btn gender-button" style="border-top-right-radius: 25px; border-bottom-right-radius: 25px; width:50%"
-                                                        [ngClass]="{'gender-selected': !male}" (click)="toggleGender()">FEMALE</button>
+                                                    <button type="button" class="btn gender-button male"
+                                                        [ngClass]="{'gender-selected': male}" (click)="toggleGender()">Male</button>
+                                                    <button type="button" class="btn gender-button female"
+                                                        [ngClass]="{'gender-selected': !male}" (click)="toggleGender()">Female</button>
                                                 </div>
                                                 <!-- <div class="text-center black-border gender-div">
                                                             <span class="gender-span text-center" [ngClass]="{'gender-selected': male}" (click)="toggleGender()">Male</span>
@@ -176,12 +183,12 @@
                                             'invalid-text' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}"
                                             data-toggle="collapse" data-parent="#accordion" href="#cpPanelinfo" aria-expanded="false"
                                             aria-controls="cpPanelinfo" (click)="togglePanel('cp')" style="text-decoration: none">
-                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !cpPanelClicked, 'glyphicon-chevron-up' : cpPanelClicked}"></i>
+                                            <i class="fa arrow-button" [ngClass]="{'fa-chevron-down' : !cpPanelClicked, 'fa-chevron-up' : cpPanelClicked}"></i>
                                         </button>
                                         <span class="panel-heading-text">CONTRACTED PARTNER</span>
                                     </h6>
                                 </div>
-                                <div id="cpPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingFour" style="padding-left: 125px">
+                                <div id="cpPanelinfo" class="panel-collapse collapse show panel-content" role="tabpanel" aria-labelledby="headingFour">
                                     <div class="panel-body">
                                         <div class="form-row">
                                             <div class="form-group col-8">
@@ -191,16 +198,19 @@
 
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
-                                                        <div class="col-6">
-                                                            <select size="1" class="form-control black-border" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
-                                                                (change)="onSelectContractedPartner($event.target.value)">
-                                                                <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
-                                                            </select>
+                                                        <div class="col-4">
+                                                            <div class="contracted-partner">
+                                                                <select size="1" class="form-control black-border select-input" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
+                                                                    (change)="onSelectContractedPartner($event.target.value)">
+                                                                    <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-2" style="padding-left: 0px;">
+                                                        <div class="col-7"></div>
+                                                        <div class="col-1">
                                                             <span *ngIf="i > 0">
-                                                                <button type="button" class="btn btn-sm invalid" style="border-radius:50px" (click)="removeContractedPartner(i)">
-                                                                    <span class="glyphicon glyphicon-minus" style="color: white"></span>
+                                                                <button type="button" class="btn btn-sm invalid thin-minus" style="border-radius:50px" (click)="removeContractedPartner(i)">
+                                                                    <span class="fa fa-minus-circle minus-button" style="color: white"></span>
                                                                 </button>
                                                             </span>
                                                         </div>
@@ -211,8 +221,8 @@
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                            <button type="button" class="btn btn-default btn-sm" style="border-radius:100%" (click)="addContractedPartner()">
-                                                <span class="glyphicon glyphicon-plus-sign" style="padding-top: 5px"></span>
+                                            <button type="button" class="btn btn-default btn-sm thin-button" style="border-radius:100%" (click)="addContractedPartner()">
+                                                <span class="fa fa-plus-circle add-button"></span>
                                             </button>
                                         </div>
                                     </div>
@@ -226,15 +236,15 @@
                                             <button class="btn collapsed badge" [ngClass]="{'valid-text' : contractPhysicianForm.controls.licensing.valid,
                                             'invalid-text' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.touched) && contractPhysicianForm.controls.licensing.invalid}" data-toggle="collapse" data-parent="#accordion" href="#licensePanelinfo" aria-expanded="false" aria-controls="licensePanelinfo"
                                                 (click)="togglePanel('licence')" style="text-decoration: none">
-                                                <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !licencePanelClicked, 'glyphicon-chevron-up' : licencePanelClicked}"></i>
+                                                <i class="fa arrow-button" [ngClass]="{'fa-chevron-down' : !licencePanelClicked, 'fa-chevron-up' : licencePanelClicked}"></i>
                                             </button>
                                             <span class="panel-heading-text">LICENSING</span>
                                         </h6>
                                     </div>
-                                    <div id="licensePanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingTwo" style="padding-left: 125px">
+                                    <div id="licensePanelinfo" class="panel-collapse collapse show panel-content panel-content" role="tabpanel" aria-labelledby="headingTwo">
                                         <div class="panel-body">
                                             <div class="form-row">
-                                                <div class="form-group col-4">
+                                                <div class="form-group col-md-4">
                                                     <label for="inputNpinum">
                                                         NPI NUMBER*
                                                     </label>
@@ -242,14 +252,14 @@
                                                     <em *ngIf="npiCtrl.invalid && (npiCtrl.touched || npiCtrl.dirty) ">10 digit number only</em>
                                                 </div>
     
-                                                <div class="form-group col-4" item-width="180px">
+                                                <div class="form-group col-md-4" item-width="180px">
                                                     <label for="inputLnum">
                                                         LICENSE NUMBER*
                                                     </label>
                                                     <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required [ngClass]="{'red-border': licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty), 'black-border': licenceCtrl.valid || licenceCtrl.pristine}">
                                                     <em *ngIf="licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty)">Numbers only</em>
                                                 </div>
-                                                <div class="form-group col-4" item-width="180px">
+                                                <div class="form-group col-md-4" item-width="180px">
                                                     <label for="inputLnum">
                                                         DEA NUMBER*
                                                     </label>
@@ -259,19 +269,20 @@
                                             </div>
                                             <!-- LIC NUMBER-->
                                             <div class="form-row">
-                                                <div class="form-group col-4">
+                                                <div class="form-group col-md-2">
                                                     <label for="inputDegr">
                                                         DEGREE*
                                                     </label>
                                                     <!-- <select size="1" class="form-control black-border" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
                                                         formControlName="degreeName"> -->
                                                         <!-- <option *ngFor="let degree of degrees" value="degree.value">{{degree.text}}</option> -->
-                                                        <select size="1" class="form-control black-border" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
+                                                        <select size="1" class="form-control black-border select-input" id="inputphysDegree" item-width="180px" item-height="180px" item-render-buffer="150px"
                                                         formControlName="degreeName">
                                                         <option *ngFor="let degree of degrees" [value]="degree.value">{{degree.text}}</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-4">
+                                                <div class="col-md-2"></div>
+                                                <div class="form-group col-md-4">
                                                     <label for="inputTxc">
                                                         <!-- <h5 style="font: 15px;font: ArialMT, Regular; -webkit-padding-start: 10px;">TAXONOMY CODE*</h5> -->
                                                         TAXONOMY CODE*
@@ -280,8 +291,8 @@
                                                         <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option>
                                                     
                                                     </select> -->
-                                                    <div class="form-row form-group col-12 ">
-                                                            <select size="1" (mouseover)="onSelect($event)" class="form-control black-border" formControlName="taxanomyCode" required >Dropdown
+                                                    <div class="form-row form-group">
+                                                            <select size="1" (mouseover)="onSelect($event)" class="form-control black-border select-input" formControlName="taxanomyCode" required  style="click-events: none;">Dropdown
                                                            
                                                                   <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
                                                                   <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.id">{{selectedTaxcode}}</option>
@@ -319,14 +330,14 @@
                                                                     <table class="table pop-title" style="width:800px;">
                                                                     
                                                                   <tbody class="table">
-                                                                        <tr class="table table-light noborders">
+                                                                        <tr class="table table-light table-borders">
                                                                                <!-- <td class="pop-container">Id</td> -->
                                                                                 <td class="pop-container">Code</td>
                                                                                 <td class="pop-container">Grouping</td>
                                                                                 <td class="pop-container">Classification</td>
                                                                                 <td class="pop-container">Specialization</td>
                                                                               </tr>
-                                                                    <tr class="table  pop-container noborders" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
+                                                                    <tr class="table  pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
                                                                      
                                                                      <!-- <td colspan="5">  <h4> <a  (click)="onselectClient(degree)" #selectV [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h4> </td> -->
                                                                       <!-- <td>{{i+1}}</td>  -->
@@ -461,19 +472,19 @@
                                             data-toggle="collapse" data-parent="#accordion" href="#locationPanelinfo"
                                             aria-expanded="false" aria-controls="locationPanelinfo" (click)="togglePanel('location')"
                                             style="text-decoration: none">
-                                            <i class="glyphicon" [ngClass]="{'glyphicon-chevron-down' : !locationPanelClicked, 'glyphicon-chevron-up' : locationPanelClicked}"></i>
+                                            <i class="fa arrow-button" [ngClass]="{'fa-chevron-down' : !locationPanelClicked, 'fa-chevron-up' : locationPanelClicked}"></i>
                                         </button>
                                         <span class="panel-heading-text">LOCATION</span>
                                     </h6>
                                 </div>
-                                <div id="locationPanelinfo" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingThree" style="padding-left: 125px">
+                                <div id="locationPanelinfo" class="panel-collapse collapse show panel-content" role="tabpanel" aria-labelledby="headingThree">
                                     <div class="panel-body" style="padding: 0px 0px 0px 15px">
                                         <div>
                                             <div formArrayName="locations">
                                                 <div class="" *ngFor="let location of contractPhysicianForm.controls.locations['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i">
                                                         <div class="row col-12">
-                                                            <div *ngIf="i == 0" class="col-2">
+                                                            <div *ngIf="i == 0" class="col-12 col-xl-2">
                                                                 <h6 style="font: 15px;font: ArialMT, Regular;">LOCATION TYPE</h6>
                                                                 <div class="form-row">
                                                                     <div class="form-group">
@@ -493,19 +504,19 @@
                                                                         </select>
                                                                     </div>
                                                                     <span style="padding-left: 5px">
-                                                                        <button type="button" class="btn btn-danger btn-sm" style="border-radius:100%" (click)="removeLocation(i)">
-                                                                            <span class="glyphicon glyphicon-remove-circle"></span>
+                                                                        <button type="button" class="btn btn-danger btn-sm thin-minus" style="border-radius:100%" (click)="removeLocation(i)">
+                                                                            <span class="fa fa-minus-circle"></span>
                                                                         </button>
                                                                     </span>
                                                                 </div>
 
                                                             </div>
-                                                            <div class="col-10 vertical">
+                                                            <div class="col-12 col-xl-10 vertical">
                                                                 <div *ngIf="i > 0">
                                                                     <hr/>
                                                                 </div>
                                                                 <div class="form-row">
-                                                                    <div class="form-group col-6">
+                                                                    <div class="form-group col-12 col-md-6">
                                                                         <label for="inputAddress">
                                                                             ADDRESS*
                                                                         </label>
@@ -523,7 +534,7 @@
                                                                 </div>
 
                                                                 <div class="form-row">
-                                                                    <div class="form-group col-6">
+                                                                    <div class="form-group col-12 col-sm-6">
                                                                         <label for="inputCity">
                                                                             CITY*
                                                                         </label>
@@ -531,11 +542,11 @@
                                                                         <em *ngIf="cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty)">Required - Alpha only</em>
                                                                     </div>
 
-                                                                    <div class="form-group col-3">
+                                                                    <div class="form-group col-12 col-sm-6 col-md-3">
                                                                         <label for="inputSTate">
                                                                             STATE*
                                                                         </label>
-                                                                        <select size="1" class="form-control black-border" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px"
+                                                                        <select size="1" class="form-control black-border select-input" id="inputState" item-width="180px" item-height="180px" item-render-buffer="150px"
                                                                             formControlName="state">
                                                                             <option *ngFor="let state of states" [value]="state.value">{{state.text}}</option>
                                                                         </select>
@@ -543,7 +554,7 @@
                                                                     </div>
 
 
-                                                                    <div class="form-group col-3">
+                                                                    <div class="form-group col-sm-4 col-md-3 col-lg-3">
                                                                         <label for="inputZip">
                                                                             ZIP*
                                                                         </label>
@@ -584,18 +595,18 @@
                                                                     <br/>
                                                                     <div formArrayName="officeHours">
                                                                         <div class="form-row">
-                                                                            <div class="col-2">
+                                                                            <div class="col-3">
                                                                                 <label>
                                                                                     OFFICE HOURS*
                                                                                 </label>
                                                                             </div>
-                                                                            <div class="col-2">
+                                                                            <div class="col-3">
                                                                                 <label>
                                                                                     OPEN*
                                                                                 </label>
                                                                             </div>
 
-                                                                            <div class="col-2">
+                                                                            <div class="col-3">
                                                                                 <label>
                                                                                     CLOSE*
                                                                                 </label>
@@ -605,29 +616,29 @@
 
                                                                         <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
                                                                             <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
-                                                                                <div class="col-2">
-                                                                                    <select size="1" class="form-control" formControlName="day">
+                                                                                <div class="col-3">
+                                                                                    <select size="1" class="form-control select-input" formControlName="day">
                                                                                         <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
                                                                                     </select>
                                                                                 </div>
-                                                                                <div class="col-2">
-                                                                                    <select (change)="onItemChangeOne($event.target.value)" size="1" class="form-control" formControlName="open">
+                                                                                <div class="col-3">
+                                                                                    <select (change)="onItemChangeOne($event.target.value)" size="1" class="form-control select-input" formControlName="open">
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <div>
                                                                                     <strong> - </strong>
                                                                                 </div>
-                                                                                <div class="col-2">
-                                                                                    <select (change)="onItemChangeTwo($event.target.value)" size="1" class="form-control" formControlName="close">
+                                                                                <div class="col-3">
+                                                                                    <select (change)="onItemChangeTwo($event.target.value)" size="1" class="form-control select-input" formControlName="close">
                                                                                         <option *ngFor="let hour of hours" [value]="hour.value">{{hour.text}}</option>
                                                                                     </select>
                                                                                 </div>
 
                                                                                 <div *ngIf="j > 0" class="col-1" style="padding-left: 0px;">
                                                                                     <span>
-                                                                                        <button type="button" class="btn btn-sm invalid" style="border-radius:50px" (click)="removeOfficeHour(i, j)">
-                                                                                            <span class="glyphicon glyphicon-minus" style="color: white"></span>
+                                                                                        <button type="button" class="btn btn-sm thin-minus" style="border-radius:50px" (click)="removeOfficeHour(i, j)">
+                                                                                            <span class="fa fa-minus-circle minus-button"></span>
                                                                                         </button>
                                                                                     </span>
                                                                                 </div>
@@ -637,8 +648,8 @@
 
                                                                     </div>
                                                                     <div class="form-row" style="padding-top: 10px">
-                                                                        <button [disabled]="!isOfficeHoursValid" type="button" class="btn btn-default btn-sm" style="border-radius:100%" (click)="addOfficeHour(i)">
-                                                                            <span class="glyphicon glyphicon-plus-sign" style="padding-top: 5px"></span>
+                                                                        <button [disabled]="!isOfficeHoursValid" type="button" class="btn btn-default btn-sm thin-button" style="border-radius:100%" (click)="addOfficeHour(i)">
+                                                                            <span class="fa fa-plus-circle add-button"></span>
                                                                         </button>
                                                                     </div>
                                                                     <div *ngIf="!isOfficeHoursValid">
@@ -656,10 +667,10 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-row">
-                                                                        <div class="form-group col-md-2">
+                                                                        <div class="form-group col-4 col-md-2">
                                                                             <input type="number" class="form-control" placeholder="MIN" formControlName="minAge">
                                                                         </div>
-                                                                        <div class="form-group col-md-2">
+                                                                        <div class="form-group col-4 col-md-2">
                                                                             <input type="number" class="form-control" placeholder="MAX" formControlName="maxAge">
                                                                         </div>
                                                                     </div>
@@ -669,7 +680,7 @@
                                                                             <label for="inputMail">
                                                                                 PRACTICE TYPE*
                                                                             </label>
-                                                                            <select size="1" class="form-control black-border" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType"
+                                                                            <select size="1" class="form-control black-border select-input" item-width="180px" item-height="180px" item-render-buffer="150px" formControlName="providerType"
                                                                                 required>
                                                                                 <option *ngFor="let pt of practiceTypes" [value]="pt.value">{{pt.text}}</option>
                                                                             </select>

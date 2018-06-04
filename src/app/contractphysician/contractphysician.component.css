@@ -23,13 +23,27 @@
         /* content:'\f078'; */
     }
 
+    .panel-content {
+        padding-left: 10%;
+    }
+
+    .panel { 
+        box-shadow:none;
+        -webkit-box-shadow: none;
+    }
     .fa-2x{
         font-size: 1.5em;
     }
 
-    .vertical{
+    .vertical {
         border-left:2px solid rgba(0, 0, 0, 0.1);
     }
+    @media (max-width: 1200px) {
+        .vertical{
+          border: none;
+        }
+    }
+
     .vertical-black{
         border-left:1px solid #444444;
     }
@@ -42,21 +56,61 @@
         }
 
     .sidemenu{
-        position: fixed;
-        width:300px;
+        position: relative;
     }
 
     .sidenav {
         background-color: rgba(59, 149, 216, 0.3);
-        left: 0;
+        position: fixed;
+        left: 0px;
+        top: 294px;
+        width:17%;
+        min-width:225px;
+    }
+    @media (max-width: 992px) {
+        .sidenav {
+            display: none;
+        }
+    }
+
+
+    .logo {
+        position: fixed;
+        top: 35px;
+        left: 35px;
+        z-index:1000;
+
+    }
+    .card-img-top {
+        width: 200px;
     }
     
     .sidenav h5 {
         font-size: 25px;
-        /* font-family: 'Times New Roman', Times, serif; */
+        font-family: 'Roboto', sans-serif;
         color: rgba(68, 68, 68, 1);
         padding: 25px;
-        font-weight: normal;        
+        font-weight: 300;        
+    }
+
+    .date-input {
+        min-width: 170px;
+    }
+
+    .sticky-bar {
+        background-color: white;
+        padding-bottom: 110px;
+        z-index:999px;
+
+    }
+    @media (min-width: 992px) {
+        .sticky-bar{
+        display:none;
+        }
+    }
+
+    .contracted-partner {
+        min-width: 225px;
     }
 
     .sidenav a {
@@ -66,12 +120,16 @@
     }
 
     .main-top {
+        padding-top: 120px;
+    }
+    @media (min-width: 992px) {
+        .main-top{
         padding-top: 200px;
-        /* position: fixed; */
+        }
     }
     
     .main {
-        padding-left: 350px; 
+        margin-right: 10%; 
     }
 
     hr {
@@ -115,8 +173,62 @@
     .gender-button{
         background-color: rgba(255, 255, 255, 0.7);
         color: rgba(68, 68, 68, 0.7);
+        font-family: 'ArialMT';
+        font-size: 16px;
+        border: 1px solid #444444; 
+        width:40%
     }
 
+    .gender-button.male {
+        border-top-left-radius: 25px; 
+        border-bottom-left-radius: 25px; 
+    }
+
+    .gender-button.female {
+        border-top-right-radius: 25px; 
+        border-bottom-right-radius: 25px; 
+        min-width: 83px;
+    }
+
+    .select-input {
+        height: 30px;
+    }
+
+    .thin-button {
+        padding-top:0px;
+        padding-bottom:0px;
+        padding-left: 5px;
+        padding-right:5px;
+        border:none;
+    }
+
+    .thin-minus {
+        padding-top:0px;
+        padding-bottom:0px;
+        padding-left: 5px;
+        padding-right:5px;
+        border:none;
+        margin-top:3px;
+        background-color: white;
+    }
+
+    .add-button {
+        color: #777;
+        font-size: 30px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    
+    .minus-button {
+        color: #B09EC1;
+        font-size: 20px;
+        padding-top: 3px;
+        padding-bottom: 3px;   
+    }
+
+    .arrow-button {
+        font-weight:bold;
+    }
     .btn:focus,.btn:active {
         outline: none !important;
         box-shadow: none;
@@ -145,7 +257,6 @@
     .badge-custom{
         background-color:#FFFFFF;
         color:#444444;
-        border-radius:50px; 
         
     }
 
@@ -248,13 +359,17 @@
     }
 
     .panel-heading-text{
-        padding-left: 25px;
-        /* font-family: Lantinghei TC, Extralight; */
+        padding-left: 30px;
+        font-family: 'Roboto', sans-serif;
         font-size: 22px;
-        /* color: rgba(68, 68, 68, 1); */
+        font-weight:300;
+        color: rgba(68, 68, 68, 1);
         vertical-align: middle;
     }
 
+    .panel-group {
+        width: 95%;
+    }
     .search-result {
         border: 1px solid #ccc;
         width: 94.2%;
@@ -359,6 +474,10 @@ visibility: visible;
     border:1px solid #444444;
   }
   
+
+  /* tr[_ngcontent-c1] td[_ngcontent-c1] { 
+      border-radius:0;
+  } */
   
   .pop-arrow {
       position: absolute;
@@ -406,13 +525,13 @@ visibility: visible;
   }
   .col-bg-color1{
     background-color: lightgrey ;
-
+    border-radius:0;
     opacity: 600%;
     
 }
 .col-bg-color2{
  background-color: rgb(250, 250, 250) ;
-
+border-radius:0;
  opacity: 10%;
  
 }
