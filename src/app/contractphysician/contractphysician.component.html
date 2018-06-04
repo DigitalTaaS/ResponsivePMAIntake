@@ -279,7 +279,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2"></div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-12 col-md-4">
                                                     <label for="inputTxc">
                                                         <!-- <h5 style="font: 15px;font: ArialMT, Regular; -webkit-padding-start: 10px;">TAXONOMY CODE*</h5> -->
                                                         TAXONOMY CODE*
@@ -289,12 +289,12 @@
                                                     
                                                     </select> -->
                                                     <div class="form-row form-group">
-                                                            <select size="1" (mouseover)="onSelect($event)" class="form-control black-border select-input" formControlName="taxanomyCode" required  style="click-events: none;">Dropdown
-                                                           
-                                                                  <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
-                                                                  <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.id">{{selectedTaxcode}}</option>
-                                                                </select>
-                                                                 
+                                                            <div class="taxonomy col-12 col-md-4" (mouseover)="onSelect($event)">
+                                                                    <select size="1" class="form-control black-border select-input tax" formControlName="taxanomyCode" required  style="pointer-events: none;">Dropdown
+                                                                        <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
+                                                                        <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.id">{{selectedTaxcode}}</option>
+                                                                    </select>
+                                                                </div>
                                                           </div>
                                                         
                                                 </div>

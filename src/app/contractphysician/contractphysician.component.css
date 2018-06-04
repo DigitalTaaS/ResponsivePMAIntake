@@ -109,6 +109,9 @@
         }
     }
 
+    .tax {
+        min-width: 120px;
+    }
 
     .sidenav a {
         font-size: 20px;
