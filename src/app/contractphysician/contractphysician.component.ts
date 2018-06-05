@@ -17,6 +17,7 @@ import { ContractphysicianModel, Address, Age, ContractedPartner, Facility, Hour
 import { environment } from '../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModal } from './confirmation.modal';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 const API_URL = environment.apiURL;
 
@@ -31,14 +32,19 @@ export class ContractphysicianComponent implements OnInit {
   model: ContractphysicianModel;
   contractPhysicianForm: FormGroup;
   firstnameCtrl: FormControl;
+  middlenameCtrl: FormControl;
   lastnameCtrl: FormControl;
+  aliasnameCtrl: FormControl;
+  suffixCtrl: FormControl;
   npiCtrl: FormControl;
   licenceCtrl: FormControl;
   deaCtrl: FormControl;
   addressCtrl: FormControl;
+  suiteCtrl: FormControl;
   cityCtrl: FormControl;
   zipCtrl: FormControl;
   phoneCtrl: FormControl;
+  faxCtrl: FormControl;
   emailCtrl: FormControl;
   minAgeCtrl: FormControl;
   maxAgeCtrl: FormControl;
@@ -91,18 +97,23 @@ export class ContractphysicianComponent implements OnInit {
 
     ngOnInit() {
 
-    this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
-    this.lastnameCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
+    this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
+    this.middlenameCtrl = new FormControl(null, [Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
+    this.lastnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
+    this.suffixCtrl = new FormControl(null, [Validators.maxLength(10)]);
+    this.aliasnameCtrl = new FormControl(null, [Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
     this.npiCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
     this.licenceCtrl = new FormControl(null, [Validators.required]);
     this.deaCtrl = new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern("[a-zA-Z]{2}[0-9]{7}")]);
-    this.addressCtrl = new FormControl(null, Validators.required);
-    this.cityCtrl = new FormControl(null, [Validators.required, Validators.pattern("[A-z]+$")]);
+    this.addressCtrl = new FormControl(null, [Validators.maxLength(50), Validators.pattern("^[a-zA-Z0-9 ,]*$")]);
+    this.suiteCtrl = new FormControl(null, [Validators.maxLength(15), Validators.pattern("^[a-zA-Z0-9 ,]*$")]);
+    this.cityCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
     this.zipCtrl = new FormControl(null, [Validators.required, , Validators.minLength(5)]);
     this.phoneCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
+    this.faxCtrl = new FormControl(null, Validators.minLength(10));
     this.emailCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
-    this.minAgeCtrl = new FormControl(null, [Validators.max(150)]);
-    this.maxAgeCtrl = new FormControl(null, [Validators.max(150)]);
+    this.minAgeCtrl = new FormControl(null, [Validators.maxLength(3), Validators.max(150)]);
+    this.maxAgeCtrl = new FormControl(null, [Validators.maxLength(3), Validators.max(150)]);
    
 
     
@@ -110,9 +121,9 @@ export class ContractphysicianComponent implements OnInit {
       demographics: this.fb.group({
         firstName: this.firstnameCtrl,
         lastName: this.lastnameCtrl,
-        middleName: new FormControl(),
-        aliasName: new FormControl(),
-        suffixName: new FormControl(),
+        middleName: this.middlenameCtrl,
+        aliasName: this.aliasnameCtrl,
+        suffixName: this.suffixCtrl,
         dateOfBirth: new FormControl(null, Validators.required),
         genderType: new FormControl("M", Validators.required)
       }),
@@ -235,12 +246,12 @@ export class ContractphysicianComponent implements OnInit {
     return this.fb.group({
       locationType: new FormControl(clicked ? "" : "Practice", Validators.required),
       address: this.addressCtrl,
-      suite: new FormControl(),
+      suite: this.suiteCtrl,
       state: new FormControl(null, Validators.required),
       city: this.cityCtrl,
       zipcode: this.zipCtrl,
       phone: this.phoneCtrl,
-      fax: new FormControl(),
+      fax: this.faxCtrl,
       email: this.emailCtrl,
       minAge: this.minAgeCtrl,
       maxAge: this.maxAgeCtrl,
