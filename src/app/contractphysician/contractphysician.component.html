@@ -208,7 +208,7 @@
                                                 <div *ngFor="let contractedPartner of contractPhysicianForm.controls.contractedPartners['controls']; let i=index">
                                                     <div class="row" [formGroupName]="i" style="padding-top: 5px;">
                                                         <div class="col-10">
-                                                                <select size="1" class="form-control black-border select-input" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
+                                                                <select size="1" class="form-control black-border select-input contractedPartner" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
                                                                     (change)="onSelectContractedPartner($event.target.value)">
                                                                 <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
                                                             </select>
@@ -606,7 +606,7 @@
                                                                     <br/>
                                                                     <div formArrayName="officeHours">
                                                                         <div class="form-row">
-                                                                            <div class="col-3">
+                                                                            <div class="col-4">
                                                                                 <label>
                                                                                     OFFICE HOURS*
                                                                                 </label>
@@ -627,7 +627,7 @@
 
                                                                         <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
                                                                             <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
-                                                                                <div class="col-3">
+                                                                                <div class="col-4">
                                                                                     <select (change)="onItemChangeday($event.target.value)"  size="1" class="form-control select-input" formControlName="day">
                                                                                         <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
                                                                                     </select>

@@ -137,10 +137,6 @@ img {
     }
 }
 
-hr {
-    border: 0;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
-  }
 
   table td{
       padding:10px;
@@ -247,6 +243,10 @@ tr td:last-child {
 .badge{
       padding: 10px;
   }
+
+.contractedPartner {
+    min-width: 150px;
+}
 
  button.badge{
     padding: 5px;
@@ -408,6 +408,11 @@ select{
     margin: 0px;
     padding: 0px;
    
+}
+
+hr { display:block; 
+    border: 1px solid rgba(0, 0, 0, 0.1) ;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
 }
 
 .search-result ul li {
