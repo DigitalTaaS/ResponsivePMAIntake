@@ -410,9 +410,12 @@ select{
    
 }
 
-hr { display:block; 
-    border: 1px solid rgba(0, 0, 0, 0.1) ;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+.hr-border { 
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1); 
+}
+
+hr {
+    border: none;
 }
 
 .search-result ul li {
