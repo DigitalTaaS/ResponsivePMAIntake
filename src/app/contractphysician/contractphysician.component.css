@@ -158,7 +158,13 @@ tr td:last-child {
 
 .sidelist {
     list-style-type: none;
+    text-align:center;
 }
+
+.shift-left {
+    margin-left: -8px;
+}
+
 .sidelist :hover {
     text-decoration: none;
 }
@@ -166,9 +172,11 @@ tr td:last-child {
 .menuItem {
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 18px;
-    margin-left: -37px;
-    margin-right:3px;
+    margin-left:-20px;
+    margin-right:10px;
+    padding-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 .gender-div{
     border-radius: 20px;
@@ -298,7 +306,7 @@ button.badge i{
 .badge-circle {
     margin-top: 4px;
     float: right;
-    margin-right: 6px;
+    margin-right: 8px;
 }
 
 .valid{

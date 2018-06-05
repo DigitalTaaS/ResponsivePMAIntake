@@ -16,7 +16,7 @@
                 <div class="hr-border"></div>
                 <ul class="sidelist">
                     <li class="menuItem" [ngClass]="{'badge-custom' : demoPanelValueChange}">
-                        <span class="">
+                        <span class="shift-left">
                             <a [routerLink]="" (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
                                 DEMOGRAPHICS
                             </a>
@@ -26,7 +26,7 @@
                         </span>
                     </li>
                     <li class="menuItem" [ngClass]="{'badge-custom' : cpPanelValueChange}">
-                        <span class="">
+                        <span class="shift-left">
                             <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
                                 CONT. PARTNER
                             </a>
@@ -36,7 +36,7 @@
                         </span>
                     </li>
                     <li class="menuItem" [ngClass]="{'badge-custom' : licencePanelValueChange}">
-                        <span class="text-center">
+                        <span class="shift-left">
                             <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
                                 LICENSING
                             </a>
@@ -46,7 +46,7 @@
                         </span>
                     </li>
                     <li class="menuItem" [ngClass]="{'badge-custom' : locationPanelValueChange}">
-                        <span class="text-center">
+                        <span class="shift-left">
                             <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
                                 LOCATION
                             </a>
