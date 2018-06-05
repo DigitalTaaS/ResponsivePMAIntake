@@ -5,85 +5,85 @@
                     <div class="sticky-bar fixed-top">
                             <div class="logo">
                                 <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
-                            </div>
-                    </div>
+                </div>
+            </div>
                     <div class="logo">
                             <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
                     </div>
-                        <div class="sidenav">
-                            <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
-                                <br>PROVIDER</h5>
-            
-                            <table style="margin: 0px auto;">
-                                <hr/>
-                                <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
-                                    <td class="">
-                                        <a (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
-                                            DEMOGRAPHICS
-                                        </a>
-                                    </td>
-            
-                                    <td>
-                                        <span [class.badge]="contractPhysicianForm.controls.demographics.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
-                                            'invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
-                                    <td class="">
-                                        <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
-                                            CONT. PARTNER
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span [class.badge]="contractPhysicianForm.controls.contractedPartners.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
-                                            'invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
-                                        </span>
-            
-                                    </td>
-                                </tr>
-                                <tr [ngClass]="{'badge-custom' : licencePanelValueChange}">
-                                    <td class="text-center">
-                                        <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
-                                            LICENSING
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span [class.badge]="contractPhysicianForm.controls.licensing.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
-                                            'invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
-                                    <td class="text-center">
-                                        <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
-                                            LOCATION
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span [class.badge]="contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
-                                            'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
-                                        </span>
-                                    </td>
-                                </tr>
-                                <hr/>
-                            </table>
-            
-            
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-            
-                            <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
-                                <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
-                    </div>
+            <div class="sidenav">
+                <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
+                    <br>PROVIDER</h5>
+
+                <table style="margin: 0px auto;">
+                    <hr/>
+                    <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
+                        <td class="">
+                            <a [routerLink]="" (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
+                                DEMOGRAPHICS
+                            </a>
+                        </td>
+
+                        <td>
+                            <span [class.badge]="contractPhysicianForm.controls.demographics.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
+                                'invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
+                        <td class="">
+                            <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
+                                CONT. PARTNER
+                            </a>
+                        </td>
+                        <td>
+                            <span [class.badge]="contractPhysicianForm.controls.contractedPartners.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
+                                'invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
+                            </span>
+
+                        </td>
+                    </tr>
+                    <tr [ngClass]="{'badge-custom' : licencePanelValueChange}">
+                        <td class="text-center">
+                            <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
+                                LICENSING
+                            </a>
+                        </td>
+                        <td>
+                            <span [class.badge]="contractPhysicianForm.controls.licensing.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
+                                'invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
+                            </span>
+                        </td>
+                    </tr>
+                    <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
+                        <td class="text-center">
+                            <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
+                                LOCATION
+                            </a>
+                        </td>
+                        <td>
+                            <span [class.badge]="contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
+                                'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
+                            </span>
+                        </td>
+                    </tr>
+                    <hr/>
+                </table>
+
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <!-- <button class="btn btn-outline-rounded btn-default" style="border-radius: 12px;">
+                    <span class="glyphicon glyphicon-chevron-left"></span> Back</button> -->
             </div>
+        </div>
         </div>
         <div class="col-12 col-lg-9 col-xl-9">
             <div class="main-top"></div>
             <div class="main">
-                <form [formGroup]="contractPhysicianForm">
+                <form [formGroup]="contractPhysicianForm" (keydown.enter)="$event.preventDefault()">
                     <div>
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <div formGroupName="demographics" class="panel" style="padding-top: 0px" id="demographicsPanel">
@@ -137,24 +137,25 @@
                                         </div>
                                         <br>
                                         <div class="form-row">
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-5">
                                                 <div class="date-input">
-                                                    <label for="inputdob">
-                                                            DATE OF BIRTH*
-                                                    </label>
-                                                    <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----">
-                                                </div>
+                                                <label for="inputdob">
+                                                    DATE OF BIRTH*
+                                                </label>
+                                                <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----">
+                                            </div>
                                             </div>
 
-                                            <div class="form-group col-md-6" style="padding-left: 50px">
+                                            <div class="col-md-1"></div>
+                                            <div class="form-group col-md-5">
                                                 <label for="inputgndr">
                                                     GENDER*
                                                 </label>
                                                 <div class="form-control btn-group" role="group" style="border:0px;padding: 0px;background-color: transparent;box-shadow: none;">
                                                     <button type="button" class="btn gender-button male"
-                                                        [ngClass]="{'gender-selected': male}" (click)="toggleGender()">Male</button>
+                                                        [ngClass]="{'gender-selected': male}" (click)="toggleGender('M')">Male</button>
                                                     <button type="button" class="btn gender-button female"
-                                                        [ngClass]="{'gender-selected': !male}" (click)="toggleGender()">Female</button>
+                                                        [ngClass]="{'gender-selected': !male}" (click)="toggleGender('F')">Female</button>
                                                 </div>
                                                 <!-- <div class="text-center black-border gender-div">
                                                             <span class="gender-span text-center" [ngClass]="{'gender-selected': male}" (click)="toggleGender()">Male</span>
@@ -201,8 +202,8 @@
                                                         <div class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                                                                 <select size="1" class="form-control black-border select-input" id="inputphysDegree" formControlName="contractedPartner" id="inputphysDegree"
                                                                     (change)="onSelectContractedPartner($event.target.value)">
-                                                                    <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
-                                                                </select>
+                                                                <option *ngFor="let cp of contractedPartners" [value]="cp.value">{{cp.text}}</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-2">
                                                             <span *ngIf="i > 0">
@@ -291,10 +292,10 @@
                                                     <div class="form-row form-group">
                                                             <div class="taxonomy col-12 col-md-4" (mouseover)="onSelect($event)">
                                                                     <select size="1" class="form-control black-border select-input tax" formControlName="taxanomyCode" required  style="pointer-events: none;">Dropdown
-                                                                        <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
-                                                                        <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.id">{{selectedTaxcode}}</option>
-                                                                    </select>
-                                                                </div>
+                                                                  <!-- <option *ngFor="let txcode of txcodes" [value]="txcode.value">{{txcode.id}}</option> -->
+                                                                  <option *ngFor="let txcode of txcodes" [selected]="selectedTaxcode" [value]="txcode.Code">{{selectedTaxcode}}</option>
+                                                                </select>
+                                                            </div>
                                                           </div>
                                                         
                                                 </div>
@@ -334,14 +335,14 @@
                                                                                 <td class="pop-container">Classification</td>
                                                                                 <td class="pop-container">Specialization</td>
                                                                               </tr>
-                                                                    <tr class="table  pop-container" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ id:name ,name: name, Desc1: name,Desc2:name } : false;let i=index;">
+                                                                    <tr class="table  pop-container noborders" (click)="onselectClient(degree)" *ngFor="let degree of degreesdata | async | multicolumnfilter:{ Code:name ,Grouping: name, Classification: name,Specialization:name } : false;let i=index;">
                                                                      
                                                                      <!-- <td colspan="5">  <h4> <a  (click)="onselectClient(degree)" #selectV [innerHTML]="i+1 +' ' +degree.id + '   '+ degree.name + '   '+ degree.Desc1 + '   '+ degree.Desc2 | pmahighlighttext : name"></a></h4> </td> -->
                                                                       <!-- <td>{{i+1}}</td>  -->
-                                                                      <td colspan="1" class="col-bg-color2">{{degree.id}}</td>
-                                                                      <td colspan="1" class="col-bg-color1" [innerHTML]="degree.name | pmahighlighttext : name"></td>
-                                                                      <td colspan="1" class="col-bg-color2" [innerHTML]="degree.Desc1 | pmahighlighttext : name"></td>
-                                                                      <td colspan="1" class="col-bg-color1"  [innerHTML]="degree.Desc2 | pmahighlighttext : name"></td> 
+                                                                      <td colspan="1" class="col-bg-color2">{{degree.Code}}</td>
+                                                                      <td colspan="1" class="col-bg-color1" [innerHTML]="degree.Grouping | pmahighlighttext : name"></td>
+                                                                      <td colspan="1" class="col-bg-color2" [innerHTML]="degree.Classification | pmahighlighttext : name"></td>
+                                                                      <td colspan="1" class="col-bg-color1"  [innerHTML]="degree.Specialization | pmahighlighttext : name"></td> 
                                                                     </tr>
                                                                      
                                                                   </tbody>
@@ -614,7 +615,7 @@
                                                                         <div *ngFor="let officeHour of getOfficeHour(location); let j=index">
                                                                             <div class="form-row" [formGroupName]="j" style="padding-top: 2px;">
                                                                                 <div class="col-3">
-                                                                                    <select size="1" class="form-control select-input" formControlName="day">
+                                                                                    <select (change)="onItemChangeday($event.target.value)"  size="1" class="form-control select-input" formControlName="day">
                                                                                         <option *ngFor="let day of days" [value]="day.value">{{day.text}}</option>
                                                                                     </select>
                                                                                 </div>
@@ -649,9 +650,9 @@
                                                                             <span class="fa fa-plus-circle add-button"></span>
                                                                         </button>
                                                                     </div>
-                                                                    <div *ngIf="!isOfficeHoursValid">
+                                                                    <div *ngIf="!isOfficeHoursValid || !isDayValid">
                                                                         <!-- <b>officeHours Timings are not valid.</b> -->
-                                                                        <em *ngIf="!isOfficeHoursValid">Required-Valid Office hours </em>
+                                                                        <em *ngIf="!isOfficeHoursValid || !isDayValid">Required-Valid Office hours/Day </em>
                                                                     </div>
 
                                                                     <br/>
@@ -707,7 +708,7 @@
                     </div>
                 </form>
                 <div class="text-center" style="padding-bottom: 25px;">
-                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg" [ngClass]="{'btn-success' : contractPhysicianForm.valid}" style="border-radius: 50px;">
+                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg"  [ngClass]="{'btn-success' : contractPhysicianForm.valid}" style="border-radius: 50px;">
                             <span class="badge" style="border-radius: 100%;">
                                 <span class="fa fa-1x glyphicon glyphicon-ok"></span>
                             </span> &nbsp;Submit</button>
