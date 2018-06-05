@@ -104,27 +104,33 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
                                                 <label for="inputFname">FIRST NAME*</label>
-                                                <input type="text" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required [ngClass]="{'red-border': firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty), 'black-border': firstnameCtrl.valid || firstnameCtrl.pristine}">
+                                                <input type="text" maxlength="30" class="form-control" id="inputFname" placeholder="" formControlName="firstName" required 
+                                                    [ngClass]="{'red-border': firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty), 'black-border': firstnameCtrl.valid || firstnameCtrl.pristine}">
                                                 <em *ngIf="firstnameCtrl.invalid && (firstnameCtrl.touched || firstnameCtrl.dirty)">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label for="inputMname">
                                                     MIDDLE NAME
                                                 </label>
-                                                <input type="text" class="form-control" id="inputMname" placeholder="" formControlName="middleName">
+                                                <input type="text" maxlength="30" class="form-control" id="inputMname" placeholder="" formControlName="middleName" 
+                                                    [ngClass]="{'red-border': middlenameCtrl.invalid && (middlenameCtrl.touched || middlenameCtrl.dirty)}">
+                                                <em *ngIf="middlenameCtrl.invalid && (middlenameCtrl.touched || middlenameCtrl.dirty)">Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-3">
                                                 <label for="inputLName">
                                                     LAST NAME*
                                                 </label>
-                                                <input type="text" class="form-control" id="inputLname" placeholder="" formControlName="lastName" required [ngClass]="{'red-border': lastnameCtrl.invalid && (lastnameCtrl.touched || lastnameCtrl.dirty), 'black-border': lastnameCtrl.valid || lastnameCtrl.pristine}">
+                                                <input type="text" maxlength="30" class="form-control" id="inputLname" placeholder="" formControlName="lastName" required 
+                                                  [ngClass]="{'red-border': lastnameCtrl.invalid && (lastnameCtrl.touched || lastnameCtrl.dirty), 'black-border': lastnameCtrl.valid || lastnameCtrl.pristine}">
                                                 <em *ngIf="lastnameCtrl.invalid && (lastnameCtrl.touched || lastnameCtrl.dirty)">Required - Alpha only</em>
                                             </div>
                                             <div class="form-group col-md-1">
                                                 <label for="inputSuffix">
                                                     SUFFIX
                                                 </label>
-                                                <input type="text" class="form-control" id="inputSuff" placeholder="" formControlName="suffixName">
+                                                <input type="text" maxlength="10" class="form-control" id="inputSuff" placeholder="" formControlName="suffixName"
+                                                    [ngClass]="{'red-border': suffixCtrl.invalid && (suffixCtrl.touched || suffixCtrl.dirty) }">
+                                                <em *ngIf="suffixCtrl.invalid && (suffixCtrl.touched || suffixCtrl.dirty)">Maxlength 10</em>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -132,7 +138,9 @@
                                                 <label for="inputAlias">
                                                     ALIAS NAME
                                                 </label>
-                                                <input type="text" class="form-control" id="inputAlias" placeholder="" formControlName="aliasName">
+                                                <input type="text" maxlength="30" class="form-control" id="inputAlias" placeholder="" formControlName="aliasName" 
+                                                    [ngClass]="{'red-border': aliasnameCtrl.invalid && (aliasnameCtrl.touched || aliasnameCtrl.dirty)}">
+                                                <em *ngIf="aliasnameCtrl.invalid && (aliasnameCtrl.touched || aliasnameCtrl.dirty)">Alpha only</em>
                                             </div>
                                         </div>
                                         <br>
@@ -168,7 +176,7 @@
                                                         </tr>
                                                     </table> -->
                                                 <div>
-                                                    <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType">
+                                                    <input type="text" [hidden]="true" class="form-control" [value]="gender" formControlName="genderType" class="hidden">
                                                 </div>
                                             </div>
                                         </div>
@@ -518,15 +526,18 @@
                                                                         <label for="inputAddress">
                                                                             ADDRESS*
                                                                         </label>
-                                                                        <input type="text" class="form-control" id="inputAddress" placeholder="" formControlName="address" required [ngClass]="{'red-border': addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty), 'black-border': addressCtrl.valid || addressCtrl.pristine}">
-                                                                        <em *ngIf="addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty)">Required - No Special Characters</em>
+                                                                        <input type="text" maxlength="50" class="form-control" id="inputAddress" placeholder="" formControlName="address" required 
+                                                                          [ngClass]="{'red-border': addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty), 'black-border': addressCtrl.valid || addressCtrl.pristine}">
+                                                                        <em *ngIf="addressCtrl.invalid && (addressCtrl.touched || addressCtrl.dirty)">Required - Allowed special chars(',' & ' ')</em>
                                                                     </div>
 
                                                                     <div class="form-group col-3">
                                                                         <label for="inputSuite">
                                                                             SUITE
                                                                         </label>
-                                                                        <input type="text" class="form-control" id="inputSuite" placeholder="" formControlName="suite">
+                                                                        <input type="text" maxlength="15" class="form-control" id="inputSuite" placeholder="" formControlName="suite"
+                                                                            [ngClass]="{'red-border': suiteCtrl.invalid && (suiteCtrl.touched || suiteCtrl.dirty)}">
+                                                                        <em *ngIf="suiteCtrl.invalid">Allowed special chars(',' & ' ')</em>
 
                                                                     </div>
                                                                 </div>
@@ -536,7 +547,7 @@
                                                                         <label for="inputCity">
                                                                             CITY*
                                                                         </label>
-                                                                        <input type="text" class="form-control" id="inputCity" placeholder="" formControlName="city" required [ngClass]="{'red-border': cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty), 'black-border': cityCtrl.valid || cityCtrl.pristine}">
+                                                                        <input type="text" maxlength="30" class="form-control" id="inputCity" placeholder="" formControlName="city" required [ngClass]="{'red-border': cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty), 'black-border': cityCtrl.valid || cityCtrl.pristine}">
                                                                         <em *ngIf="cityCtrl.invalid && (cityCtrl.touched || cityCtrl.dirty)">Required - Alpha only</em>
                                                                     </div>
 
@@ -567,7 +578,7 @@
                                                                         <label for="inputPhon">
                                                                             PHONE*
                                                                         </label>
-                                                                        <input type="tel" maxlength="10" class="form-control" id="inputPhon" placeholder="" formControlName="phone" required [ngClass]="{'red-border': phoneCtrl.invalid && (phoneCtrl.touched || phoneCtrl.dirty), 'black-border': phoneCtrl.valid || phoneCtrl.pristine}">
+                                                                        <input type="tel" maxlength="10" pattern="\d*" class="form-control" id="inputPhon" placeholder="" formControlName="phone" required [ngClass]="{'red-border': phoneCtrl.invalid && (phoneCtrl.touched || phoneCtrl.dirty), 'black-border': phoneCtrl.valid || phoneCtrl.pristine}">
                                                                         <em *ngIf="phoneCtrl.invalid && (phoneCtrl.touched || phoneCtrl.dirty)">Required - 10 digit numbers only</em>
                                                                     </div>
 
@@ -575,7 +586,9 @@
                                                                         <label for="inputFax">
                                                                             FAX
                                                                         </label>
-                                                                        <input type="tel" class="form-control" id="inputFax" placeholder="" formControlName="fax">
+                                                                        <input type="tel" maxlength="10" pattern="\d*" class="form-control" id="inputFax" placeholder="" formControlName="fax" 
+                                                                        [ngClass]="{'red-border': faxCtrl.invalid && (faxCtrl.touched || faxCtrl.dirty)}">
+                                                                        <em *ngIf="faxCtrl.invalid">10 digit numbers only</em>
                                                                     </div>
                                                                 </div>
 
@@ -666,10 +679,14 @@
                                                                     </div>
                                                                     <div class="form-row">
                                                                         <div class="form-group col-4 col-md-2">
-                                                                            <input type="number" class="form-control" placeholder="MIN" formControlName="minAge">
+                                                                            <input type="text" maxlength="3" pattern="\d*" class="form-control" placeholder="MIN" formControlName="minAge"
+                                                                                [ngClass]="{'red-border': minAgeCtrl.invalid && (minAgeCtrl.touched || minAgeCtrl.dirty)}">
+                                                                            <em *ngIf="minAgeCtrl.invalid">3 digit numbers only - max 150</em>
                                                                         </div>
                                                                         <div class="form-group col-4 col-md-2">
-                                                                            <input type="number" class="form-control" placeholder="MAX" formControlName="maxAge">
+                                                                            <input type="text" maxlength="3" pattern="\d*" class="form-control" placeholder="MAX" formControlName="maxAge"
+                                                                             [ngClass]="{'red-border': maxAgeCtrl.invalid && (maxAgeCtrl.touched || maxAgeCtrl.dirty)}">
+                                                                            <em *ngIf="maxAgeCtrl.invalid">3 digit numbers only - max 150</em>
                                                                         </div>
                                                                     </div>
                                                                     <br/>
@@ -708,7 +725,7 @@
                     </div>
                 </form>
                 <div class="text-center" style="padding-bottom: 25px;">
-                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg"  [ngClass]="{'btn-success' : contractPhysicianForm.valid}" style="border-radius: 50px;">
+                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg success-button"  [ngClass]="{'disabled-button' : !contractPhysicianForm.valid, 'btn-success' : contractPhysicianForm.valid}">
                             <span class="badge" style="border-radius: 100%;">
                                 <span class="fa fa-1x glyphicon glyphicon-ok"></span>
                             </span> &nbsp;Submit</button>

@@ -259,6 +259,23 @@ button.badge i{
     color: #FFFFFF;
 }
 
+.success-button {
+    border-radius: 50px;
+    border: none;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.disabled-button {
+    background-color: #f2f2f2;
+    pointer-events: none;
+}
+
+.hidden {
+    display:none;
+}
+
 .badge-custom{
     background-color:#FFFFFF;
     color:#444444;
