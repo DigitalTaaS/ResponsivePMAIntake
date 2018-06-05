@@ -15,6 +15,8 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 import { ContractphysicianModel, Address, Age, ContractedPartner, Facility, HoursOfOperation, Phone, Qualification, Taxonomy } from './contractphysician.model';
 import { environment } from '../../environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModal } from './confirmation.modal';
 
 const API_URL = environment.apiURL;
 
@@ -61,27 +63,30 @@ export class ContractphysicianComponent implements OnInit {
   practiceTypes: Dropdown[] = [];
   locationTypes: Dropdown[] = [];
   male = true;
-  gender = "male";
+  gender = "M";
   selectedTaxcode:string="";
   selectedTaxType:string = "";
   descriptionText:string="";
   searchTextbox:string="";
   //story-955
-  officeIndex: number = 1;
+  //officeIndex: number = 1;
   officeHourOne: string = "";
   officeHourTwo: string = "";
   isOfficeHoursValid: boolean = true;
   IsHidden= false;
+  isDayValid:boolean= true;
+  dayUnique = new Map<string,string>();
+
   // autocomplete 
   public degreesdata: Observable<any[]>;
   private searchTerms = new Subject<string>();
   public name = '';
   public flag: boolean = false;
-
+  loading:boolean = false;
 
   private readonly newProperty = this.cpPanelValueChange = false;
 
-  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient,private cdRef : ChangeDetectorRef ) {
+  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient,private cdRef : ChangeDetectorRef, private modalService: NgbModal) {
   }
 
     ngOnInit() {
@@ -148,8 +153,8 @@ export class ContractphysicianComponent implements OnInit {
     this.txcodes;
     this.degreeService.search("All")
       .subscribe(data => {
-        this.txcodes = data;
-        console.log(data);
+        this.txcodes = data.map(d=>d.Code);
+        console.log(this.txcodes);
       });
   }
 
@@ -191,9 +196,9 @@ export class ContractphysicianComponent implements OnInit {
   }  
   onselectClient(ClientObj) { 
     
-    this.selectedTaxcode=ClientObj.id;
-    this.selectedTaxType = ClientObj.Desc2;
-    this.descriptionText=ClientObj.name+"\n\t"+ClientObj.Desc1+ "\n\t\t"+ClientObj.Desc2;
+    this.selectedTaxcode=ClientObj.Code;
+    this.selectedTaxType = ClientObj.Specialization;
+    this.descriptionText=ClientObj.Grouping+"\n\t"+ClientObj.Classification+ "\n\t\t"+ClientObj.Specialization;
     this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
     
     if (ClientObj.id != "0") {  
@@ -285,7 +290,7 @@ export class ContractphysicianComponent implements OnInit {
     //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     control.push(this.initOfficeHour());
-    this.officeIndex += 1;
+    // this.officeIndex += 1;
   }
 
   removeOfficeHour(i: number, j: number) {
@@ -293,7 +298,8 @@ export class ContractphysicianComponent implements OnInit {
     //const control = (<FormArray>this.contractPhysicianForm.controls['locations']).controls[i]['controls']['officeHours'];
     const control = <FormArray>this.contractPhysicianForm.get(['locations', i, 'officeHours']);
     //control.removeAt(j);
-    control.removeAt(this.officeIndex = this.officeIndex - 1);
+    // control.removeAt(this.officeIndex = this.officeIndex - 1);
+    control.removeAt(j);
   }
 
   // stroy 955
@@ -303,6 +309,21 @@ export class ContractphysicianComponent implements OnInit {
       this.isOfficeHoursValid = this.isValidHours(this.officeHourOne, this.officeHourTwo)
     }
     console.log(this.isOfficeHoursValid)
+  }
+  onItemChangeday(selectedValue)
+  {
+    if (this.dayUnique.get(selectedValue)!=null)
+     {
+        // alert("Select new day..")
+         this.isDayValid=false;
+         return this.isDayValid ;
+     }
+     else
+     {
+        this.dayUnique.set(selectedValue,selectedValue);
+        this.isDayValid=true;
+        return this.isDayValid;
+     }
   }
 
   onItemChangeTwo(selectedValue: string) {
@@ -340,52 +361,54 @@ export class ContractphysicianComponent implements OnInit {
   //Physician PCP
   onSelectContractedPartner(selectedValue:string)
   {
-    console.log(selectedValue);
-    this.degrees=[];
+    // console.log(selectedValue);
+    // this.degrees=[];
     // if (selectedValue=="CNTRPhysician")
+  
+    // this.degrees.push(new Dropdown("Doctor of Osteopathic Medicine", "DO"));
+    // this.degrees.push(new Dropdown("Doctor of Medicine", "MD"));
+    // this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
+    // this.degrees.push(new Dropdown("Doctor of Nurse Anaesthesia Practice", "DNAP"));
+    // this.degrees.push(new Dropdown("Doctor of NUrsing Practice", "DNP"));
+    // this.degrees.push(new Dropdown("Doctor of Nursing Science", "DNS"));
+    // this.degrees.push(new Dropdown("Doctoral Degree in Audiology", "AuD"));
+    // this.degrees.push(new Dropdown("Doctor of Chiropractic", "DC"));
+    // this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
+    // this.degrees.push(new Dropdown("Doctorate in Occupational Therapy", "OTD"));
+    // this.degrees.push(new Dropdown("Doctor of Optometry", "OD"));
+    // this.degrees.push(new Dropdown("Doctor of Physical Therapy", "DPT"));
+    // this.degrees.push(new Dropdown("Doctor of Speech-Language Pathology", "SLPD"));
     
-    this.degrees.push(new Dropdown("Doctor of Osteopathic Medicine", "DO"));
-    this.degrees.push(new Dropdown("Doctor of Medicine", "MD"));
-    this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
-    this.degrees.push(new Dropdown("Doctor of Nurse Anaesthesia Practice", "DNAP"));
-    this.degrees.push(new Dropdown("Doctor of NUrsing Practice", "DNP"));
-    this.degrees.push(new Dropdown("Doctor of Nursing Science", "DNS"));
-    this.degrees.push(new Dropdown("Doctoral Degree in Audiology", "AuD"));
-    this.degrees.push(new Dropdown("Doctor of Chiropractic", "DC"));
-    this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
-    this.degrees.push(new Dropdown("Doctorate in Occupational Therapy", "OTD"));
-    this.degrees.push(new Dropdown("Doctor of Optometry", "OD"));
-    this.degrees.push(new Dropdown("Doctor of Physical Therapy", "DPT"));
-    this.degrees.push(new Dropdown("Doctor of Speech-Language Pathology", "SLPD"));
-    
-    //Extended PCP
-    // if (selectedValue=="CNTRExtendedPCP")
-    // {
-      this.degrees.push(new Dropdown("Master of Science in Nursing", "MSN"));
-    this.degrees.push(new Dropdown("Master of Clinical Health Services", "MCHS"));
-    this.degrees.push(new Dropdown("Master of Clinical Medical Science", "MCMSc"));
-    this.degrees.push(new Dropdown("Master of Health Science", "MHS"));
-    this.degrees.push(new Dropdown("Master of Science in Medicine", "MMS"));
-    this.degrees.push(new Dropdown("Master of Medical Science", "MMSc"));
-    this.degrees.push(new Dropdown("Master of Physician Assistant Studies", "MPAS"));
-    this.degrees.push(new Dropdown("Master of Science in Physician Associate studies", "MSPA"));
-    this.degrees.push(new Dropdown("Postgraduate Diploma in Physician Associate studies", "PgDip"));
-    this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
+    // //Extended PCP
+    // // if (selectedValue=="CNTRExtendedPCP")
+    // // {
+    //   this.degrees.push(new Dropdown("Master of Science in Nursing", "MSN"));
+    // this.degrees.push(new Dropdown("Master of Clinical Health Services", "MCHS"));
+    // this.degrees.push(new Dropdown("Master of Clinical Medical Science", "MCMSc"));
+    // this.degrees.push(new Dropdown("Master of Health Science", "MHS"));
+    // this.degrees.push(new Dropdown("Master of Science in Medicine", "MMS"));
+    // this.degrees.push(new Dropdown("Master of Medical Science", "MMSc"));
+    // this.degrees.push(new Dropdown("Master of Physician Assistant Studies", "MPAS"));
+    // this.degrees.push(new Dropdown("Master of Science in Physician Associate studies", "MSPA"));
+    // this.degrees.push(new Dropdown("Postgraduate Diploma in Physician Associate studies", "PgDip"));
+    // this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
    
-    //  }
-     //Extended Other
-    // if (selectedValue=="CNTROther")
-    // {
-    this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
-    //  } 
+    // //  }
+    //  //Extended Other
+    // // if (selectedValue=="CNTROther")
+    // // {
+    // this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
+    // //  } 
    //  this.contractPhysicianForm.controls.licensing.get('taxanomyCode').setErrors(null);
 
     selectedValue="";
   }
 
-  toggleGender() {
-    this.male = !this.male;
-    this.gender = this.male ? "M" : "F";
+  toggleGender(val) {
+    if(val != this.gender){
+      this.male = !this.male;
+      this.gender = this.male ? "M" : "F";
+    }
   }
 
   togglePanel(id: string) {
@@ -494,14 +517,6 @@ export class ContractphysicianComponent implements OnInit {
     this.contractedPartners.push(new Dropdown("Allied Physicians if California, A Professional Medical Corp ", "CNTRPhysician"));
     this.contractedPartners.push(new Dropdown("Applecare Medical Group, Inc ", "CNTRExtendedPCP"));
     this.contractedPartners.push(new Dropdown("Community Family Care IPA ", "CNTROther"));
-    
-
-    
-
-
-
-
-
 
     //New lists for drop down
     // this.contractedPartners.push(new Dropdown("AIDS Healthcare Foundation", "CNTRPhysician"));
@@ -544,15 +559,8 @@ export class ContractphysicianComponent implements OnInit {
     // this.contractedPartners.push(new Dropdown("University Childrens Medical Group", "CNTRPhysician"));
     // this.contractedPartners.push(new Dropdown("USC Care Medical Group, Inc", "CNTRExtendedPCP"));
     // this.contractedPartners.push(new Dropdown("Universal Care", "CNTROther"));
-    
-    
- 
     // 
-    // 
-    
-
-
-    
+    //     
     //this.contractedPartners.push(new Dropdown("CNTR. PARTNER4", "CNTRPARTNER4"));
 
     // this.contractedPartners.push(new Dropdown("CNTR. PARTNER1", "CNTRPARTNER1"));
@@ -567,6 +575,47 @@ export class ContractphysicianComponent implements OnInit {
     // this.txcodes.push(new Dropdown("Taxonomy Code2", "txc2"));
     // this.txcodes.push(new Dropdown("Taxonomy Code3", "txc3"));
 
+    //Degree drop down
+    this.degrees.push(new Dropdown("Doctor of Osteopathic Medicine", "DO"));
+    this.degrees.push(new Dropdown("Doctor of Medicine", "MD"));
+    this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
+    this.degrees.push(new Dropdown("Doctor of Nurse Anaesthesia Practice", "DNAP"));
+    this.degrees.push(new Dropdown("Doctor of NUrsing Practice", "DNP"));
+    this.degrees.push(new Dropdown("Doctor of Nursing Science", "DNS"));
+
+    //REMOVED AS PER DIANE CRAIG LATEST UPDATE
+    // this.degrees.push(new Dropdown("Doctoral Degree in Audiology", "AuD"));
+    // this.degrees.push(new Dropdown("Doctor of Chiropractic", "DC"));
+    // this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
+    // this.degrees.push(new Dropdown("Doctorate in Occupational Therapy", "OTD"));
+    // this.degrees.push(new Dropdown("Doctor of Optometry", "OD"));
+    // this.degrees.push(new Dropdown("Doctor of Physical Therapy", "DPT"));
+    // this.degrees.push(new Dropdown("Doctor of Speech-Language Pathology", "SLPD"));
+    
+    //Extended PCP
+    // if (selectedValue=="CNTRExtendedPCP")
+    // {
+      this.degrees.push(new Dropdown("Master of Science in Nursing", "MSN"));
+    this.degrees.push(new Dropdown("Master of Clinical Health Services", "MCHS"));
+    this.degrees.push(new Dropdown("Master of Clinical Medical Science", "MCMSc"));
+    this.degrees.push(new Dropdown("Master of Health Science", "MHS"));
+    this.degrees.push(new Dropdown("Master of Science in Medicine", "MMS"));
+    this.degrees.push(new Dropdown("Master of Medical Science", "MMSc"));
+    this.degrees.push(new Dropdown("Master of Physician Assistant Studies", "MPAS"));
+    this.degrees.push(new Dropdown("Master of Science in Physician Associate studies", "MSPA"));
+    this.degrees.push(new Dropdown("Postgraduate Diploma in Physician Associate studies", "PgDip"));
+    this.degrees.push(new Dropdown("Master Degree in Occupational Therapy", "OT"));
+   
+    //  }
+     //Extended Other
+    // if (selectedValue=="CNTROther")
+    // {
+    this.degrees.push(new Dropdown("Doctor of Podiatry Medicine", "DPM"));
+   
+
+
+    //Degree drop downs
+    
     this.days.push(new Dropdown("Monday", "monday"));
     this.days.push(new Dropdown("Tuesday", "tuesday"));
     this.days.push(new Dropdown("Wednesday", "wednesday"));
@@ -611,20 +660,41 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   onSubmit() {
-
-    this.ConstructModel();
+    this.loading = true;
+    //this.ConstructModel();
 
     console.log(this.model);
     console.log(JSON.stringify(this.model));
 
-    this.httpClient.post(API_URL+'/api/providers', this.model)
+    this.httpClient.post(API_URL+'/api/providers', this.model, {observe: 'response'})
       .subscribe(
         res => {
+          this.loading = false;
           console.log(res)
+          var body:any = res.body;
+          if(res.status == 200){
+            const modalRef = this.modalService.open(ConfirmationModal, {centered: true, keyboard: false, backdrop:'static'});
+            modalRef.componentInstance.errors = body.errors.length;
+            modalRef.componentInstance.errorMessage = "";
+          }
         }, 
         err => {
-          console.log(err)
-        }
+          this.loading = false;
+          var message;
+          if(err.status == 400)
+            message = 'OOPS!! Status Code : 400 Bad request. Please try again.'
+          else if(err.status == 401)
+            message = 'OOPS!! Status Code : 401 Token Issue. Please try again.'
+          else
+            message = 'OOPS!! Something went wrong. Please try again.'
+
+          const modalRef = this.modalService.open(ConfirmationModal, {centered: true, keyboard: false, backdrop:'static', windowClass: 'error-modal'});
+          modalRef.componentInstance.errors = 0;
+          modalRef.componentInstance.errorMessage = message;
+          }
+
+          
+        
       );
 
   }

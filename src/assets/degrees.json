@@ -1,188 +1,1305 @@
 [
     {
-      "id" :  "207K00000X",
-      "name": "Allopathic Osteopathic Physicians" ,
-      "Desc1": "Allergy & Immunology",
-      "Desc2":""
+      "Code" :  "207K00000X",
+      "Grouping": "Allopathic Osteopathic Physicians" ,
+      "Classification": "Allergy & Immunology",
+      "Specialization":""
     },
-    { "id" :"207KA0200X",
-      "name":  "Allopathic Osteopathic Physicians", 
-      "Desc1":"Allergy & Immunology",
-      "Desc2": "Allergy"
-    },
-    {
-      "id" :"207KI0005X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":"Allergy & Immunology",
-      "Desc2": "Clinical & Laboratory Immunology"
+    { "Code" :"207KA0200X",
+      "Grouping":  "Allopathic Osteopathic Physicians", 
+      "Classification":"Allergy & Immunology",
+      "Specialization": "Allergy"
     },
     {
-       "id": "207L00000X",
-       "name": "Allopathic Osteopathic Physicians",
-       "Desc1":"Anesthesiology",
-       "Desc2": ""
+      "Code" :"207KI0005X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":"Allergy & Immunology",
+      "Specialization": "Clinical & Laboratory Immunology"
+    },
+    {
+       "Code": "207L00000X",
+       "Grouping": "Allopathic Osteopathic Physicians Anesthesiology",
+       "Classification":"",
+       "Specialization": ""
       },
 	{
-      "id" :  "207LA0401X",
-      "name": "Allopathic Osteopathic Physicians",
-       "Desc1":"Anesthesiology",
-       "Desc2": "Addiction Medicine"
+      "Code" :  "207LA0401X",
+      "Grouping": "Allopathic Osteopathic Physicians",
+       "Classification":"Anesthesiology",
+       "Specialization": "Addiction Medicine"
     },
-    { "id" :"207LC0200X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1": "Anesthesiology", 
-      "Desc2": "Critical Care Medicine"
-    },
-    {
-      "id" :"207LH0002X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1": "Anesthesiology",
-      "Desc2": "Hospice and Palliative Medicine"
+    { "Code" :"207LC0200X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification": "Anesthesiology", 
+      "Specialization": "Critical Care Medicine"
     },
     {
-       "id": "207LP2900X",
-       "name": "Allopathic Osteopathic Physicians",
-       "Desc1" :"Anesthesiology",
-       "Desc2":"Pain Medicine"
+      "Code" :"207LH0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification": "Anesthesiology",
+      "Specialization": "Hospice and Palliative Medicine"
+    },
+    {
+       "Code": "207LP2900X",
+       "Grouping": "Allopathic Osteopathic Physicians",
+       "Classification" :"Anesthesiology",
+       "Specialization":"Pain Medicine"
     },
 	  {
-      "id" :  "207LP3000X",
-      "name": "Allopathic Osteopathic Physicians",
-      "Desc1":"Anesthesiology",
-      "Desc2" :"Pediatric Anesthesiology"
+      "Code" :  "207LP3000X",
+      "Grouping": "Allopathic Osteopathic Physicians",
+      "Classification":"Anesthesiology",
+      "Specialization" :"Pediatric Anesthesiology"
     },
-    { "id" :"208U00000X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":"Clinical Pharmacology",
-      "Desc2":""
-    },
-    {
-      "id" :"208C00000X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":" Colon & Rectal Surgery",
-      "Desc2":""
+    { "Code" :"208U00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":"Clinical Pharmacology",
+      "Specialization":""
     },
     {
-       "id": "207N00000X",
-       "name": "Allopathic Osteopathic Physicians",
-       "Desc1":"Dermatology",
-       "Desc2":""
+      "Code" :"208C00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":" Colon & Rectal Surgery",
+      "Specialization":""
+    },
+    {
+       "Code": "207N00000X",
+       "Grouping": "Allopathic Osteopathic Physicians",
+       "Classification":"Dermatology",
+       "Specialization":""
       },
 	{
-      "id" :  "207NI0002X",
-      "name": "Allopathic Osteopathic Physicians",
-      "Desc1":"Dermatology",
-      "Desc2":"Clinical & Laboratory Dermatological Immunology"
+      "Code" :  "207NI0002X",
+      "Grouping": "Allopathic Osteopathic Physicians",
+      "Classification":"Dermatology",
+      "Specialization":"Clinical & Laboratory Dermatological Immunology"
     },
-    { "id" :"207ND0900X",
-      "name":  "Allopathic Osteopathic Physicians ",
-      "Desc1":"Dermatology",
-      "Desc2":"Dermatopathology"  
-    },
-    {
-      "id" :"207ND0101X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":"Dermatology",
-      "Desc2":" MOHS-Micrographic Surgery" 
+    { "Code" :"207ND0900X",
+      "Grouping":  "Allopathic Osteopathic Physicians ",
+      "Classification":"Dermatology",
+      "Specialization":"Dermatopathology"  
     },
     {
-       "id": "207NP0225X",
-       "name": "Allopathic Osteopathic Physicians",
-       "Desc1":"Dermatology",
-      "Desc2":"Pediatric Dermatology" 
+      "Code" :"207ND0101X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":"Dermatology",
+      "Specialization":" MOHS-Micrographic Surgery" 
+    },
+    {
+       "Code": "207NP0225X",
+       "Grouping": "Allopathic Osteopathic Physicians",
+       "Classification":"Dermatology",
+      "Specialization":"Pediatric Dermatology" 
       },
 	{
-      "id" :  "207NS0135X",
-      "name": "Allopathic Osteopathic Physicians",
-      "Desc1":"Dermatology",
-      "Desc2":"Procedural Dermatology"
+      "Code" :  "207NS0135X",
+      "Grouping": "Allopathic Osteopathic Physicians",
+      "Classification":"Dermatology",
+      "Specialization":"Procedural Dermatology"
     },
-    { "id" :"204R00000X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":"Electrodiagnostic Medicine",
-      "Desc2":""
-    },
-    {
-      "id" :"207P00000X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":"Emergency Medicine",
-      "Desc2":""
+    { "Code" :"204R00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":"Electrodiagnostic Medicine",
+      "Specialization":""
     },
     {
-       "id": "207PE0004X",
-       "name": "Allopathic Osteopathic Physicians",
-       "Desc1":" Emergency Medicine",
-       "Desc2":" Emergency Medical Services"
+      "Code" :"207P00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":"Emergency Medicine",
+      "Specialization":""
+    },
+    {
+       "Code": "207PE0004X",
+       "Grouping": "Allopathic Osteopathic Physicians",
+       "Classification":" Emergency Medicine",
+       "Specialization":" Emergency Medical Services"
       },
   
     {
-      "id" :  "207PH0002X",
-      "name": "Allopathic Osteopathic Physicians",
-      "Desc1":"  Emergency Medicine",
-      "Desc2":" Hospice and Palliative Medicine"
+      "Code" :  "207PH0002X",
+      "Grouping": "Allopathic Osteopathic Physicians",
+      "Classification":"  Emergency Medicine",
+      "Specialization":" Hospice and Palliative Medicine"
     },
-    { "id" :"207PT0002X",
-      "name":  "Allopathic Osteopathic Physicians",
-      "Desc1":"Emergency Medicine ",
-      "Desc2":"Medical Toxicology"
-    },
-    {
-      "id" :"207PP0204X",
-      "name":  "Allopathic Osteopathic Physicians"
-     , "Desc1":"Emergency Medicine",
-      "Desc2":" Pediatric Emergency Medicine"
+    { "Code" :"207PT0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians",
+      "Classification":"Emergency Medicine ",
+      "Specialization":"Medical Toxicology"
     },
     {
-       "id": "207PS0010X",
-       "name": "Allopathic Osteopathic Physicians"
-      , "Desc1":"Emergency Medicine ",
-      "Desc2":"Sports Medicine"
+      "Code" :"207PP0204X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+     , "Classification":"Emergency Medicine",
+      "Specialization":" Pediatric Emergency Medicine"
+    },
+    {
+       "Code": "207PS0010X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+      , "Classification":"Emergency Medicine ",
+      "Specialization":"Sports Medicine"
       },
 	{
-      "id" :  "207PE0005X",
-      "name": "Allopathic Osteopathic Physicians", 
-       "Desc1":"Emergency Medicine",
-      "Desc2":"Undersea and Hyperbaric Medicine"
+      "Code" :  "207PE0005X",
+      "Grouping": "Allopathic Osteopathic Physicians", 
+       "Classification":"Emergency Medicine",
+      "Specialization":"Undersea and Hyperbaric Medicine"
     },
-    { "id" :"207Q00000X",
-      "name":  "Allopathic Osteopathic Physicians"
-      ,"Desc1":"Family Medicine",
-      "Desc2":""
-    },
-    {
-      "id" :"207QA0401X",
-      "name":  "Allopathic Osteopathic Physicians"
-      ,"Desc1":"Family Medicine",
-      "Desc2":"  Addiction Medicine"
+    { "Code" :"207Q00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Family Medicine",
+      "Specialization":""
     },
     {
-       "id": "207QA0000X",
-       "name": "Allopathic Osteopathic Physicians"
-       ,"Desc1":" Family Medicine ",
-      "Desc2":"Adolescent Medicine"
+      "Code" :"207QA0401X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Family Medicine",
+      "Specialization":"  Addiction Medicine"
+    },
+    {
+       "Code": "207QA0000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Family Medicine ",
+      "Specialization":"Adolescent Medicine"
       },
 	{
-      "id" :  "207QA0505X",
-      "name": "Allopathic Osteopathic Physicians "
-      ,"Desc1":"Family Medicine",
-      "Desc2":" Adult Medicine"    
+      "Code" :  "207QA0505X",
+      "Grouping": "Allopathic Osteopathic Physicians "
+      ,"Classification":"Family Medicine",
+      "Specialization":" Adult Medicine"    
     },
-    { "id" :"207QG0300X",
-      "name":  "Allopathic Osteopathic Physicians"
-      ,"Desc1":"Family Medicine",
-      "Desc2":" Geriatric Medicine"
-    },
-    {
-      "id" :"207QH0002X",
-      "name":  "Allopathic Osteopathic Physicians"
-      ,"Desc1":" Family Medicine ",
-      "Desc2":"Hospice and Palliative Medicine"
+    { "Code" :"207QG0300X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Family Medicine",
+      "Specialization":" Geriatric Medicine"
     },
     {
-       "id": "207QB0002X",
-       "name": "Allopathic Osteopathic Physicians "
-       ,"Desc1":"Family Medicine",
-      "Desc2":" Obesity Medicine"
+      "Code" :"207QH0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Family Medicine ",
+      "Specialization":"Hospice and Palliative Medicine"
+    },
+    {
+       "Code": "207QB0002X",
+       "Grouping": "Allopathic Osteopathic Physicians "
+       ,"Classification":"Family Medicine",
+      "Specialization":" Obesity Medicine"
       }
+      ,
+
+	{
+      "Code" :  "207QS1201X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Family Medicine",
+      "Specialization":"Sleep Medicine"
+    },
+    { "Code" :"207QS0010X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Family Medicine",
+      "Specialization":"Sports Medicine"
+    },
+    {
+      "Code" :"208D00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"General Practice",
+      "Specialization":""
+    },
+    {
+       "Code": "208M00000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Hospitalist",
+      "Specialization":""
+      },
+	{
+      "Code" :  "202C00000X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Independent Medical Examiner",
+      "Specialization":""
+    },
+    { "Code" :"207R00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":""
+    },
+    {
+      "Code" :"207RA0401X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Addiction Medicine"
+    },
+    {
+       "Code": "207RA0000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Internal Medicine",
+       "Specialization":"Adolescent Medicine"
+      },
+	{
+      "Code" :  "207RA0001X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Advanced Heart Failure and Transplant Cardiology"
+    },
+    { "Code" :"207RA0201X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Allergy & Immunology"
+    },
+    {
+      "Code" :"207RC0000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Cardiovascular Disease"
+    },
+    {
+       "Code": "207RI0001X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Internal Medicine",
+       "Specialization":"Clinical & Laboratory Immunology"
+      },
+	{
+      "Code" :  "207RC0001X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Clinical Cardiac Electrophysiology"
+    },
+    { "Code" :"207RC0200X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Critical Care Medicine"
+    },
+    {
+      "Code" :"207RE0101X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Endocrinology Diabetes & Metabolism"
+    },
+    {
+       "Code": "207RG0100X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Internal Medicine",
+       "Specialization":"Gastroenterology"
+      },
+	{
+      "Code" :  "207RG0300X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Geriatric Medicine"
+    },
+    { "Code" :"207RH0000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Internal Medicine",
+      "Specialization":"Hematology"
+    },
+
+    {
+      "Code" :"207RH0003X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Hematology & Oncology"
+    },
+    {
+       "Code": "207RI0008X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Internal Medicine",
+      "Specialization":" Hepatology"
+      },
+	{
+      "Code" :  "207RH0002X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Hospice and Palliative Medicine"
+    },
+    { "Code" :"207RH0005X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Hypertension Specialist"
+    },
+    {
+      "Code" :"207RI0200X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Infectious Disease"
+    },
+    {
+       "Code": "207RI0011X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Internal Medicine",
+      "Specialization":" Interventional Cardiology"
+      },
+	{
+      "Code" :  "207RM1200X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Magnetic Resonance Imaging (MRI)"
+    },
+    { "Code" :"207RX0202X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Medical Oncology"
+    },
+    {
+      "Code" :"207RN0300X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine ",
+      "Specialization":"Nephrology"
+    },
+    {
+       "Code": "207RB0002X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Internal Medicine",
+      "Specialization":" Obesity Medicine"
+      },
+	{
+      "Code" :  "207RP1001X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Pulmonary Disease"
+    },
+    { "Code" :"207RR0500X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":"Rheumatology"
+    },
+    {
+      "Code" :"207RS0012X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Sleep Medicine"
+    },
+    {
+       "Code": "207RS0010X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Internal Medicine",
+      "Specialization":" Sports Medicine"
+      },
+	{
+      "Code" :  "207RT0003X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Internal Medicine",
+      "Specialization":" Transplant Hepatology"
+    },
+    { "Code" :"209800000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Legal Medicine",
+      "Specialization":""
+    },
+    {
+      "Code" :"207SG0202X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Medical Genetics",
+      "Specialization":" Clinical Biochemical Genetics"
+    },
+    {
+       "Code": "207SC0300X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Medical Genetics",
+      "Specialization":" Clinical Cytogenetic"
+      },
+	{
+      "Code" :  "207SG0201X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Medical Genetics",
+      "Specialization":" Clinical Genetics (M.D.)"
+    },
+    { "Code" :"207SG0203X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Medical Genetics",
+      "Specialization":" Clinical Molecular Genetics"
+    },
+    {
+      "Code" :"207SM0001X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Medical Genetics",
+      "Specialization":" Molecular Genetic Pathology"
+    },
+    {
+       "Code": "207SG0205X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Medical Genetics",
+      "Specialization":" Ph.D. Medical Genetics"
+      },
+	{
+      "Code" :  "207T00000X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Neurological Surgery",
+      "Specialization":""
+    },
+    { "Code" :"204D00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Neuromusculoskeletal Medicine OMM",
+      "Specialization":""
+    },
+    {
+      "Code" :"204C00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Neuromusculoskeletal Medicine",
+      "Specialization":" Sports Medicine"
+    },
+    {
+       "Code": "207U00000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Nuclear Medicine ",
+      "Specialization":""
+      },
+	{
+      "Code" :  "207UN0903X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Nuclear Medicine",
+      "Specialization":" In Vivo & In Vitro Nuclear Medicine"
+    },
+    { "Code" :"207UN0901X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Nuclear Medicine",
+      "Specialization":"Nuclear Cardiology"
+    },
+    {
+      "Code" :"207UN0902X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Nuclear Medicine",
+      "Specialization":" Nuclear Imaging & Therapy"
+    },
+    {
+       "Code": "207V00000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Obstetrics Gynecology ",
+      "Specialization":""
+      },
+	{
+      "Code" :  "207VC0200X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Critical Care Medicine"
+    },
+    { "Code" :"207VF0040X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Female Pelvic Medicine and Reconstructive Surgery"
+    },
+    {
+      "Code" :"207VX0201X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Gynecologic Oncology"
+    },
+    {
+       "Code": "207VG0400X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Gynecology"
+      },
+	{
+      "Code" :  "207VH0002X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Hospice and Palliative Medicine"
+    },
+    { "Code" :"207VM0101X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Maternal & Fetal Medicine"
+    },
+    {
+      "Code" :"207VB0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics Gynecology",
+      "Specialization":" Obesity Medicine"
+    },
+    {
+       "Code": "207VX0000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Obstetrics",
+      "Specialization":" Gynecology Obstetrics"
+      },
+	{
+      "Code" :  "207VE0102X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Obstetrics",
+      "Specialization":" Gynecology Reproductive Endocrinology"
+    },
+    { "Code" :"207W00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Ophthalmology",
+      "Specialization":""
+    },
+    {
+      "Code" :"207WX0120X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Ophthalmology",
+      "Specialization":" Cornea and External Diseases Specialist"
+    },
+    {
+       "Code": "207WX0009X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Ophthalmology",
+       "Specialization":" Glaucoma Specialist"
+      },
+	{
+      "Code" :  "207WX0109X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Ophthalmology",
+      "Specialization":" Neuro-ophthalmology"
+    },
+    { "Code" :"207WX0200X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Ophthalmologyx Ophthalmology",
+      "Specialization":"  Ophthalmic Plastic and Reconstructive Surgery"
+    },
+    {
+      "Code" :"207WX0110X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Ophthalmology",
+      "Specialization":"Pediatric Ophthalmology and Strabismus Specialist"
+    },
+    {
+       "Code": "207WX0107X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Ophthalmology",
+      "Specialization":" Retina Specialist"
+      },
+	{
+      "Code" :  "207WX0108X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Ophthalmology",
+      "Specialization":" Uveitis and Ocular Inflammatory Disease"
+    },
+    { "Code" :"204E00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Oral & Maxillofacial",
+      "Specialization":" Surgery "
+    },
+    {
+      "Code" :"207X00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Orthopaedic Surgery ",
+      "Specialization":""
+    },
+    {
+       "Code": "207XS0114X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Orthopaedic Surgery",
+      "Specialization":" Adult Reconstructive Orthopaedic Surgery"
+      },
+	{
+      "Code" :  "207XX0004X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Orthopaedic Surgery",
+      "Specialization":" Foot and Ankle Surgery"
+    },
+    { "Code" :"207XS0106X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Orthopaedic Surgery",
+      "Specialization":" Hand Surgery"
+    },
+    {
+      "Code" :"207XS0117X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Orthopaedic Surgery",
+      "Specialization":" Orthopaedic Surgery of the Spine"
+    },
+    {
+       "Code": "207XX0801X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Orthopaedic",
+      "Specialization":" Surgery Orthopaedic Trauma"
+      },
+	{
+      "Code" :  "207XP3100X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Orthopaedic",
+      "Specialization":" Surgery Pediatric Orthopaedic Surgery"
+    },
+    { "Code" :"207XX0005X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Orthopaedic",
+      "Specialization":" Surgery Sports Medicine"
+    },
+    {
+      "Code" :"207Y00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians  "
+      ,"Classification":"Otolaryngology",
+      "Specialization":""
+    },
+    {
+       "Code": "207YS0123X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Otolaryngology",
+      "Specialization":" Facial Plastic Surgery"
+   },
+
+	{
+      "Code" :  "207YX0602X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Otolaryngology",
+      "Specialization":" Otolaryngic Allergy"
+    },
+    { "Code" :"207YX0905X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Otolaryngology",
+      "Specialization":" Otolaryngology/Facial Plastic Surgery"
+    },
+    {
+      "Code" :"207YX0901X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Otolaryngology",
+      "Specialization":" Otology & Neurotology"
+    },
+    {
+       "Code": "207YP0228X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Otolaryngology",
+      "Specialization":" Pediatric Otolaryngology"
+      },
+	{
+      "Code" :  "207YX0007X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Otolaryngology",
+      "Specialization":" Plastic Surgery within the Head & Neck"
+    },
+    { "Code" :"207YS0012X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Otolaryngology",
+      "Specialization":" Sleep Medicine"
+    },
+    {
+      "Code" :"208VP0014X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pain Medicine ",
+      "Specialization":"Interventional Pain Medicine"
+    },
+    {
+       "Code": "208VP0000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pain Medicine",
+      "Specialization":" Pain Medicine"
+      },
+	{
+      "Code" :  "207ZP0101X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Anatomic Pathology"
+    },
+    { "Code" :"207ZP0102X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Pathology",
+      "Specialization":" Anatomic Pathology & Clinical Pathology"
+    },
+    {
+      "Code" :"207ZB0001X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Blood Banking & Transfusion Medicine"
+    },
+    {
+       "Code": "207ZP0104X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pathology",
+      "Specialization":" Chemical Pathology"
+      },
+	{
+      "Code" :  "207ZC0008X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Pathology",
+      "Specialization":"  Clinical Informatics"
+    },
+    { "Code" :"207ZC0006X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Clinical Pathology"
+    },
+    {
+      "Code" :"207ZP0105X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Clinical Pathology/Laboratory Medicine"
+    },
+    {
+       "Code": "207ZC0500X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pathology",
+      "Specialization":" Cytopathology"
+      },
+	{
+      "Code" :  "207ZD0900X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Dermatopathology"
+   },
+
+    { "Code" :"207ZF0201X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Forensic Pathology"
+    },
+    {
+      "Code" :"207ZH0000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Pathology",
+      "Specialization":"  Hematology"
+    },
+    {
+       "Code": "207ZI0100X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pathology",
+      "Specialization":" Immunopathology"
+      },
+	{
+      "Code" :  "207ZM0300X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Medical Microbiology"
+    },
+    { "Code" :"207ZP0007X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Molecular Genetic Pathology"
+    },
+    {
+      "Code" :"207ZN0500X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pathology",
+      "Specialization":" Neuropathology"
+    },
+    {
+       "Code": "207ZP0213X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pathology",
+      "Specialization":" Pediatric Pathology"
+      },
+	{
+      "Code" :  "208000000X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Pediatrics",
+      "Specialization":""
+    },
+    { "Code" :"2080A0000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Adolescent Medicine"
+    },
+    {
+      "Code" :"2080C0008X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Child Abuse Pediatrics"
+    },
+    {
+       "Code": "2080I0007X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pediatrics",
+      "Specialization":" Clinical & Laboratory Immunology"
+      },
+	{
+      "Code" :  "2080P0006X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Pediatrics",
+      "Specialization":"Developmental – Behavioral Pediatrics"
+    },
+    { "Code" :"2080H0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Hospice and Palliative Medicine"
+    },
+    {
+      "Code" :"2080T0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Medical Toxicology"
+    },
+    {
+       "Code": "2080N0001X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pediatrics",
+      "Specialization":" Neonatal-Perinatal Medicine"
+      },
+	{
+      "Code" :  "2080P0008X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Neurodevelopmental Disabilities"
+    },
+    { "Code" :"2080B0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Obesity Medicine"
+    },
+    {
+      "Code" :"2080P0201X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Allergy/Immunology"
+    },
+    {
+       "Code": "2080P0202X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Cardiology"
+      },
+	{
+      "Code" :  "2080P0203X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Critical Care Medicine"
+    },
+    { "Code" :"2080P0204X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Emergency Medicine"
+    },
+    {
+      "Code" :"2080P0205X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Endocrinology"
+    },
+    {
+       "Code": "2080P0206X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Gastroenterology"
+      },
+	{
+      "Code" :  "2080P0207X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics ",
+      "Specialization":"Pediatric Hematology-Oncology"
+    },
+    { "Code" :"2080P0208X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Infectious Diseases"
+    },
+    {
+      "Code" :"2080P0210X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Nephrology"
+    },
+    {
+       "Code": "2080P0214X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Pulmonology"
+      },
+	{
+      "Code" :  "2080P0216X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Rheumatology"
+    },
+    { "Code" :"2080T0004X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Pediatric Transplant Hepatology"
+    },
+    {
+      "Code" :"2080S0012X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Pediatrics",
+      "Specialization":" Sleep Medicine"
+    },
+    {
+       "Code": "2080S0010X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Pediatrics",
+      "Specialization":" Sports Medicine"
+      },
+	{
+      "Code" :  "202K00000X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Phlebology",
+      "Specialization":""
+    },
+    { "Code" :"208100000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Physical Medicine ",
+      "Specialization":"Rehabilitation "
+    },
+    {
+      "Code" :"2081P0301X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Physical Medicine",
+      "Specialization":" Rehabilitation Brain Injury Medicine"
+    },
+    {
+       "Code": "2081H0002X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Physical Medicine ",
+       "Specialization":"Rehabilitation Hospice and Palliative Medicine"
+    },
+
+	{
+      "Code" :  "2081N0008X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Physical Medicine ",
+      "Specialization":"Rehabilitation Neuromuscular Medicine"
+    },
+    { "Code" :"2081P2900X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Physical Medicine ",
+      "Specialization":"Rehabilitation Pain Medicine"
+    },
+    {
+      "Code" :"2081P0010X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Physical Medicine",
+      "Specialization":" Rehabilitation Pediatric Rehabilitation Medicine"
+    },
+    {
+       "Code": "2081P0004X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Physical Medicine ",
+      "Specialization":"Rehabilitation Spinal Cord Injury Medicine"
+      },
+	{
+      "Code" :  "2081S0010X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Physical Medicine ",
+      "Specialization":"Rehabilitation Sports Medicine"
+    },
+    { "Code" :"208200000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Plastic Surgery ",
+      "Specialization":""
+	},
+    {
+      "Code" :"2082S0099X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Plastic Surgery ",
+      "Specialization":"Plastic Surgery Within the Head and Neck"
+    },
+    {
+       "Code": "2082S0105X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":" Plastic Surgery ",
+      "Specialization":"Surgery of the Hand"
+      },
+	{
+      "Code" :  "2083A0100X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Preventive Medicine ",
+      "Specialization":"Aerospace Medicine"
+    },
+    { "Code" :"2083C0008X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Preventive Medicine ",
+      "Specialization":"Clinical Informatics"
+    },
+    {
+      "Code" :"2083T0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Preventive Medicine ",
+      "Specialization":"Medical Toxicology"
+    },
+    {
+       "Code": "2083B0002X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Preventive Medicine ",
+      "Specialization":" Obesity Medicine"
+      },
+	{
+      "Code" :  "2083X0100X",
+      "Grouping": "Allopathic Osteopathic Medicine"
+      ,"Classification":"Physicians Preventive ",
+      "Specialization":" Occupational Medicine"
+    },
+    { "Code" :"2083P0500X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Preventive Medicine ",
+      "Specialization":"Preventive Medicine/Occupational Environmental Medicine"
+    },
+    {
+      "Code" :"2083P0901X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Preventive Medicine ",
+      "Specialization":"Public Health & General Preventive Medicine"
+    },
+    {
+       "Code": "2083S0010X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Preventive Medicine ",
+      "Specialization":"Sports Medicine"
+      },
+	{
+      "Code" :  "2083P0011X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Preventive Medicine ",
+      "Specialization":"Undersea and Hyperbaric Medicine"
+    },
+    { "Code" :"2084A0401X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Psychiatry & Neurology ",
+      "Specialization":"Addiction Medicine"
+    },
+    {
+      "Code" :"2084P0802X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Psychiatry & Neurology ",
+      "Specialization":"Addiction Psychiatry"
+    },
+    {
+       "Code": "2084B0040X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"  Behavioral Neurology & Neuropsychiatry"
+      },
+	{
+      "Code" :  "2084P0301X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":" Brain Injury Medicine"
+    },
+    { "Code" :"2084P0804X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":" Child & Adolescent Psychiatry"
+    },
+    {
+      "Code" :"2084N0600X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"Clinical Neurophysiology"
+    },
+    {
+       "Code": "2084D0003X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":" Diagnostic Neuroimaging"
+      },
+	{
+      "Code" :  "2084F0202X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"Forensic Psychiatry"
+    },
+    { "Code" :"2084P0805X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":" Geriatric Psychiatry"
+    },
+    {
+      "Code" :"2084H0002X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"Hospice and Palliative Medicine"
+    },
+    {
+       "Code": "2084A2900X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":"Neurocritical Care"
+      },
+	{
+      "Code" :  "2084P0005X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":" Neurodevelopmental Disabilities"
+    },
+    { "Code" :"2084N0400X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":" Psychiatry & Neurology",
+      "Specialization":"Neurology"
+    },
+    {
+      "Code" :"2084N0402X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"Neurology with Special Qualifications in Child Neurology"
+    },
+    {
+       "Code": "2084N0008X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":"Neuromuscular Medicine"
+      },
+	{
+      "Code" :  "2084B0002X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":" Obesity Medicine"
+    },
+    { "Code" :"2084P2900X",
+      "Grouping":  "Allopathic Osteopathic Physician"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":" Pain Medicine"
+    },
+    {
+      "Code" :"2084P0800X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"Psychiatry"
+    },
+    {
+       "Code": "2084P0015X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":" Psychosomatic Medicine"
+      },
+	{
+      "Code" :  "2084S0012X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology ",
+      "Specialization":" Sleep Medicine"
+    },
+    { "Code" :"2084S0010X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":" Sports Medicine"
+    },
+    {
+      "Code" :"2084V0102X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Psychiatry & Neurology",
+      "Specialization":"Vascular Neurology"
+    },
+    {
+       "Code": "2085B0100X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Radiology",
+      "Specialization":"  Body Imaging"
+      },
+	{
+      "Code" :  "2085D0003X",
+      "Grouping": "Allopathic Osteopathic Physicians "
+      ,"Classification":"Radiology",
+      "Specialization":"Diagnostic Neuroimaging"
+    },
+    { "Code" :"2085R0202X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Diagnostic Radiology"
+    },
+    {
+      "Code" :"2085U0001X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Diagnostic Ultrasound"
+    },
+    {
+       "Code": "2085H0002X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Radiology",
+      "Specialization":"Hospice and Palliative Medicine"
+      },
+	{
+      "Code" :  "2085N0700X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Neuroradiology"
+    },
+    { "Code" :"2085N0904X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":" Nuclear Radiology"
+    },
+    {
+      "Code" :"2085P0229X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Pediatric Radiology"
+    },
+    {
+       "Code": "2085R0001X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Radiology",
+      "Specialization":"Radiation Oncology"
+      },
+	{
+      "Code" :  "2085R0205X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Radiological Physics"
+    },
+    { "Code" :"2085R0203X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Therapeutic Radiology"
+    },
+    {
+      "Code" :"2085R0204X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Radiology",
+      "Specialization":"Vascular & Interventional Radiology"
+    },
+    {
+       "Code": "208600000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Surgery",
+      "Specialization":""
+      },
+	{
+      "Code" :  "2086H0002X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Surgery",
+      "Specialization":" Hospice and Palliative Medicine"
+    },
+    { "Code" :"2086S0120X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Surgery",
+      "Specialization":" Pediatric Surgery"
+    },
+    {
+      "Code" :"2086S0122X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Surgery",
+      "Specialization":"Plastic and Reconstructive Surgery"
+    },
+    {
+       "Code": "2086S0105X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Surgery",
+      "Specialization":"Surgery of the Hand"
+      },
+	{
+      "Code" :  "2086S0102X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":" Surgery",
+      "Specialization":"Surgical Critical Care"
+    },
+    { "Code" :"2086X0206X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Surgery",
+      "Specialization":"Surgical Oncology"
+    },
+    {
+      "Code" :"2086S0127X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Surgery",
+      "Specialization":"Trauma Surgery"
+    },
+    {
+       "Code": "2086S0129X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Surgery",
+      "Specialization":"Vascular Surgery"
+      },
+	{
+      "Code" :"208G00000X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Thoracic Surgery",
+      "Specialization":"(Cardiothoracic Vascular Surgery)"
+    },
+    {
+       "Code": "204F00000X",
+       "Grouping": "Allopathic Osteopathic Physicians"
+       ,"Classification":"Transplant Surgery",
+      "Specialization":""
+      },
+	{
+      "Code" :  "208800000X",
+      "Grouping": "Allopathic Osteopathic Physicians"
+      ,"Classification":"Urology ",
+      "Specialization":""
+    },
+    { "Code" :"2088F0040X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Urology",
+      "Specialization":"Female Pelvic Medicine and Reconstructive Surgery"
+    },
+    {
+      "Code" :"2088P0231X",
+      "Grouping":  "Allopathic Osteopathic Physicians"
+      ,"Classification":"Urology ",
+      "Specialization":"Pediatric Urology"
+    }
+    
 ]
 							 

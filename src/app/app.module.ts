@@ -21,6 +21,8 @@ import { PmahighlighttextPipe } from './pmahighlighttext.pipe';
 import { PmataxoncodePipe } from './pmataxoncode.pipe';
 import { IntakeInterceptor } from './shared/intake-interceptor';
 import { Multicolumnfilter } from './multicolumnfilter.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModal } from './contractphysician/confirmation.modal';
 
 
 @NgModule({
@@ -38,10 +40,11 @@ import { Multicolumnfilter } from './multicolumnfilter.pipe';
     PmahighlighttextPipe,
     PmataxoncodePipe,
     Multicolumnfilter,
-   
-    
+    ConfirmationModal
   ],
+  entryComponents:[ConfirmationModal],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule ,
