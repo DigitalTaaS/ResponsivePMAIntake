@@ -14,58 +14,48 @@
                 <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
                     <br>PROVIDER</h5>
                 <div class="hr-border"></div>
-                <table style="margin: 0px auto;">
-                    <tr [ngClass]="{'badge-custom' : demoPanelValueChange}">
-                        <td class="">
+                <ul class="sidelist">
+                    <li class="menuItem" [ngClass]="{'badge-custom' : demoPanelValueChange}">
+                        <span class="">
                             <a [routerLink]="" (click)="scrollTo('demographicsPanel')" style="cursor: pointer" id="demoLink">
                                 DEMOGRAPHICS
                             </a>
-                        </td>
-
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.demographics.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
-                                'invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr [ngClass]="{'badge-custom' : cpPanelValueChange}">
-                        <td class="">
+                        </span>
+                        <span class="badge-circle" [class.badge]="contractPhysicianForm.controls.demographics.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.demographics.valid,
+                            'invalid' : (contractPhysicianForm.controls.demographics.dirty || contractPhysicianForm.controls.demographics.touched) && contractPhysicianForm.controls.demographics.invalid}">
+                        </span>
+                    </li>
+                    <li class="menuItem" [ngClass]="{'badge-custom' : cpPanelValueChange}">
+                        <span class="">
                             <a (click)="scrollTo('cpPanel')" style="cursor: pointer">
                                 CONT. PARTNER
                             </a>
-                        </td>
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.contractedPartners.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
-                                'invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
-                            </span>
-
-                        </td>
-                    </tr>
-                    <tr [ngClass]="{'badge-custom' : licencePanelValueChange}">
-                        <td class="text-center">
+                        </span>
+                        <span class="badge-circle" [class.badge]="contractPhysicianForm.controls.contractedPartners.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.contractedPartners.valid,
+                            'invalid' : (contractPhysicianForm.controls.contractedPartners.dirty || contractPhysicianForm.controls.contractedPartners.touched) && contractPhysicianForm.controls.contractedPartners.invalid}">
+                        </span>
+                    </li>
+                    <li class="menuItem" [ngClass]="{'badge-custom' : licencePanelValueChange}">
+                        <span class="text-center">
                             <a (click)="scrollTo('licencePanel')" style="cursor: pointer">
                                 LICENSING
                             </a>
-                        </td>
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.licensing.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
-                                'invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
-                            </span>
-                        </td>
-                    </tr>
-                    <tr [ngClass]="{'badge-custom' : locationPanelValueChange}">
-                        <td class="text-center">
+                        </span>
+                        <span class="badge-circle" [class.badge]="contractPhysicianForm.controls.licensing.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.licensing.valid,
+                            'invalid' : (contractPhysicianForm.controls.licensing.dirty || contractPhysicianForm.controls.licensing.dirty) && contractPhysicianForm.controls.licensing.invalid}">
+                        </span>
+                    </li>
+                    <li class="menuItem" [ngClass]="{'badge-custom' : locationPanelValueChange}">
+                        <span class="text-center">
                             <a (click)="scrollTo('locationPanel')" style="cursor: pointer">
                                 LOCATION
                             </a>
-                        </td>
-                        <td>
-                            <span [class.badge]="contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
-                                'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
-                            </span>
-                        </td>
-                    </tr>
-                </table>
+                        </span>
+                        <span class="badge-circle" [class.badge]="contractPhysicianForm.controls.locations.dirty" [ngClass]="{'valid' : contractPhysicianForm.controls.locations.valid,
+                            'invalid' : (contractPhysicianForm.controls.locations.dirty || contractPhysicianForm.controls.locations.touched) && contractPhysicianForm.controls.locations.invalid}">
+                        </span>
+                    </li>
+                </ul>
                 <div class="hr-border"></div>
 
 
