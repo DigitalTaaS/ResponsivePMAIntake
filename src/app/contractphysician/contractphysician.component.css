@@ -288,6 +288,23 @@ button.badge i{
     font-size: 20px;
 }
 
+.labelDOB {
+    display: block;
+    margin-top:5px;
+}
+
+.inputDOB {
+    margin-top: -15px;
+}
+
+.datePicker {
+    border-radius: 5px;
+}
+
+::ng-deep .mat-input-underline {
+    display: none;
+}
+
 .disabled-button {
     background-color: #f2f2f2;
     pointer-events: none;

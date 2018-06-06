@@ -18,8 +18,11 @@ import { environment } from '../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModal } from './confirmation.modal';
 import { variable } from '@angular/compiler/src/output/output_ast';
+import { AuthenticationService } from '../shared/authentication.service';
 
 const API_URL = environment.apiURL;
+const clientId = environment.clientId;
+const clientSecret = environment.clientSecret;
 
 @Component({
   selector: 'app-contractphysician',
@@ -28,7 +31,8 @@ const API_URL = environment.apiURL;
 })
 
 export class ContractphysicianComponent implements OnInit {
-
+ 
+  authToken: string;
   model: ContractphysicianModel;
   contractPhysicianForm: FormGroup;
   firstnameCtrl: FormControl;
@@ -89,13 +93,21 @@ export class ContractphysicianComponent implements OnInit {
   public name = '';
   public flag: boolean = false;
   loading:boolean = false;
+  startDate = new Date(1985, 0, 1);
 
   private readonly newProperty = this.cpPanelValueChange = false;
 
-  constructor(private fb: FormBuilder, private degreeService: DegreeautosearchService, private httpClient: HttpClient,private cdRef : ChangeDetectorRef, private modalService: NgbModal) {
+  constructor(private fb: FormBuilder, 
+              private degreeService: DegreeautosearchService, 
+              private httpClient: HttpClient,
+              private cdRef : ChangeDetectorRef, 
+              private modalService: NgbModal,
+              private authService:AuthenticationService) {
   }
 
     ngOnInit() {
+
+    //this.GetAuthToken();
 
     this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
     this.middlenameCtrl = new FormControl(null, [Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
@@ -166,6 +178,20 @@ export class ContractphysicianComponent implements OnInit {
       .subscribe(data => {
         this.txcodes = data.map(d=>d.Code);
         console.log(this.txcodes);
+      });
+  }
+
+  private GetAuthToken() {
+    this.authService.GetAuthToken(clientId, clientSecret)
+      .subscribe(response => {
+        if (response && response.accessToken) {
+          console.log(response.accessToken);
+          this.authToken = response.accessToken;
+        }
+      }, err => {
+        const modalRef = this.modalService.open(ConfirmationModal, { centered: true, keyboard: false, backdrop: 'static', windowClass: 'error-modal' });
+        modalRef.componentInstance.errors = 0;
+        modalRef.componentInstance.errorMessage = "Problem retriving access token. Please try again.";
       });
   }
 
@@ -677,7 +703,7 @@ export class ContractphysicianComponent implements OnInit {
     console.log(this.model);
     console.log(JSON.stringify(this.model));
 
-    this.httpClient.post(API_URL+'/api/providers', this.model, {observe: 'response'})
+    this.httpClient.post(API_URL+'/api/providers?client_id='+clientId+'&client_secret='+clientSecret+'&access_token='+this.authToken, this.model, {observe: 'response'})
       .subscribe(
         res => {
           this.loading = false;

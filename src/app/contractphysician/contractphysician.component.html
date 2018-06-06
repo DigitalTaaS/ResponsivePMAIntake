@@ -133,14 +133,19 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-row">
+                                        <div class="form-row" style="margin-top:-15px;">
                                             <div class="form-group col-md-5">
-                                                <div class="date-input">
-                                                <label for="inputdob">
+                                                <label for="inputdob" class="labelDOB">
                                                     DATE OF BIRTH*
                                                 </label>
-                                                <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----">
-                                            </div>
+                                                <!-- <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----"> -->
+                                                <div class="inputDOB">
+                                                    <mat-form-field style="line-height: 2.25">
+                                                        <input matInput [matDatepicker]="picker" placeholder="" formControlName="dateOfBirth" class="datePicker black-border">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-1"></div>

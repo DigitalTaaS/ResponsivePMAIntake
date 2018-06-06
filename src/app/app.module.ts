@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
@@ -23,7 +25,9 @@ import { IntakeInterceptor } from './shared/intake-interceptor';
 import { Multicolumnfilter } from './multicolumnfilter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModal } from './contractphysician/confirmation.modal';
+import { AuthenticationService } from './shared/authentication.service';
 
+const materials = [MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule]
 
 @NgModule({
   declarations: [
@@ -43,8 +47,11 @@ import { ConfirmationModal } from './contractphysician/confirmation.modal';
     ConfirmationModal
   ],
   entryComponents:[ConfirmationModal],
+  exports:[materials],
   imports: [
     NgbModule.forRoot(),
+    materials,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule ,
@@ -56,11 +63,14 @@ import { ConfirmationModal } from './contractphysician/confirmation.modal';
     ])
   ],
  
-  providers: [DegreeautosearchService,{
-    provide: HTTP_INTERCEPTORS,
-    useClass: IntakeInterceptor,
-    multi: true
-  }],
+  providers: [
+    AuthenticationService,
+    DegreeautosearchService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: IntakeInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
