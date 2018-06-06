@@ -293,16 +293,18 @@ button.badge i{
     margin-top:5px;
 }
 
+.mat-datepicker-toggle {
+    font-size:23px;
+    color: #777;
+}
+
 .inputDOB {
     margin-top: -15px;
 }
 
 .datePicker {
     border-radius: 5px;
-}
-
-::ng-deep .mat-input-underline {
-    display: none;
+    padding-left: 8px;
 }
 
 .disabled-button {
