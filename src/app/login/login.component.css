@@ -90,3 +90,7 @@
     font-size: 98px;
     color: rgba(255, 255, 255, 0.7);
 }
+
+:-ms-input-placeholder {
+    padding-top: 2px;
+}
