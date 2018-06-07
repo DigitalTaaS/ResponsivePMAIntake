@@ -10,6 +10,10 @@
                     <div class="logo">
                             <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
                     </div>
+                    <div class="pull-right">
+                        <h6>Welcome!! </h6>
+                        <button (click)="logout()">Logout</button>
+                    </div>
             <div class="sidenav">
                 <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
                     <br>PROVIDER</h5>
@@ -140,10 +144,10 @@
                                                 </label>
                                                 <!-- <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----"> -->
                                                 <div class="inputDOB">
-                                                    <mat-form-field style="line-height: 2.25">
-                                                        <input matInput [matDatepicker]="picker" placeholder="" formControlName="dateOfBirth" class="datePicker black-border select-input">
+                                                    <mat-form-field>
+                                                        <input matInput [matDatepicker]="picker" placeholder="" formControlName="dateOfBirth" [ngModel]="dobdate  | date:'MM-dd-yyyy'" class="datePicker black-border select-input" disabled>
                                                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                                        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                                                        <mat-datepicker #picker startView="year" [startAt]="startDate" disabled="false"></mat-datepicker>
                                                     </mat-form-field>
                                                 </div>
                                             </div>
@@ -220,11 +224,11 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-row">
+                                        <!-- <div class="form-row">
                                             <button type="button" class="btn btn-default btn-sm thin-button" style="border-radius:100%" (click)="addContractedPartner()">
                                                 <span class="fa fa-plus-circle add-button"></span>
                                             </button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -719,7 +723,8 @@
                     </div>
                 </form>
                 <div class="text-center" style="padding-bottom: 25px;">
-                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg success-button"  [ngClass]="{'disabled-button' : !contractPhysicianForm.valid, 'btn-success' : contractPhysicianForm.valid}">
+                        <button type="Submit" (click)="onSubmit()" class="btn btn-lg success-button"  
+                            [ngClass]="{'disabled-button' : !contractPhysicianForm.valid,'btn-success' : contractPhysicianForm.valid}">
                             <span class="badge" style="border-radius: 100%;">
                                 <span class="fa fa-1x glyphicon glyphicon-ok"></span>
                             </span> &nbsp;Submit</button>

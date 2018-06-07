@@ -3,6 +3,10 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpHeaders } fro
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
+import { environment } from '../../environments/environment';
+
+const clientId = environment.clientId;
+const clientSecret = environment.clientSecret;
 
 @Injectable()
 export class IntakeInterceptor implements HttpInterceptor {
@@ -10,7 +14,7 @@ export class IntakeInterceptor implements HttpInterceptor {
         
         let headers = new HttpHeaders();
         headers = headers.append("Content-type", "application/json");
-        //headers = headers.append("Authorization", "Basic " + btoa("966b9d649e724d3887c6db7c1468af53:489402D0779543F8aDaFd10c6d4A03D4"));
+        headers = headers.append("Authorization", "Basic " + btoa(clientId+":"+clientSecret));
 
         const authReq = req.clone({ headers: headers });
 

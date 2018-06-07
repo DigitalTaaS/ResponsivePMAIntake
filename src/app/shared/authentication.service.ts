@@ -11,19 +11,12 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
  
     GetAuthToken(clientId, clientSecret) {
+      
       let body = {
-        "clientId": "builduser2",
+        "clientId": "Myeisha.White.lac@gmail.com",
         "clientSecret": "Password1234"
       }
-        return this.http.post<any>(API_URL+'/api/auth/tokens?client_id='+clientId+'&client_secret='+clientSecret, body)
-            /* .map(response => {
-                if (response && response.accessToken) {
-                  console.log(response.accessToken);
-                    localStorage.setItem('authToken', JSON.stringify(response.accessToken));
-                }
- 
-                return response;
-            }); */
+        return this.http.post<any>(API_URL+'/api/auth/tokens?client_id='+clientId+'&client_secret='+clientSecret, body);
     }
 
 }

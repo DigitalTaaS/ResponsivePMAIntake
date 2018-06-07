@@ -1,0 +1,33 @@
+<div class="row h-100">
+    <div class="col-12 col-md-6 h-100 d-inline-block" style="height:100%">
+        <div class="logo">
+                <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
+        </div>
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="login-field middle-spacing-left">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                    <input type="text" class="form-control login" name="username" placeholder="Username" [(ngModel)]="model.username" #username="ngModel" required />
+                    <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                </div>
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <input type="password" class="form-control login password" name="password" placeholder="Password" [(ngModel)]="model.password" #password="ngModel" required />
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" class="btn btn-primary hidden">Login</button>
+                </div>
+            </div>
+            
+            <div *ngIf="loading" class="loading">Loading&#8230;</div>
+        </form>
+    </div> 
+    <div class="col-12 col-md-6 fill" [ngClass]="{'login-block' : loginsuccess , 'login-error' : !loginsuccess}">
+        <div class="full-height">
+            <div class="middle-spacing-right login-field" (click)="f.ngSubmit.emit()">
+                <h1 class="login-text">Login {{loginsuccess ? 'to' : 'was' }}</h1>
+                <h1 class="login-text">{{loginsuccess ? 'your account' : 'unsuccessful' }}</h1>
+                <i class="fas fa-arrow-right largeIcon"></i>
+            </div>
+        </div>
+    </div>
+</div>

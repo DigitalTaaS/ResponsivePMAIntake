@@ -19,6 +19,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModal } from './confirmation.modal';
 import { variable } from '@angular/compiler/src/output/output_ast';
 import { AuthenticationService } from '../shared/authentication.service';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { LoginService } from '../login/login.service';
 
 const API_URL = environment.apiURL;
 const clientId = environment.clientId;
@@ -94,6 +96,8 @@ export class ContractphysicianComponent implements OnInit {
   public flag: boolean = false;
   loading:boolean = false;
   startDate = new Date(1985, 0, 1);
+  dobdate = new Date();
+  navigationSubscription:any;
 
   private readonly newProperty = this.cpPanelValueChange = false;
 
@@ -102,18 +106,30 @@ export class ContractphysicianComponent implements OnInit {
               private httpClient: HttpClient,
               private cdRef : ChangeDetectorRef, 
               private modalService: NgbModal,
-              private authService:AuthenticationService) {
+              private router: Router,
+              private loginservice:LoginService) {
+
+            this.navigationSubscription = this.router.events.subscribe((e: any) => {
+              // If it is a NavigationEnd event re-initalise the component
+              if (e instanceof NavigationEnd) {
+                this.initialiseform();
+              }
+            });
   }
 
-    ngOnInit() {
+  ngOnInit() {
 
+    this.initialiseform();
+    this.populateDropDowns();
+  }
+
+  private initialiseform() {
     //this.GetAuthToken();
-
-    this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
-    this.middlenameCtrl = new FormControl(null, [Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
+    this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
+    this.middlenameCtrl = new FormControl(null, [Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
     this.lastnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
     this.suffixCtrl = new FormControl(null, [Validators.maxLength(10)]);
-    this.aliasnameCtrl = new FormControl(null, [Validators.maxLength(30),  Validators.pattern("[A-z ]+$")]);
+    this.aliasnameCtrl = new FormControl(null, [Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
     this.npiCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
     this.licenceCtrl = new FormControl(null, [Validators.required]);
     this.deaCtrl = new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern("[a-zA-Z]{2}[0-9]{7}")]);
@@ -126,9 +142,6 @@ export class ContractphysicianComponent implements OnInit {
     this.emailCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}")]);
     this.minAgeCtrl = new FormControl(null, [Validators.maxLength(3), Validators.max(150)]);
     this.maxAgeCtrl = new FormControl(null, [Validators.maxLength(3), Validators.max(150)]);
-   
-
-    
     this.contractPhysicianForm = this.fb.group({
       demographics: this.fb.group({
         firstName: this.firstnameCtrl,
@@ -148,7 +161,7 @@ export class ContractphysicianComponent implements OnInit {
         deaNumber: this.deaCtrl,
         degreeName: new FormControl(null),
         // taxanomyCode: new FormControl(null, Validators.required),
-        taxanomyCode: new FormControl(null,Validators.required),
+        taxanomyCode: new FormControl(null, Validators.required),
         description: new FormControl(),
         description1: new FormControl(null)
       }),
@@ -156,32 +169,29 @@ export class ContractphysicianComponent implements OnInit {
         this.initLocation(false)
       ])
     });
-
-    this.populateDropDowns();
+    
     //taxon search-highlight
-
     // stroy 955
-    this.degreeService.search("all")
+    this.degreeService.search("all");
     //  // auto complete
     this.degreesdata = this.searchTerms
-      .debounceTime(300)        // wait for 300ms pause in events  
-      .distinctUntilChanged()   // ignore if next search term is same as previous  
+      .debounceTime(300) // wait for 300ms pause in events  
+      .distinctUntilChanged() // ignore if next search term is same as previous  
       .switchMap(term => term ? this.degreeService.search(term) : Observable.of<any[]>([]))
       .catch(error => {
         // TODO: real error handling  
         console.log(error);
         return Observable.of<any[]>([]);
       });
-
     this.txcodes;
     this.degreeService.search("All")
       .subscribe(data => {
-        this.txcodes = data.map(d=>d.Code);
+        this.txcodes = data.map(d => d.Code);
         console.log(this.txcodes);
       });
   }
 
-  private GetAuthToken() {
+  /* private GetAuthToken() {
     this.authService.GetAuthToken(clientId, clientSecret)
       .subscribe(response => {
         if (response && response.accessToken) {
@@ -193,7 +203,7 @@ export class ContractphysicianComponent implements OnInit {
         modalRef.componentInstance.errors = 0;
         modalRef.componentInstance.errorMessage = "Problem retriving access token. Please try again.";
       });
-  }
+  } */
 
   ngAfterViewInit() {
     (<FormGroup>this.contractPhysicianForm.get('demographics')).valueChanges.subscribe(val => {
@@ -223,6 +233,15 @@ export class ContractphysicianComponent implements OnInit {
       this.licencePanelValueChange = false;
       this.locationPanelValueChange = true;
     });
+  }
+
+  ngOnDestroy() {
+    // avoid memory leaks here by cleaning up after ourselves. If we  
+    // don't then we will continue to run our initialiseform()   
+    // method on every navigationEnd event.
+    if (this.navigationSubscription) {  
+       this.navigationSubscription.unsubscribe();
+    }
   }
 
   // Fast Search taxcode autocomplete
@@ -698,12 +717,15 @@ export class ContractphysicianComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    //this.ConstructModel();
+    this.ConstructModel();
+
+    //this.model.dateOfBirth = this.dobdate.getMonth + '-' + this.dobdate.getDay + '-' + this.dobdate.getFullYear;
+     
 
     console.log(this.model);
     console.log(JSON.stringify(this.model));
-
-    this.httpClient.post(API_URL+'/api/providers?client_id='+clientId+'&client_secret='+clientSecret+'&access_token='+this.authToken, this.model, {observe: 'response'})
+    const accesstoken =  JSON.parse(localStorage.getItem('accesstoken'));
+    this.httpClient.post(API_URL+'/api/providers?client_id='+clientId+'&client_secret='+clientSecret+'&access_token='+accesstoken, this.model, {observe: 'response'})
       .subscribe(
         res => {
           this.loading = false;
@@ -742,17 +764,12 @@ export class ContractphysicianComponent implements OnInit {
     this.model =
       {
         firstName: this.contractPhysicianForm.get('demographics').get('firstName').value,
-        /* middleName: this.contractPhysicianForm.get('demographics').get('middleName').value, */
         lastName: this.contractPhysicianForm.get('demographics').get('lastName').value,
-        /* alias: this.contractPhysicianForm.get('demographics').get('aliasName').value, */
-        /* suffix: this.contractPhysicianForm.get('demographics').get('suffixName').value, */
-        dateOfBirth: this.contractPhysicianForm.get('demographics').get('dateOfBirth').value,
         gender: this.contractPhysicianForm.get('demographics').get('genderType').value,
         contractedPartners: contractedPartners,
         npi: this.contractPhysicianForm.get('licensing').get('npiNumber').value,
         licenseNumber: this.contractPhysicianForm.get('licensing').get('licNumber').value,
         dea: this.contractPhysicianForm.get('licensing').get('deaNumber').value,
-        /* taxonomies:[{taxonomyCode: this.contractPhysicianForm.get('licensing').get('taxanomyCode').value}], */
         /* taxonomies:[{taxonomyCode: this.selectedTaxcode, taxonomyType: this.selectedTaxType}], */
         taxonomies:[{taxonomyCode: this.selectedTaxcode, taxonomyType: 'board'}],
         qualification:{professionalDegreeCode: this.contractPhysicianForm.get('licensing').get('degreeName').value},
@@ -829,5 +846,11 @@ export class ContractphysicianComponent implements OnInit {
       contractedPartners.push(cp);
     }
     return contractedPartners;
+  }
+
+  logout(){
+    this.loginservice.logout();
+      this.router.navigate(['/login']);
+    
   }
 }

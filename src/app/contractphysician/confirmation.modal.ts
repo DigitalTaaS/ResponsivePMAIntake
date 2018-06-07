@@ -47,7 +47,7 @@ export class ConfirmationModal {
 
     NewEntry() {
         this.activeModal.close();
-        this.router.navigate(['']);
+        this.router.navigate(['contractphysician']);
     }
 
     close(){

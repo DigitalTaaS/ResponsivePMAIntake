@@ -1,0 +1,92 @@
+.login {
+    border-radius:0;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid #777;
+    width: 60%;
+    padding-top: 80px;
+}
+
+.login-field {
+    padding-left:22%;
+}
+.middle-spacing-left {
+    margin-top:50%
+}
+@media (max-width: 1045px) {
+    .middle-spacing-left {
+        margin-top: 90%;
+        padding-bottom: 60px;
+    }
+}
+@media (max-width: 768px) {
+    .middle-spacing-left {
+        margin-top: 25%
+    }
+}
+
+.middle-spacing-right {
+    cursor: pointer;
+    margin-top:50%;
+}
+@media (max-width: 767px) {
+    .middle-spacing-right {
+        margin-top: 15%
+    }
+    h1.login-text {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 1003px) {
+    h1.login-text {
+        font-size: 75px;
+    }
+}
+.hidden {
+    display:none;
+}
+.login-block {
+    background-color: rgb(56, 138, 201);
+}
+
+.login-error {
+    background-color: rgb(190, 62, 100);
+}
+.logo {
+    position: fixed;
+    top: 35px;
+    left: 35px;
+    z-index: 3;
+
+}
+.card-img-top {
+    width: 200px;
+}
+
+.full-height {
+    height: 1200px;
+}
+
+.login-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 98px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-control {
+    font-family: 'Roboto', sans-serif;
+    color: rgba(68, 68, 68, 0.7);
+    font-size:22px;
+    font-weight: 300;
+    padding-top:13px;
+}
+
+.password {
+    margin-top: 50px;
+}
+
+.largeIcon {
+    font-size: 98px;
+    color: rgba(255, 255, 255, 0.7);
+}

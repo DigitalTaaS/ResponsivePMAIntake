@@ -26,6 +26,9 @@ import { Multicolumnfilter } from './multicolumnfilter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModal } from './contractphysician/confirmation.modal';
 import { AuthenticationService } from './shared/authentication.service';
+import { LoginComponent } from './login/login.component';
+import { AuthGuardService } from './login/auth-guard.service';
+import { LoginService } from './login/login.service';
 
 const materials = [MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule]
 
@@ -44,7 +47,8 @@ const materials = [MatDatepickerModule, MatFormFieldModule, MatNativeDateModule,
     PmahighlighttextPipe,
     PmataxoncodePipe,
     Multicolumnfilter,
-    ConfirmationModal
+    ConfirmationModal,
+    LoginComponent
   ],
   entryComponents:[ConfirmationModal],
   exports:[materials],
@@ -58,13 +62,16 @@ const materials = [MatDatepickerModule, MatFormFieldModule, MatNativeDateModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-     {path:'',component:ContractphysicianComponent},
-     {path:'contractphysician', component:ContractphysicianComponent}
-    ])
+     {path:'',component:LoginComponent},
+     {path:'contractphysician', component:ContractphysicianComponent, canActivate: [AuthGuardService]},
+     // otherwise redirect to home
+    { path: '**', redirectTo: '' }
+    ], {onSameUrlNavigation: "reload"})
   ],
  
   providers: [
-    AuthenticationService,
+    LoginService,
+    AuthGuardService,
     DegreeautosearchService,
     {
       provide: HTTP_INTERCEPTORS,
