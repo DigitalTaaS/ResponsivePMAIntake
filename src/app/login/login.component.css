@@ -13,23 +13,25 @@
 .middle-spacing-left {
     margin-top:50%
 }
+.middle-spacing-right {
+    cursor: pointer;
+    margin-top:50%;
+}
 @media (max-width: 1045px) {
     .middle-spacing-left {
         margin-top: 90%;
         padding-bottom: 60px;
     }
 }
+@media (max-width: 1003px) {
+    h1.login-text {
+        font-size: 75px;
+    }
+}
 @media (max-width: 768px) {
     .middle-spacing-left {
         margin-top: 25%
     }
-}
-
-.middle-spacing-right {
-    cursor: pointer;
-    margin-top:50%;
-}
-@media (max-width: 767px) {
     .middle-spacing-right {
         margin-top: 15%
     }
@@ -37,12 +39,20 @@
         font-size: 70px;
     }
 }
-
-@media (max-width: 1003px) {
+@media (max-width: 415px) {
+    .middle-spacing-left {
+        margin-top: 120px
+    }
     h1.login-text {
-        font-size: 75px;
+        font-size: 40px;
+    }
+    i.largeIcon {
+        font-size:50px;
     }
 }
+
+
+
 .hidden {
     display:none;
 }
