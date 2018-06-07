@@ -28,7 +28,12 @@
         font-size: 75px;
     }
 }
-@media (max-width: 768px) {
+
+.full-height {
+    height: 1200px;
+}
+
+@media (max-width: 767px) {
     .middle-spacing-left {
         margin-top: 25%
     }
@@ -37,6 +42,9 @@
     }
     h1.login-text {
         font-size: 70px;
+    }
+    .full-height {
+        height:350px;
     }
 }
 @media (max-width: 415px) {
@@ -74,9 +82,7 @@
     width: 200px;
 }
 
-.full-height {
-    height: 1200px;
-}
+
 
 .login-text {
     font-family: 'Roboto', sans-serif;
