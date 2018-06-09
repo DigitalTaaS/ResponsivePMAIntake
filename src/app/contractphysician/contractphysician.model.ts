@@ -65,8 +65,8 @@ export class HoursOfOperation {
 }
 
 export class Age {
-    min: number;
-    max: number;
+    min?: number;
+    max?: number;
 }
 
 export class Address {

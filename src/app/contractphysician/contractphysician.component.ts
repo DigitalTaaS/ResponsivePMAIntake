@@ -18,7 +18,6 @@ import { environment } from '../../environments/environment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModal } from './confirmation.modal';
 import { variable } from '@angular/compiler/src/output/output_ast';
-import { AuthenticationService } from '../shared/authentication.service';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { LoginService } from '../login/login.service';
 
@@ -32,7 +31,7 @@ const clientSecret = environment.clientSecret;
   styleUrls: ['./contractphysician.component.css']
 })
 
-export class ContractphysicianComponent implements OnInit {
+export class ContractphysicianComponent  {
  
   authToken: string;
   model: ContractphysicianModel;
@@ -117,12 +116,6 @@ export class ContractphysicianComponent implements OnInit {
             });
   }
 
-  ngOnInit() {
-
-    this.initialiseform();
-    this.populateDropDowns();
-  }
-
   private initialiseform() {
     //this.GetAuthToken();
     this.firstnameCtrl = new FormControl(null, [Validators.required, Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
@@ -131,7 +124,7 @@ export class ContractphysicianComponent implements OnInit {
     this.suffixCtrl = new FormControl(null, [Validators.maxLength(10)]);
     this.aliasnameCtrl = new FormControl(null, [Validators.maxLength(30), Validators.pattern("[A-z ]+$")]);
     this.npiCtrl = new FormControl(null, [Validators.required, Validators.minLength(10)]);
-    this.licenceCtrl = new FormControl(null, [Validators.required]);
+    this.licenceCtrl = new FormControl(null, [Validators.required, Validators.pattern("[a-zA-Z0-9]{3}[0-9]+$")]);
     this.deaCtrl = new FormControl(null, [Validators.required, Validators.minLength(9), Validators.pattern("[a-zA-Z]{2}[0-9]{7}")]);
     this.addressCtrl = new FormControl(null, [Validators.maxLength(50), Validators.pattern("^[a-zA-Z0-9 ,]*$")]);
     this.suiteCtrl = new FormControl(null, [Validators.maxLength(15), Validators.pattern("^[a-zA-Z0-9 ,]*$")]);
@@ -169,6 +162,9 @@ export class ContractphysicianComponent implements OnInit {
         this.initLocation(false)
       ])
     });
+
+
+    this.populateDropDowns();
     
     //taxon search-highlight
     // stroy 955
@@ -190,20 +186,6 @@ export class ContractphysicianComponent implements OnInit {
         console.log(this.txcodes);
       });
   }
-
-  /* private GetAuthToken() {
-    this.authService.GetAuthToken(clientId, clientSecret)
-      .subscribe(response => {
-        if (response && response.accessToken) {
-          console.log(response.accessToken);
-          this.authToken = response.accessToken;
-        }
-      }, err => {
-        const modalRef = this.modalService.open(ConfirmationModal, { centered: true, keyboard: false, backdrop: 'static', windowClass: 'error-modal' });
-        modalRef.componentInstance.errors = 0;
-        modalRef.componentInstance.errorMessage = "Problem retriving access token. Please try again.";
-      });
-  } */
 
   ngAfterViewInit() {
     (<FormGroup>this.contractPhysicianForm.get('demographics')).valueChanges.subscribe(val => {
@@ -716,8 +698,18 @@ export class ContractphysicianComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = true;
-    this.ConstructModel();
+    
+    try {
+      this.loading = true;
+      this.ConstructModel();
+    } catch (error) {
+      this.loading = false;
+      const modalRef = this.modalService.open(ConfirmationModal, {centered: true, keyboard: false, backdrop:'static', windowClass: 'error-modal'});
+      modalRef.componentInstance.errors = 0;
+      modalRef.componentInstance.errorMessage = "Submission Failed. Please try again later.";
+      return false;
+    }
+   
 
     //this.model.dateOfBirth = this.dobdate.getMonth + '-' + this.dobdate.getDay + '-' + this.dobdate.getFullYear;
      
@@ -725,7 +717,7 @@ export class ContractphysicianComponent implements OnInit {
     console.log(this.model);
     console.log(JSON.stringify(this.model));
     const accesstoken =  JSON.parse(localStorage.getItem('accesstoken'));
-    this.httpClient.post(API_URL+'/api/providers?client_id='+clientId+'&client_secret='+clientSecret+'&access_token='+accesstoken, this.model, {observe: 'response'})
+    this.httpClient.post(API_URL+'/api/providers?access_token='+accesstoken, this.model, {observe: 'response'})
       .subscribe(
         res => {
           this.loading = false;
@@ -817,21 +809,15 @@ export class ContractphysicianComponent implements OnInit {
       practiceType: fvalues.at(0).get('providerType').value,
       phones: phones,
       hoursOfOperation: officeHours,
-      /* age: {
-        min: fvalues.at(0).get('minAge').value,
-        max: fvalues.at(0).get('maxAge').value,
-      } */
+      age: { 
+        min : fvalues.at(0).get('minAge').value ? +fvalues.at(0).get('minAge').value : 0,
+        max : fvalues.at(0).get('maxAge').value ? +fvalues.at(0).get('maxAge').value : 0
+      }
     };
 
     if(fvalues.at(0).get('suite').value)
       facility.address.addressLine2 = fvalues.at(0).get('suite').value;
-
-    if(fvalues.at(0).get('minAge').value)
-     facility.age.min = fvalues.at(0).get('minAge').value;
-
-    if(fvalues.at(0).get('maxAge').value)
-     facility.age.max = fvalues.at(0).get('maxAge').value;
-
+      
     facilities.push(facility);
     return facilities;
   }

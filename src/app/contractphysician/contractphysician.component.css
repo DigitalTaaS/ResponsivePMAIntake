@@ -66,12 +66,32 @@ img {
     top: 294px;
     width:230px;
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .sidenav {
         display: none;
     }
 }
 
+.welcome {
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    background-color: rgba(59, 149, 216, 0.3);
+    padding: 10px;
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:300;
+    width: 170px;
+    border-radius: 3px;
+    text-align: center;
+    z-index: 4;
+}
+
+.logout-button {
+    border-radius: 50px;
+    font-weight: 300;
+    border: none;
+}
 
 .logo {
     position: fixed;
@@ -121,7 +141,7 @@ img {
 .main-top {
     padding-top: 120px;
 }
-@media (min-width: 992px) {
+@media (min-width: 991px) {
     .main-top{
     padding-top: 200px;
     }
@@ -130,7 +150,7 @@ img {
 .main {
     margin-right: 10%; 
 }
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .main{
     margin-right: 5%;
     }

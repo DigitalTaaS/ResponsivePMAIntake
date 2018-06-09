@@ -1,19 +1,23 @@
 <div>
     <div class="row">
-        <div class="col-12 col-lg-3 col-xl-3">
+        <div class="welcome">
+            <div class="welcome-text">Welcome!!</div>
+            <button class="btn btn-outline logout-button btn-default" (click)="logout()">Logout</button>
+        </div>
+        <div class="col-9 col-lg-3 col-xl-3">
             <div class="sidemenu">
-                    <div class="sticky-bar fixed-top">
-                            <div class="logo">
-                                <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
-                </div>
-            </div>
+                <div class="sticky-bar fixed-top">
                     <div class="logo">
-                            <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
+                        <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
                     </div>
-                    <div class="pull-right">
-                        <h6>Welcome!! </h6>
-                        <button (click)="logout()">Logout</button>
+                    <div class="welcome">
+                            <div class="welcome-text">Welcome!!</div>
+                        <button class="btn btn-outline logout-button btn-default" (click)="logout()">Logout</button>
                     </div>
+                </div>
+                <div class="logo">
+                        <img class="card-img-top" src="/assets/images/LACare-Logo-New.png" alt="Card image cap">
+                </div>
             <div class="sidenav">
                 <h5 class="text-center" style="padding-bottom: 0px">CONTRACT
                     <br>PROVIDER</h5>
@@ -145,7 +149,7 @@
                                                 <!-- <input type="date" class="form-control black-border" id="inputdob" formControlName="dateOfBirth" required placeholder="--/--/----"> -->
                                                 <div class="inputDOB">
                                                     <mat-form-field>
-                                                        <input matInput [matDatepicker]="picker" placeholder="" formControlName="dateOfBirth" class="datePicker black-border select-input">
+                                                        <input matInput [matDatepicker]="picker" placeholder="" formControlName="dateOfBirth" [ngModel]="dobdate  | date:'MM-dd-yyyy'" class="datePicker black-border select-input" disabled>
                                                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                                         <mat-datepicker #picker startView="year" [startAt]="startDate" disabled="false"></mat-datepicker>
                                                     </mat-form-field>
@@ -260,8 +264,8 @@
                                                     <label for="inputLnum">
                                                         LICENSE NUMBER*
                                                     </label>
-                                                    <input type="text" pattern="\d*" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required [ngClass]="{'red-border': licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty), 'black-border': licenceCtrl.valid || licenceCtrl.pristine}">
-                                                    <em *ngIf="licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty)">Numbers only</em>
+                                                    <input type="text" maxlength="13" class="form-control" id="inputLnum" placeholder="" formControlName="licNumber" required [ngClass]="{'red-border': licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty), 'black-border': licenceCtrl.valid || licenceCtrl.pristine}">
+                                                    <em *ngIf="licenceCtrl.invalid && (licenceCtrl.touched || licenceCtrl.dirty)">1st 3 Chars Alphanumeric followed by numbers </em>
                                                 </div>
                                                 <div class="form-group col-md-4" item-width="180px">
                                                     <label for="inputLnum">
@@ -724,7 +728,7 @@
                 </form>
                 <div class="text-center" style="padding-bottom: 25px;">
                         <button type="Submit" (click)="onSubmit()" class="btn btn-lg success-button"  
-                            [ngClass]="{'disabled-button' : !contractPhysicianForm.valid,'btn-success' : contractPhysicianForm.valid}">
+                            [ngClass]="{'btn-success' : contractPhysicianForm.valid}">
                             <span class="badge" style="border-radius: 100%;">
                                 <span class="fa fa-1x glyphicon glyphicon-ok"></span>
                             </span> &nbsp;Submit</button>

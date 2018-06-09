@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   apiURL: 'https://lacare-tpm-experience-api-dev.cloudhub.io',
   authAPIURL:'https://lacare-tpm-auth-experience-api-dev.cloudhub.io',
   clientId:'f1bd87bb420c404aa47619650c204d52',
