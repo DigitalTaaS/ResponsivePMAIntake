@@ -72,6 +72,12 @@ img {
     }
 }
 
+.modal-body.error-modal.error-popup {
+    background-color: #B39CC9;
+    border-radius: none;
+    box-shadow: none;
+}
+
 .welcome {
     position: fixed;
     right: 10px;
