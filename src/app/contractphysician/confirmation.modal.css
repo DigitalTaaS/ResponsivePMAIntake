@@ -19,6 +19,10 @@
     margin-right: 17px;
     min-width: 75px;
 }
+.buttonMargin {
+    margin-top: 90px;
+    margin-right: 5px;
+}
 
 @media (max-width: 767px) {
     .modal-content {
@@ -48,6 +52,9 @@
     }
     .modal-back-button {
         margin-top: 8px;
+    }
+    .buttonMargin {
+        margin-top: 0px;
     }
 }
 
@@ -106,6 +113,19 @@
     opacity: 1;
 }
 .p-text{
-    font-size:35px;
-    font-family: ArialMT, Regular;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+}
+
+.check-icon {
+    font-size: 90px;
+}
+
+.submitButton {
+    float: right;
+}
+
+.successMessage {
+    margin-left: 10px;
 }

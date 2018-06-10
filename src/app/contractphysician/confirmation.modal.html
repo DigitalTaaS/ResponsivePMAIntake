@@ -1,20 +1,19 @@
 <div *ngIf="errorMessage.length == 0;else error_content">
     <div class="modal-body success-modal">
         <div class="row">
-            <div class="col-10"></div>
             <div class="col-3" style="padding-left: 40px">
-                <span class="fa fa-4x glyphicon glyphicon-ok"></span>
+                <i class="fa fa-check-circle check-icon" aria-hidden="true"></i>
             </div>
-            <div class="col-9">
+            <div class="col-8 successMessage">
                 <span class="p-text">Submission Complete</span>
                 <br>
                 <span>{{errors}} Errors</span>
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-sm" style="border-radius: 25px" (click)="NewEntry()">
+        <div class="submitButton buttonMargin">
+            <button type="button" class="btn btn-default btn-sm backButton" (click)="NewEntry()">
                 <i class="glyphicon glyphicon-plus-sign"></i>
-                <span style="font-size: 15px;">New Entry</span>
+                New Entry
             </button>
         </div>
     </div>
